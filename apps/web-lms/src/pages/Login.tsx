@@ -9,11 +9,11 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const { token } = await apiFetch("/auth/login", {
+      // El backend responde con Set-Cookie (httpOnly), no hay token que guardar en JS.
+      await apiFetch("/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
       });
-      localStorage.setItem("token", token);
       window.location.href = "/mi-area";
     } catch {
       setError("Credenciales inválidas");

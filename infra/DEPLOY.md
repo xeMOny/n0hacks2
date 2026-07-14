@@ -26,18 +26,22 @@ git clone <url-del-repo> malta && cd malta
 ```bash
 cd infra
 cp ../.env.example .env
-# sustituir los valores por otros generados, no dejar "changeme":
-echo "POSTGRES_PASSWORD=$(openssl rand -base64 24)" 
-echo "JWT_SECRET=$(openssl rand -base64 32)"
-# pegar esos valores en infra/.env
+echo "POSTGRES_PASSWORD=$(openssl rand -base64 24)"
+echo "JWT_SECRET=$(openssl rand -base64 48)"
+# pegar esos valores en infra/.env — CORS_ORIGIN y COOKIE_DOMAIN ya vienen
+# rellenos en el .env.example con los subdominios correctos, revisar que
+# coincidan con el dominio real antes de continuar.
 ```
+El servidor falla al arrancar si falta cualquiera de `POSTGRES_PASSWORD`, `JWT_SECRET` o `CORS_ORIGIN` — es intencional, mejor que arrancar con un secreto público del repo.
 
-## 4. Levantar los contenedores
+## 4. Primer arranque (sin TLS todavía)
+El bloque HTTPS de nginx necesita certificados que aún no existen — por eso el primer `up` es solo para tener HTTP funcionando y poder pasar el reto ACME de certbot en el paso 6.
 ```bash
-docker compose --env-file .env up -d --build
+docker compose --env-file .env up -d --build postgres api web-lms web-crm web-intranet
 docker compose ps   # todos deben acabar "healthy"
 ```
 Si algún servicio no llega a "healthy", revisar logs: `docker compose logs <servicio>`.
+No levantar aún el contenedor `nginx` — sin certificados en `/etc/letsencrypt/live/uclcampus.com/`, fallará al arrancar (el bloque `listen 443 ssl` referencia archivos que todavía no existen).
 
 ## 5. Crear el primer usuario admin
 Sin este paso nadie puede entrar a CRM/Intranet — el endpoint de creación de usuarios exige rol admin y todavía no existe ninguno.
@@ -50,19 +54,39 @@ docker compose run --rm \
 Debe imprimir `Admin creado: admin@uclcampus.com`. Si se ejecuta dos veces, la segunda dice "Ya existe un admin" y no hace nada (es seguro).
 
 ## 6. Activar SSL (una vez el DNS ya resuelve al VPS)
+`nginx.conf` (el definitivo) ya trae los bloques 443 con `ssl_certificate` apuntando a `/etc/letsencrypt/live/uclcampus.com/`, pero nginx no arranca si esos archivos no existen — hay que emitir los certificados primero con un config "bootstrap" que solo sirve el reto ACME.
+
 ```bash
-docker run -it --rm \
-  -v $(pwd)/nginx/certbot-etc:/etc/letsencrypt \
-  -v $(pwd)/nginx/certbot-www:/var/www/certbot \
-  -p 80:80 certbot/certbot certonly --standalone \
-  -d uclcampus.com -d www.uclcampus.com -d crm.uclcampus.com -d intranet.uclcampus.com
+# 6.1 Arrancar nginx con el config bootstrap (solo HTTP, sin TLS)
+docker compose --env-file .env run -d --name nginx-bootstrap \
+  -v $(pwd)/nginx/nginx.bootstrap.conf:/etc/nginx/nginx.conf:ro \
+  -v certbot_www:/var/www/certbot \
+  -p 80:80 nginx nginx -g "daemon off;"
+
+# 6.2 Pedir el certificado (webroot, usa el volumen que nginx-bootstrap está sirviendo)
+docker compose run --rm certbot certonly --webroot -w /var/www/certbot \
+  -d uclcampus.com -d www.uclcampus.com -d crm.uclcampus.com -d intranet.uclcampus.com \
+  --email <tu-email> --agree-tos --non-interactive
+
+# 6.3 Parar el bootstrap y levantar el nginx definitivo (ya con 443 + certs reales)
+docker stop nginx-bootstrap && docker rm nginx-bootstrap
+docker compose --env-file .env up -d nginx
 ```
-Después, actualizar `nginx/nginx.conf` para servir en 443 con los certificados generados (bloques `listen 443 ssl;` + `ssl_certificate`/`ssl_certificate_key`) y recargar nginx: `docker compose restart nginx`.
+Verificar: `docker compose logs nginx` no debe mostrar errores de `ssl_certificate`.
+
+### Renovación automática
+Let's Encrypt caduca a los 90 días. Programar en el VPS (fuera de Docker, en el propio cron del sistema):
+```bash
+# crontab -e
+17 3 * * 1  cd /ruta/al/repo/infra && docker compose run --rm certbot renew --webroot -w /var/www/certbot -q && docker compose restart nginx
+```
 
 ## 7. Verificación final
-- `curl https://uclcampus.com/api/health` → `{"status":"ok"}`
+- `curl -I https://uclcampus.com/` → `200`, con cabeceras `Strict-Transport-Security` y `Content-Security-Policy` presentes
+- `curl -X POST https://uclcampus.com/api/auth/login -d '{}' -H 'Content-Type: application/json'` → `400` con detalle de validación (confirma que la API responde a través del proxy)
 - Login en https://crm.uclcampus.com con el admin creado en el paso 5
 - Revisar que `docker compose logs -f` no muestre errores en bucle
+- (Nota: `/health` del backend es solo para el healthcheck interno de Docker, nginx no lo expone públicamente a propósito)
 
 ## Pendiente conocido (no bloquea el despliegue, pero falta)
 - Pasarela de pago, SEO técnico/on-page, AEO, GDPR (alcance LMS original, no iniciado)

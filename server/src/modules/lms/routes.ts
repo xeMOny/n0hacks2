@@ -1,8 +1,20 @@
 import { Router } from "express";
+import { z } from "zod";
 import { query } from "../../db/pool.js";
 import { verifyToken, requireRole, AuthedRequest } from "../../middleware/auth.js";
+import { validateBody } from "../../middleware/validate.js";
 
 export const lmsRouter = Router();
+
+const courseSchema = z.object({
+  title: z.string().trim().min(1),
+  description: z.string().trim().optional(),
+  price: z.number().nonnegative(),
+});
+
+const enrollmentSchema = z.object({
+  course_id: z.string().uuid(),
+});
 
 // GET /api/lms/courses - catálogo público
 lmsRouter.get("/courses", async (_req, res) => {
@@ -11,14 +23,20 @@ lmsRouter.get("/courses", async (_req, res) => {
 });
 
 // POST /api/lms/courses - admin/profesor
-lmsRouter.post("/courses", verifyToken, requireRole("admin", "profesor"), async (req, res) => {
-  const { title, description, price } = req.body;
-  const rows = await query(
-    "INSERT INTO courses (title, description, price, published) VALUES ($1,$2,$3,false) RETURNING *",
-    [title, description, price]
-  );
-  res.status(201).json(rows[0]);
-});
+lmsRouter.post(
+  "/courses",
+  verifyToken,
+  requireRole("admin", "profesor"),
+  validateBody(courseSchema),
+  async (req, res) => {
+    const { title, description, price } = req.body as z.infer<typeof courseSchema>;
+    const rows = await query(
+      "INSERT INTO courses (title, description, price, published) VALUES ($1,$2,$3,false) RETURNING *",
+      [title, description, price]
+    );
+    res.status(201).json(rows[0]);
+  }
+);
 
 // GET /api/lms/me/courses - área privada del alumno
 lmsRouter.get("/me/courses", verifyToken, async (req: AuthedRequest, res) => {
@@ -32,8 +50,8 @@ lmsRouter.get("/me/courses", verifyToken, async (req: AuthedRequest, res) => {
 });
 
 // POST /api/lms/enrollments
-lmsRouter.post("/enrollments", verifyToken, async (req: AuthedRequest, res) => {
-  const { course_id } = req.body;
+lmsRouter.post("/enrollments", verifyToken, validateBody(enrollmentSchema), async (req: AuthedRequest, res) => {
+  const { course_id } = req.body as z.infer<typeof enrollmentSchema>;
   const rows = await query(
     "INSERT INTO enrollments (user_id, course_id, status) VALUES ($1,$2,'active') RETURNING *",
     [req.user!.id, course_id]
