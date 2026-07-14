@@ -22,7 +22,7 @@ export default function CourseCatalog() {
       <ul>
         {courses.map((c) => (
           <li key={c.id}>
-            <strong>{c.title}</strong> — {c.price} €
+            <strong>{c.title}</strong>: {c.price} €
           </li>
         ))}
       </ul>

@@ -11,7 +11,7 @@ export async function apiFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     // La sesión viaja en una cookie httpOnly (Secure + SameSite=Strict, la
-    // pone el backend en /auth/login) — el navegador la adjunta solo si
+    // pone el backend en /auth/login). El navegador la adjunta solo si
     // "credentials: include" está presente. No hay token accesible desde
     // JS: un XSS no puede robarlo leyendo localStorage/sessionStorage.
     credentials: "include",

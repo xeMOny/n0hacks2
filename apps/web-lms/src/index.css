@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/*
+ * Estilos base heredados del scaffold inicial (Login/CourseCatalog/
+ * StudentDashboard todavía no tienen su propio diseño con Tailwind y
+ * dependen de estos defaults). Van en @layer base para que SIEMPRE pierdan
+ * frente a cualquier clase de Tailwind (capa "utilities"). Sin esto, al
+ * estar fuera de una @layer, ganaban a las utilidades sin importar
+ * especificidad (p.ej. todos los <button> salían azules por el
+ * `button{background:var(--accent)}` de aquí abajo, incluso los que ya
+ * tenían bg-amber-500 de Tailwind).
+ */
+@layer base {
+
 :root {
   --bg: #0b0f14;
   --surface: #12181f;
@@ -129,3 +141,5 @@ button:disabled { opacity: 0.6; cursor: default; }
 }
 .task-list li.done span { text-decoration: line-through; color: var(--text-dim); }
 .due { font-size: 12px; color: var(--text-dim); }
+
+} /* fin @layer base */

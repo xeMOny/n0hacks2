@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env.js";
 
-export type Role = "admin" | "profesor" | "comercial" | "gestor_andorra";
+export type Role = "admin" | "direccion" | "profesor" | "comercial" | "gestor_andorra" | "alumno";
 
 export interface AuthedRequest extends Request {
   user?: { id: string; role: Role; email: string };

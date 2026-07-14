@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "students_area": "Student area",
+    "staff_area": "Staff area",
+    "programs": "Programs",
+    "about": "About us",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Quality Online Education",
+    "subtitle": "Develop your skills with hands-on programs designed together with industry professionals.",
+    "modality_all": "All",
+    "modality_online": "Online",
+    "modality_hybrid": "Hybrid",
+    "level_all": "All",
+    "level_degree": "Bachelor's",
+    "level_postgrad": "Postgraduate",
+    "search_cta": "Search programs"
+  },
+  "stats": {
+    "students": { "value": "2,400+", "label": "Active students" },
+    "countries": { "value": "38", "label": "Countries of origin" },
+    "employability": { "value": "94%", "label": "Employability within a year" },
+    "years": { "value": "12", "label": "Years of experience" }
+  },
+  "features": [
+    { "title": "Up-to-date programs", "desc": "Content reviewed every semester with practicing industry professionals" },
+    { "title": "Global community", "desc": "Network of alumni and tutors in more than 30 countries" },
+    { "title": "Recognized certification", "desc": "Proprietary degrees recognized across the private sector" }
+  ],
+  "courses": {
+    "section_title": "Our Programs",
+    "enroll": "Enroll",
+    "items": [
+      { "title": "Full Stack Web Development", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Bachelor's" },
+      { "title": "Project Management", "desc": "Agile methodologies and SCRUM", "price": "€199", "mode": "Hybrid", "level": "Postgraduate" },
+      { "title": "Digital Marketing", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Bachelor's" }
+    ]
+  },
+  "testimonials": {
+    "section_title": "What our students say",
+    "items": [
+      { "initials": "MC", "name": "Marta C.", "program": "Full Stack Web Development", "quote": "The pace of the program let me keep working while I studied. The support from tutors made all the difference." },
+      { "initials": "JP", "name": "Jordi P.", "program": "Project Management", "quote": "Very practical content, no empty theory. Three months after finishing I was already applying what I'd learned at work." },
+      { "initials": "AR", "name": "Aina R.", "program": "Digital Marketing", "quote": "The student community was as valuable as the program itself. I'm still in touch with several classmates from my cohort." }
+    ]
+  },
+  "news": {
+    "section_title": "News",
+    "read_more": "Read more",
+    "items": [
+      { "date": "Jul 3, 2026", "title": "New intake for the Web Development program", "excerpt": "We're expanding places for the autumn semester with two new specialized tracks." },
+      { "date": "Jun 18, 2026", "title": "Internship agreement with industry companies", "excerpt": "Final-year students can now apply for paid internships at more than 20 partner companies." },
+      { "date": "Jun 2, 2026", "title": "Online open day", "excerpt": "Information session to answer questions about admissions, scholarships, and study modes." }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Join a community of students who are already growing professionally.",
+    "button": "Request information"
+  },
+  "footer": {
+    "tagline": "Quality online education for professionals.",
+    "programs_title": "Programs",
+    "about_title": "About us",
+    "whoweare": "Who we are",
+    "news_link": "News",
+    "student_access": "Student access",
+    "contact_title": "Contact",
+    "location": "Malta · Andorra",
+    "copyright": "© 2026 Universidad Malta. All rights reserved.",
+    "cookie_policy_link": "Cookie Policy",
+    "privacy_policy_link": "Privacy Policy",
+    "cookie_settings_link": "Cookie settings",
+    "legal_notice_link": "Legal Notice",
+    "accessibility_link": "Accessibility"
+  },
+  "cookie_banner": {
+    "title": "We use cookies",
+    "description_pre": "We use necessary cookies for the site to work and, only with your consent, analytics and marketing cookies. You can change your decision at any time from",
+    "description_mid": "in the footer. More info in our",
+    "cookie_settings": "Cookie settings",
+    "cookie_policy": "Cookie Policy",
+    "necessary_title": "Necessary",
+    "necessary_desc": "Essential for the site to work (e.g. keeping you signed in). Cannot be disabled.",
+    "analytics_title": "Analytics",
+    "analytics_desc": "Help us understand how the site is used so we can improve it. None are active today. They would only be enabled if you accept this category.",
+    "marketing_title": "Marketing",
+    "marketing_desc": "Used to measure and personalize advertising campaigns. None are active today. They would only be enabled if you accept this category.",
+    "personalize": "Customize",
+    "reject": "Reject",
+    "accept_all": "Accept all",
+    "save_preferences": "Save preferences",
+    "close": "Close (equivalent to rejecting optional cookies)"
+  },
+  "cookie_policy_page": {
+    "title": "Cookie Policy",
+    "last_updated": "Last updated: July 2026",
+    "what_title": "What are cookies?",
+    "what_body": "Cookies are small text files that a website stores in your browser. They are used to remember information about your visit, such as your session or your preferences, and in some cases to analyze site usage or show relevant advertising.",
+    "table_title": "Cookies we use",
+    "table_category": "Category",
+    "table_name": "Name",
+    "table_purpose": "Purpose",
+    "table_duration": "Duration",
+    "row_session_purpose": "Keeps you securely signed in (httpOnly, not accessible from JavaScript).",
+    "row_session_duration": "8 hours",
+    "row_consent_purpose": "Stores your cookie choice so we don't ask again on every visit.",
+    "row_consent_duration": "12 months",
+    "row_analytics_category": "Analytics (inactive)",
+    "row_analytics_purpose": "No analytics cookie is active yet. If web analytics is added in the future, it will appear here before being enabled, and will only load if you accept it.",
+    "row_marketing_category": "Marketing (inactive)",
+    "row_marketing_purpose": "No marketing cookie is active yet. If advertising or remarketing is added in the future, it will appear here before being enabled, and will only load if you accept it.",
+    "legal_title": "Legal basis and your consent",
+    "legal_body_1": "Necessary cookies are always installed because the site cannot work without them (legitimate interest / performance of the service you request). Analytics and marketing cookies are only installed if you give your explicit consent, in accordance with the General Data Protection Regulation (GDPR) and applicable cookie regulations.",
+    "legal_body_2": "You can withdraw your consent at any time, as easily as you gave it.",
+    "manage_title": "Manage your preferences",
+    "manage_button": "Configure cookies",
+    "browser_title": "Browser cookies",
+    "browser_body": "You can also block or delete cookies from your browser settings. Note that blocking necessary cookies may prevent some parts of the site (such as your student area) from working correctly."
+  },
+  "privacy_policy_page": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: July 2026",
+    "controller_title": "Data controller",
+    "controller_body": "Universidad Malta (trading name). Legal entity details, registered address, and tax ID pending completion by the project owner before going live. Contact: info@uclcampus.com.",
+    "data_title": "What data we collect",
+    "data_intro": "Depending on how you interact with us, we may collect:",
+    "data_identification": "Identification data: full name, email, phone number.",
+    "data_account": "Account data: email and password (always stored encrypted, never in plain text).",
+    "data_academic": "Academic and enrollment data: programs taken, enrollment status, grades where applicable.",
+    "data_commercial": "Commercial data (if you contact us for information): source of contact, program of interest, and communication history, used internally in our CRM.",
+    "data_technical": "Minimal technical data: IP address and user agent in server security logs, and the session cookie while you are logged in.",
+    "purpose_title": "What we use your data for",
+    "purpose_1": "Managing your enrollment and giving you access to the learning platform.",
+    "purpose_2": "Responding to your information requests.",
+    "purpose_3": "Managing the commercial relationship with prospective students (internal CRM).",
+    "purpose_4": "Complying with legal and contractual obligations arising from the educational service.",
+    "purpose_5": "Sending you communications about our programs, only if you have given explicit consent (email marketing).",
+    "legalbasis_title": "Legal basis",
+    "legalbasis_body": "Performance of a contract (enrollment and delivery of the educational service), consent (marketing communications, non-essential cookies), and legitimate interest (service security, handling inquiries).",
+    "retention_title": "How long we keep your data",
+    "retention_body": "Student data is kept for the duration of the academic relationship and, after it ends, for the period required by applicable educational and tax regulations. Commercial contact data that does not convert to enrollment is kept for a maximum of 24 months from the last contact, unless you request earlier deletion.",
+    "recipients_title": "Who we share your data with",
+    "recipients_body": "We do not sell or share your data with third parties for purposes unrelated to our service. We may share data with technology providers strictly necessary to operate the platform (hosting, transactional email) under confidentiality and data processing agreements.",
+    "security_title": "How we protect your data",
+    "security_body": "Passwords are stored encrypted (bcrypt), communications travel encrypted (HTTPS/TLS), access to data is restricted by role, and we apply technical measures to protect against unauthorized access.",
+    "rights_title": "Your rights",
+    "rights_intro": "You have the right to access, rectify, erase, object to, restrict the processing of, and request portability of your personal data. To exercise them, write to us at",
+    "rights_outro": "You also have the right to lodge a complaint with the competent supervisory authority if you believe we have not handled your request correctly.",
+    "minors_title": "Minors",
+    "minors_body": "Our programs are aimed at adults. We do not knowingly collect data from anyone under 18.",
+    "changes_title": "Changes to this policy",
+    "changes_body": "We may update this policy to reflect legal or service changes. We will always publish the last-updated date at the top of this page."
+  },
+  "legal_notice_page": {
+    "title": "Legal Notice",
+    "last_updated": "Last updated: July 2026",
+    "identity_title": "Identity of the site owner",
+    "identity_body": "Universidad Malta (trading name). Legal entity name, registered address, tax ID, and registry details pending completion by the project owner before going live. Contact: info@uclcampus.com.",
+    "purpose_title": "Purpose of this website",
+    "purpose_body": "This site provides information about our educational programs, lets you request information, and gives enrolled students access to the learning platform (LMS).",
+    "ip_title": "Intellectual property",
+    "ip_body": "The content of this site (text, design, logos, code) is the property of Universidad Malta or third parties who have authorized its use, unless stated otherwise. Reproduction without express authorization is prohibited.",
+    "liability_title": "Liability",
+    "liability_body": "We work to keep the information published here accurate and up to date, but we do not guarantee it is free of errors. We reserve the right to modify the content of this site at any time.",
+    "law_title": "Applicable law",
+    "law_body": "This legal notice is governed by the applicable legislation on information society services and data protection in force in the territory where Universidad Malta operates."
+  },
+  "accessibility_page": {
+    "title": "Accessibility",
+    "last_updated": "Last updated: July 2026",
+    "commitment_title": "Our commitment",
+    "commitment_body": "We work to make this site accessible to as many people as possible, regardless of ability or device, using the Web Content Accessibility Guidelines (WCAG) as our reference.",
+    "status_title": "Current status",
+    "status_body": "This site is under active development. Some areas do not yet meet all accessibility criteria (for example, a full review of keyboard navigation and screen reader support in the student area). We will keep addressing these points progressively.",
+    "contact_title": "Contact",
+    "contact_body": "If you encounter an accessibility barrier while using this site, please write to us and we will look into it:"
+  }
+}

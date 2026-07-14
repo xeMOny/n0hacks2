@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "students_area": "Área alumnos",
+    "staff_area": "Área personal",
+    "programs": "Programas",
+    "about": "Sobre nosotros",
+    "news": "Novedades",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Formación Online de Calidad",
+    "subtitle": "Desarrolla tus habilidades con programas prácticos diseñados junto a profesionales del sector.",
+    "modality_all": "Todas",
+    "modality_online": "Online",
+    "modality_hybrid": "Semipresencial",
+    "level_all": "Todos",
+    "level_degree": "Grado",
+    "level_postgrad": "Postgrado",
+    "search_cta": "Buscar programas"
+  },
+  "stats": {
+    "students": { "value": "2.400+", "label": "Alumnos activos" },
+    "countries": { "value": "38", "label": "Países de origen" },
+    "employability": { "value": "94%", "label": "Empleabilidad al año" },
+    "years": { "value": "12", "label": "Años de trayectoria" }
+  },
+  "features": [
+    { "title": "Programas actualizados", "desc": "Contenido revisado cada semestre con profesionales en activo del sector" },
+    { "title": "Comunidad global", "desc": "Red de antiguos alumnos y tutores en más de 30 países" },
+    { "title": "Certificación reconocida", "desc": "Títulos propios con reconocimiento en el sector privado" }
+  ],
+  "courses": {
+    "section_title": "Nuestros Programas",
+    "enroll": "Matricularse",
+    "items": [
+      { "title": "Desarrollo Web Full Stack", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Grado" },
+      { "title": "Gestión de Proyectos", "desc": "Metodologías ágiles y SCRUM", "price": "€199", "mode": "Semipresencial", "level": "Postgrado" },
+      { "title": "Marketing Digital", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Grado" }
+    ]
+  },
+  "testimonials": {
+    "section_title": "Lo que dicen nuestros alumnos",
+    "items": [
+      { "initials": "MC", "name": "Marta C.", "program": "Desarrollo Web Full Stack", "quote": "El ritmo del programa me permitió seguir trabajando mientras estudiaba. El acompañamiento de los tutores marcó la diferencia." },
+      { "initials": "JP", "name": "Jordi P.", "program": "Gestión de Proyectos", "quote": "Contenido muy práctico, nada de teoría vacía. A los tres meses de acabar ya estaba aplicando lo aprendido en mi trabajo." },
+      { "initials": "AR", "name": "Aina R.", "program": "Marketing Digital", "quote": "La comunidad de alumnos fue tan valiosa como el propio programa. Sigo en contacto con varios compañeros de mi promoción." }
+    ]
+  },
+  "news": {
+    "section_title": "Novedades",
+    "read_more": "Leer más",
+    "items": [
+      { "date": "3 jul 2026", "title": "Nueva edición del programa de Desarrollo Web", "excerpt": "Ampliamos plazas para el semestre de otoño con dos nuevos itinerarios especializados." },
+      { "date": "18 jun 2026", "title": "Acuerdo de prácticas con empresas del sector", "excerpt": "Alumnos del último curso podrán optar a prácticas remuneradas en más de 20 compañías colaboradoras." },
+      { "date": "2 jun 2026", "title": "Jornada de puertas abiertas online", "excerpt": "Sesión informativa para resolver dudas sobre admisiones, becas y modalidades de estudio." }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para empezar?",
+    "subtitle": "Únete a una comunidad de alumnos que ya está creciendo profesionalmente.",
+    "button": "Solicita información"
+  },
+  "footer": {
+    "tagline": "Formación online de calidad para profesionales.",
+    "programs_title": "Programas",
+    "about_title": "Sobre nosotros",
+    "whoweare": "Quiénes somos",
+    "news_link": "Novedades",
+    "student_access": "Acceso alumnos",
+    "contact_title": "Contacto",
+    "location": "Malta · Andorra",
+    "copyright": "© 2026 Universidad Malta. Todos los derechos reservados.",
+    "cookie_policy_link": "Política de Cookies",
+    "privacy_policy_link": "Política de Privacidad",
+    "cookie_settings_link": "Configuración de cookies",
+    "legal_notice_link": "Aviso Legal",
+    "accessibility_link": "Accesibilidad"
+  },
+  "cookie_banner": {
+    "title": "Usamos cookies",
+    "description_pre": "Usamos cookies necesarias para el funcionamiento del sitio y, solo si nos das tu consentimiento, cookies analíticas y de marketing. Puedes cambiar tu decisión cuando quieras desde",
+    "description_mid": "en el pie de página. Más info en nuestra",
+    "cookie_settings": "Configuración de cookies",
+    "cookie_policy": "Política de Cookies",
+    "necessary_title": "Necesarias",
+    "necessary_desc": "Imprescindibles para el funcionamiento del sitio (p.ej. mantener tu sesión iniciada). No se pueden desactivar.",
+    "analytics_title": "Analíticas",
+    "analytics_desc": "Nos ayudan a entender cómo se usa el sitio para mejorarlo. Hoy no hay ninguna activa. Se activarían solo si aceptas esta categoría.",
+    "marketing_title": "Marketing",
+    "marketing_desc": "Para medir y personalizar campañas publicitarias. Hoy no hay ninguna activa. Se activarían solo si aceptas esta categoría.",
+    "personalize": "Personalizar",
+    "reject": "Rechazar",
+    "accept_all": "Aceptar todas",
+    "save_preferences": "Guardar preferencias",
+    "close": "Cerrar (equivale a rechazar las cookies opcionales)"
+  },
+  "cookie_policy_page": {
+    "title": "Política de Cookies",
+    "last_updated": "Última actualización: julio de 2026",
+    "what_title": "¿Qué son las cookies?",
+    "what_body": "Las cookies son pequeños archivos de texto que un sitio web guarda en tu navegador. Se usan para recordar información sobre tu visita, como tu sesión iniciada o tus preferencias, y en algunos casos para analizar el uso del sitio o mostrar publicidad relevante.",
+    "table_title": "Cookies que usamos",
+    "table_category": "Categoría",
+    "table_name": "Nombre",
+    "table_purpose": "Finalidad",
+    "table_duration": "Duración",
+    "row_session_purpose": "Mantiene tu sesión iniciada de forma segura (httpOnly, no accesible desde JavaScript).",
+    "row_session_duration": "8 horas",
+    "row_consent_purpose": "Guarda tu elección sobre cookies para no volver a preguntarte en cada visita.",
+    "row_consent_duration": "12 meses",
+    "row_analytics_category": "Analíticas (inactivas)",
+    "row_analytics_purpose": "No hay ninguna cookie analítica activa todavía. Si en el futuro se añade analítica web, aparecerá aquí antes de activarse, y solo se cargará si la aceptas.",
+    "row_marketing_category": "Marketing (inactivas)",
+    "row_marketing_purpose": "No hay ninguna cookie de marketing activa todavía. Si en el futuro se añade publicidad o remarketing, aparecerá aquí antes de activarse, y solo se cargará si la aceptas.",
+    "legal_title": "Base legal y tu consentimiento",
+    "legal_body_1": "Las cookies necesarias se instalan siempre porque el sitio no puede funcionar sin ellas (interés legítimo / ejecución del servicio que solicitas). Las cookies analíticas y de marketing solo se instalan si nos das tu consentimiento explícito, conforme al Reglamento General de Protección de Datos (RGPD) y la normativa de cookies aplicable.",
+    "legal_body_2": "Puedes retirar tu consentimiento en cualquier momento, con la misma facilidad con la que lo diste.",
+    "manage_title": "Gestiona tus preferencias",
+    "manage_button": "Configurar cookies",
+    "browser_title": "Cookies del navegador",
+    "browser_body": "También puedes bloquear o eliminar cookies desde la configuración de tu navegador. Ten en cuenta que bloquear las cookies necesarias puede impedir que algunas partes del sitio (como tu área de alumno) funcionen correctamente."
+  },
+  "privacy_policy_page": {
+    "title": "Política de Privacidad",
+    "last_updated": "Última actualización: julio de 2026",
+    "controller_title": "Responsable del tratamiento",
+    "controller_body": "Universidad Malta (nombre comercial). Datos de la entidad legal, domicilio social y NIF pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
+    "data_title": "Qué datos recogemos",
+    "data_intro": "Según cómo interactúes con nosotros, podemos recoger:",
+    "data_identification": "Datos de identificación: nombre completo, email, teléfono.",
+    "data_account": "Datos de cuenta: email y contraseña (almacenada siempre cifrada, nunca en texto plano).",
+    "data_academic": "Datos académicos y de matrícula: programas cursados, estado de inscripción, calificaciones si aplica.",
+    "data_commercial": "Datos comerciales (si contactas para información): origen del contacto, programa de interés e historial de comunicaciones, usados internamente en nuestro CRM.",
+    "data_technical": "Datos técnicos mínimos: dirección IP y user-agent en los registros de seguridad del servidor, y la cookie de sesión mientras estás autenticado.",
+    "purpose_title": "Para qué usamos tus datos",
+    "purpose_1": "Gestionar tu matrícula y darte acceso a la plataforma de formación.",
+    "purpose_2": "Responder a tus solicitudes de información.",
+    "purpose_3": "Gestionar la relación comercial con futuros alumnos (CRM interno).",
+    "purpose_4": "Cumplir obligaciones legales y contractuales derivadas de la prestación del servicio educativo.",
+    "purpose_5": "Enviarte comunicaciones sobre nuestros programas, solo si has dado tu consentimiento expreso (marketing por email).",
+    "legalbasis_title": "Base legal",
+    "legalbasis_body": "Ejecución de un contrato (matrícula y prestación del servicio educativo), consentimiento (comunicaciones comerciales, cookies no esenciales) e interés legítimo (seguridad del servicio, atención a consultas).",
+    "retention_title": "Cuánto tiempo conservamos tus datos",
+    "retention_body": "Los datos de alumnos se conservan mientras dura la relación académica y, tras finalizar, durante el plazo exigido por la normativa educativa y fiscal aplicable. Los datos de contacto comercial sin conversión a matrícula se conservan un máximo de 24 meses desde el último contacto, salvo que solicites su eliminación antes.",
+    "recipients_title": "Con quién compartimos tus datos",
+    "recipients_body": "No vendemos ni cedemos tus datos a terceros con fines comerciales ajenos a nuestro servicio. Podemos compartir datos con proveedores tecnológicos estrictamente necesarios para operar la plataforma (hosting, email transaccional) bajo acuerdo de confidencialidad y tratamiento de datos.",
+    "security_title": "Cómo protegemos tus datos",
+    "security_body": "Las contraseñas se almacenan cifradas (bcrypt), las comunicaciones viajan cifradas (HTTPS/TLS), el acceso a los datos está restringido por roles, y aplicamos medidas técnicas de protección frente a accesos no autorizados.",
+    "rights_title": "Tus derechos",
+    "rights_intro": "Tienes derecho a acceder, rectificar, suprimir, oponerte, limitar el tratamiento y solicitar la portabilidad de tus datos personales. Para ejercerlos, escríbenos a",
+    "rights_outro": "También tienes derecho a presentar una reclamación ante la autoridad de control competente si consideras que no hemos atendido tu solicitud correctamente.",
+    "minors_title": "Menores de edad",
+    "minors_body": "Nuestros programas están dirigidos a mayores de edad. No recogemos conscientemente datos de menores de 18 años.",
+    "changes_title": "Cambios en esta política",
+    "changes_body": "Podemos actualizar esta política para reflejar cambios legales o del servicio. Publicaremos siempre la fecha de la última actualización en la parte superior de esta página."
+  },
+  "legal_notice_page": {
+    "title": "Aviso Legal",
+    "last_updated": "Última actualización: julio de 2026",
+    "identity_title": "Identidad del titular",
+    "identity_body": "Universidad Malta (nombre comercial). Razón social, domicilio fiscal, NIF y datos de inscripción registral pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
+    "purpose_title": "Objeto del sitio web",
+    "purpose_body": "Este sitio ofrece información sobre nuestros programas formativos, permite solicitar información, y da acceso a la plataforma de formación (LMS) a los alumnos matriculados.",
+    "ip_title": "Propiedad intelectual",
+    "ip_body": "Los contenidos de este sitio (textos, diseño, logotipos, código) son propiedad de Universidad Malta o de terceros que han autorizado su uso, salvo que se indique lo contrario. Queda prohibida su reproducción sin autorización expresa.",
+    "liability_title": "Responsabilidad",
+    "liability_body": "Trabajamos para que la información publicada sea exacta y esté actualizada, pero no garantizamos la ausencia de errores. Nos reservamos el derecho a modificar el contenido de este sitio en cualquier momento.",
+    "law_title": "Legislación aplicable",
+    "law_body": "Este aviso legal se rige por la legislación aplicable en materia de servicios de la sociedad de la información y protección de datos vigente en el territorio donde opera Universidad Malta."
+  },
+  "accessibility_page": {
+    "title": "Accesibilidad",
+    "last_updated": "Última actualización: julio de 2026",
+    "commitment_title": "Nuestro compromiso",
+    "commitment_body": "Trabajamos para que este sitio sea accesible para el mayor número de personas posible, con independencia de sus capacidades o del dispositivo que utilicen, siguiendo como referencia las Pautas de Accesibilidad para el Contenido Web (WCAG).",
+    "status_title": "Estado actual",
+    "status_body": "Este sitio está en desarrollo activo. Algunas áreas todavía no cumplen todos los criterios de accesibilidad (por ejemplo, revisión completa de navegación por teclado y lectores de pantalla en el área de alumnos). Iremos corrigiendo estos puntos de forma progresiva.",
+    "contact_title": "Contacto",
+    "contact_body": "Si encuentras alguna barrera de accesibilidad al usar este sitio, escríbenos y lo revisaremos:"
+  }
+}

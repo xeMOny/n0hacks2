@@ -9,14 +9,31 @@ interface Lead {
   territory: "malta" | "andorra";
   stage: string;
   source: string;
+  marketing_consent: boolean;
 }
 
-const STAGES = ["nuevo", "contactado", "cualificado", "propuesta", "matriculado", "perdido"];
+// Etapas reales del proceso de venta (respuesta del cliente): contacto
+// inicial -> se da información -> matrícula por la web -> administración
+// envía el contrato. Deben coincidir exactamente con el enum del backend
+// (server/src/modules/crm/routes.ts) o el PATCH de etapa se rechaza.
+const STAGES: { value: string; label: string }[] = [
+  { value: "nuevo", label: "Nuevo" },
+  { value: "info", label: "Información dada" },
+  { value: "matricula_web", label: "Matrícula (web)" },
+  { value: "contrato", label: "Contrato enviado" },
+];
 
 export default function Leads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [territory, setTerritory] = useState<string>("");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", source: "", territory: "malta" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    source: "",
+    territory: "malta",
+    marketing_consent: false,
+  });
   const [saving, setSaving] = useState(false);
 
   function load() {
@@ -31,7 +48,7 @@ export default function Leads() {
     setSaving(true);
     try {
       await apiFetch("/crm/leads", { method: "POST", body: JSON.stringify(form) });
-      setForm({ name: "", email: "", phone: "", source: "", territory: "malta" });
+      setForm({ name: "", email: "", phone: "", source: "", territory: "malta", marketing_consent: false });
       load();
     } finally {
       setSaving(false);
@@ -56,6 +73,14 @@ export default function Leads() {
           <option value="malta">Malta</option>
           <option value="andorra">Andorra</option>
         </select>
+        <label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14 }}>
+          <input
+            type="checkbox"
+            checked={form.marketing_consent}
+            onChange={(e) => setForm({ ...form, marketing_consent: e.target.checked })}
+          />
+          Consiente email marketing (RGPD)
+        </label>
         <button type="submit" disabled={saving}>{saving ? "Guardando..." : "Añadir lead"}</button>
       </form>
 
@@ -69,7 +94,7 @@ export default function Leads() {
 
       <table className="table">
         <thead>
-          <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Territorio</th><th>Origen</th><th>Etapa</th></tr>
+          <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Territorio</th><th>Origen</th><th>Marketing</th><th>Etapa</th></tr>
         </thead>
         <tbody>
           {leads.map((l) => (
@@ -79,14 +104,15 @@ export default function Leads() {
               <td>{l.phone}</td>
               <td>{l.territory}</td>
               <td>{l.source}</td>
+              <td>{l.marketing_consent ? "Sí" : "No"}</td>
               <td>
                 <select value={l.stage} onChange={(e) => handleStageChange(l.id, e.target.value)}>
-                  {STAGES.map((s) => <option key={s} value={s}>{s}</option>)}
+                  {STAGES.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
                 </select>
               </td>
             </tr>
           ))}
-          {leads.length === 0 && <tr><td colSpan={6} className="empty">Sin leads todavía.</td></tr>}
+          {leads.length === 0 && <tr><td colSpan={7} className="empty">Sin leads todavía.</td></tr>}
         </tbody>
       </table>
     </main>

@@ -10,6 +10,10 @@ const courseSchema = z.object({
   title: z.string().trim().min(1),
   description: z.string().trim().optional(),
   price: z.number().nonnegative(),
+  // "Cada título tiene un precio distinto y unas características distintas"
+  // (respuesta del cliente): de momento modalidad + nivel.
+  mode: z.enum(["online", "hybrid"]),
+  level: z.enum(["degree", "postgrad"]),
 });
 
 const enrollmentSchema = z.object({
@@ -18,21 +22,23 @@ const enrollmentSchema = z.object({
 
 // GET /api/lms/courses - catálogo público
 lmsRouter.get("/courses", async (_req, res) => {
-  const rows = await query("SELECT id, title, description, price FROM courses WHERE published = true");
+  const rows = await query(
+    "SELECT id, title, description, price, mode, level FROM courses WHERE published = true"
+  );
   res.json(rows);
 });
 
-// POST /api/lms/courses - admin/profesor
+// POST /api/lms/courses - admin/profesor/dirección
 lmsRouter.post(
   "/courses",
   verifyToken,
-  requireRole("admin", "profesor"),
+  requireRole("admin", "direccion", "profesor"),
   validateBody(courseSchema),
   async (req, res) => {
-    const { title, description, price } = req.body as z.infer<typeof courseSchema>;
+    const { title, description, price, mode, level } = req.body as z.infer<typeof courseSchema>;
     const rows = await query(
-      "INSERT INTO courses (title, description, price, published) VALUES ($1,$2,$3,false) RETURNING *",
-      [title, description, price]
+      "INSERT INTO courses (title, description, price, mode, level, published) VALUES ($1,$2,$3,$4,$5,false) RETURNING *",
+      [title, description, price, mode, level]
     );
     res.status(201).json(rows[0]);
   }

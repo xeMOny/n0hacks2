@@ -43,7 +43,7 @@ export async function ensureAdmin(
   return { created: true, email: opts.email };
 }
 
-// Entrypoint CLI — solo se ejecuta si el archivo se llama directamente (no al importarlo en tests)
+// Entrypoint CLI: solo se ejecuta si el archivo se llama directamente (no al importarlo en tests)
 const isMain = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
 if (isMain) {
   const { pool } = await import("../db/pool.js");
@@ -56,7 +56,7 @@ if (isMain) {
     if (result.created) {
       console.log(`Admin creado: ${result.email}`);
     } else {
-      console.log("Ya existe un admin — no se ha creado ninguno nuevo.");
+      console.log("Ya existe un admin, no se ha creado ninguno nuevo.");
     }
     process.exit(0);
   } catch (err) {

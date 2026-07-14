@@ -5,7 +5,9 @@ import { verifyToken, requireRole, AuthedRequest } from "../../middleware/auth.j
 import { validateBody } from "../../middleware/validate.js";
 
 export const crmRouter = Router();
-crmRouter.use(verifyToken, requireRole("admin", "comercial", "gestor_andorra"));
+// "dirección tiene que tener acceso completo" (respuesta del cliente): mismo
+// nivel que admin/comercial/gestor_andorra, sin restricción de territorio.
+crmRouter.use(verifyToken, requireRole("admin", "direccion", "comercial", "gestor_andorra"));
 
 const territorySchema = z.enum(["malta", "andorra"]);
 
@@ -16,6 +18,10 @@ const leadSchema = z.object({
   source: z.string().trim().optional(),
   territory: territorySchema,
   assigned_to: z.string().uuid().optional(),
+  // RGPD: consentimiento explícito para email marketing (el cliente confirmó
+  // que sí hacen email marketing a los leads). Por defecto false: opt-in,
+  // nunca marcado automáticamente.
+  marketing_consent: z.boolean().default(false),
 });
 
 const stageSchema = z.object({
@@ -37,12 +43,17 @@ crmRouter.get("/leads", async (req: AuthedRequest, res) => {
 
 // POST /api/crm/leads
 crmRouter.post("/leads", validateBody(leadSchema), async (req, res) => {
-  const { name, email, phone, source, territory, assigned_to } = req.body as z.infer<typeof leadSchema>;
+  const { name, email, phone, source, territory, assigned_to, marketing_consent } =
+    req.body as z.infer<typeof leadSchema>;
   const rows = await query(
-    `INSERT INTO leads (name, email, phone, source, territory, stage, assigned_to)
-     VALUES ($1,$2,$3,$4,$5,'nuevo',$6) RETURNING *`,
-    [name, email, phone, source, territory, assigned_to]
+    `INSERT INTO leads (name, email, phone, source, territory, stage, assigned_to, marketing_consent, marketing_consent_at)
+     VALUES ($1,$2,$3,$4,$5,'nuevo',$6,$7,$8) RETURNING *`,
+    [name, email, phone, source, territory, assigned_to, marketing_consent, marketing_consent ? new Date() : null]
   );
+  // Punto de extensión: cuando se decida Mailchimp o Brevo (pendiente con el
+  // cliente) y haya API key configurada, sincronizar aquí el lead con la
+  // lista de marketing SOLO si marketing_consent === true. No se fabrica esa
+  // integración sin credenciales reales.
   res.status(201).json(rows[0]);
 });
 

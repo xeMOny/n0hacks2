@@ -23,7 +23,7 @@ export default function Documents() {
     e.preventDefault();
     setSaving(true);
     try {
-      // Nota: sin almacenamiento de ficheros real todavía — file_path es un campo de texto
+      // Nota: sin almacenamiento de ficheros real todavía. file_path es un campo de texto
       // (ruta o URL) hasta que se decida el proveedor de storage (S3/VPS local).
       await apiFetch("/intranet/documents", { method: "POST", body: JSON.stringify(form) });
       setForm({ title: "", folder: "", file_path: "", visibility_role: "" });

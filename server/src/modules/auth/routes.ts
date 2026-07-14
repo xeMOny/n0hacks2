@@ -21,7 +21,7 @@ const loginSchema = z.object({
 const createUserSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
   password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
-  role: z.enum(["admin", "profesor", "comercial", "gestor_andorra"]),
+  role: z.enum(["admin", "direccion", "profesor", "comercial", "gestor_andorra"]),
   full_name: z.string().trim().min(1),
 });
 
@@ -69,6 +69,14 @@ authRouter.post("/logout", (_req, res) => {
 // GET /api/auth/me
 authRouter.get("/me", verifyToken, (req: AuthedRequest, res) => {
   res.json({ user: req.user });
+});
+
+// GET /api/auth/users - listado mínimo (id/nombre/rol) para selectores de
+// asignación (p.ej. elegir a quién asignar una tarea de la Intranet).
+// Nunca expone email ni password_hash: solo lo necesario para un selector.
+authRouter.get("/users", verifyToken, async (_req, res) => {
+  const rows = await query("SELECT id, full_name, role FROM users ORDER BY full_name");
+  res.json(rows);
 });
 
 // POST /api/auth/users (solo admin crea usuarios internos)

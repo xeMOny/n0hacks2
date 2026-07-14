@@ -35,7 +35,7 @@ export default function Pipeline() {
   return (
     <main className="page">
       <h2>Pipeline</h2>
-      <p className="hint">Etapas provisionales — se ajustan al cerrar el cuestionario con el cliente.</p>
+      <p className="hint">Etapas provisionales. Se ajustan al cerrar el cuestionario con el cliente.</p>
       <div className="kanban">
         {STAGES.map((stage) => {
           const stageLeads = leads.filter((l) => l.stage === stage.key);
