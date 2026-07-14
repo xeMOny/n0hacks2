@@ -283,73 +283,67 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="contacto" className="bg-emerald-950 border-t border-emerald-800/60 py-12">
+      <footer id="contacto" className="bg-emerald-950 border-t border-emerald-800/60 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-10 mb-10">
+          {/* 3 columnas de enlaces, centradas, con cabecera en negrita */}
+          <div className="grid sm:grid-cols-3 gap-10 mb-16 text-center">
             <div>
-              <div className="flex items-center gap-2 text-lg font-bold mb-3">
-                <GraduationCap className="text-amber-400" size={22} />
-                Universidad Malta
-              </div>
-              <p className="text-emerald-400 text-sm">{t('footer.tagline')}</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3 text-sm uppercase tracking-wide text-emerald-300">{t('footer.programs_title')}</h4>
-              <ul className="text-sm text-emerald-400 space-y-2">
-                {courses.map((c) => (
-                  <li key={c.id}><a href="#cursos" className="hover:text-amber-400 transition">{c.title}</a></li>
-                ))}
+              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.legal_title')}</h4>
+              <ul className="text-sm text-emerald-400 space-y-3">
+                <li><a href="/aviso-legal" className="hover:text-amber-400 transition">{t('footer.legal_notice_link')}</a></li>
+                <li><a href="/privacidad" className="hover:text-amber-400 transition">{t('footer.privacy_policy_link')}</a></li>
+                <li><a href="/cookies" className="hover:text-amber-400 transition">{t('footer.cookie_policy_link')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3 text-sm uppercase tracking-wide text-emerald-300">{t('footer.about_title')}</h4>
-              <ul className="text-sm text-emerald-400 space-y-2">
-                <li><a href="#sobre" className="hover:text-amber-400 transition">{t('footer.whoweare')}</a></li>
+              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.website_title')}</h4>
+              <ul className="text-sm text-emerald-400 space-y-3">
+                <li><a href="#cursos" className="hover:text-amber-400 transition">{t('footer.programs_title')}</a></li>
                 <li><a href="#novedades" className="hover:text-amber-400 transition">{t('footer.news_link')}</a></li>
-                <li><a href="/login" className="hover:text-amber-400 transition">{t('footer.student_access')}</a></li>
+                <li><a href="/accesibilidad" className="hover:text-amber-400 transition">{t('footer.accessibility_link')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3 text-sm uppercase tracking-wide text-emerald-300">{t('footer.contact_title')}</h4>
-              <p className="text-emerald-400 text-sm flex items-center gap-2 mb-2">
-                <MapPin size={14} /> {t('footer.location')}
-              </p>
-              <p className="text-emerald-400 text-sm">
-                info@uclcampus.com<br />
-                +34 XXX XXX XXX
-              </p>
+              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.contact_title')}</h4>
+              <ul className="text-sm text-emerald-400 space-y-3">
+                <li><a href="mailto:info@uclcampus.com" className="hover:text-amber-400 transition">{t('cta.button')}</a></li>
+                <li><a href="/login" className="hover:text-amber-400 transition">{t('footer.student_access')}</a></li>
+                <li>
+                  <button type="button" onClick={() => openCookieSettings()} className="hover:text-amber-400 transition">
+                    {t('footer.cookie_settings_link')}
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="flex justify-center gap-5 mb-8">
-            {socialLinks.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                title={s.label}
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-emerald-900/60 border border-emerald-800/60 text-emerald-300 hover:text-amber-400 hover:border-amber-500/60 transition"
-              >
-                <s.icon size={16} />
-              </a>
-            ))}
-          </div>
-          <div className="border-t border-emerald-800/60 pt-8 text-center text-emerald-500 text-sm">
-            <p className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1">
-              <a href="/privacidad" className="hover:text-amber-400 transition">{t('footer.privacy_policy_link')}</a>
-              <span aria-hidden="true">|</span>
-              <a href="/aviso-legal" className="hover:text-amber-400 transition">{t('footer.legal_notice_link')}</a>
-              <span aria-hidden="true">|</span>
-              <a href="/accesibilidad" className="hover:text-amber-400 transition">{t('footer.accessibility_link')}</a>
-              <span aria-hidden="true">|</span>
-              <a href="/cookies" className="hover:text-amber-400 transition">{t('footer.cookie_policy_link')}</a>
-              <span aria-hidden="true">|</span>
-              <button type="button" onClick={() => openCookieSettings()} className="hover:text-amber-400 transition">
-                {t('footer.cookie_settings_link')}
-              </button>
+
+          {/* Marca centrada */}
+          <div className="flex flex-col items-center gap-2 mb-10">
+            <GraduationCap className="text-amber-400" size={36} />
+            <div className="text-2xl font-bold tracking-wide text-emerald-50">UNIVERSIDAD MALTA</div>
+            <p className="text-emerald-500 text-xs flex items-center gap-1">
+              <MapPin size={12} /> {t('footer.location')}
             </p>
-            <p className="mt-3">{t('footer.copyright')}</p>
+          </div>
+
+          {/* Copyright + redes sociales */}
+          <div className="border-t border-emerald-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-emerald-500">
+            <p>{t('footer.copyright')}</p>
+            <div className="flex gap-4">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  title={s.label}
+                  className="text-emerald-400 hover:text-amber-400 transition"
+                >
+                  <s.icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
