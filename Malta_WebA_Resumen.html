@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n0hacks · Universidad Malta A</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#03050d;color:#e2e8f0;font-family:'Space Grotesk',sans-serif;min-height:100vh;padding:48px 24px;-webkit-font-smoothing:antialiased}
+
+.wrap{max-width:640px;margin:0 auto}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
+.logo{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#22c55e;letter-spacing:-.02em}
+.doc-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:#475569;letter-spacing:.15em;text-transform:uppercase}
+
+/* hero */
+.hero{border:1px solid #1a2540;border-top:3px solid #22c55e;border-radius:10px;padding:32px;margin-bottom:24px;background:#070b18}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:#22c55e;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-size:26px;font-weight:800;line-height:1.15;letter-spacing:-.5px;margin-bottom:8px}
+.hero-sub{font-size:13px;color:#94a3b8;line-height:1.7;margin-bottom:24px}
+.price-row{display:flex;align-items:baseline;gap:10px}
+.price{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:700;color:#22c55e;line-height:1}
+.price-label{font-size:12px;color:#475569;letter-spacing:.08em}
+
+/* section */
+.section{margin-bottom:20px}
+.s-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:#22c55e;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.s-title::after{content:'';flex:1;height:1px;background:#1a2540}
+
+/* features grid */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.feat{background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:12px 14px;display:flex;align-items:flex-start;gap:8px}
+.feat-icon{color:#22c55e;font-size:12px;font-family:'JetBrains Mono',monospace;flex-shrink:0;margin-top:1px}
+.feat-text{font-size:12px;color:#cbd5e1;line-height:1.5}
+
+/* retainer */
+.retainer-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ret-card{background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:16px}
+.ret-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#475569;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.ret-price{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;margin-bottom:10px}
+.ret-card.ops .ret-price{color:#3b82f6}
+.ret-card.seo .ret-price{color:#22c55e}
+.ret-items{display:flex;flex-direction:column;gap:5px}
+.ret-item{font-size:11px;color:#94a3b8;display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.ret-item::before{content:'▸';flex-shrink:0}
+.ret-card.ops .ret-item::before{color:#3b82f6}
+.ret-card.seo .ret-item::before{color:#22c55e}
+
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:28px 1fr;gap:14px;padding-bottom:20px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:1px;background:#1a2540}
+.tl-dot{width:28px;height:28px;border-radius:50%;background:#0c1220;border:1px solid #22c55e;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#22c55e;flex-shrink:0;z-index:1}
+.tl-content{}
+.tl-week{font-family:'JetBrains Mono',monospace;font-size:9px;color:#475569;letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px}
+.tl-title{font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:4px}
+.tl-desc{font-size:11px;color:#64748b;line-height:1.6}
+
+/* total banner */
+.total{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:24px;display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.total-left h4{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.total-left p{font-size:12px;color:#94a3b8;line-height:1.6}
+.total-num{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:#22c55e;line-height:1}
+.total-note{font-size:10px;color:#475569;text-align:right;margin-top:3px}
+
+/* badges */
+.badge{display:inline-block;padding:2px 9px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+
+/* addon sections */
+.addon-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.addon-card{background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:14px}
+.addon-price{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;margin-bottom:4px}
+.addon-name{font-size:11px;font-weight:600;color:#cbd5e1;margin-bottom:8px}
+.addon-items{display:flex;flex-direction:column;gap:4px}
+.addon-item{font-size:10px;color:#64748b;display:flex;gap:5px;align-items:flex-start;line-height:1.4}
+.addon-item::before{content:'▸';flex-shrink:0}
+
+.notice{border-radius:6px;padding:10px 14px;font-size:11px;line-height:1.6;display:flex;gap:8px;align-items:flex-start;margin-bottom:16px}
+.notice.included{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);color:#86efac}
+.notice.scratch{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
+.notice.later{background:rgba(234,179,8,.06);border:1px solid rgba(234,179,8,.2);color:#fde047}
+.notice-icon{flex-shrink:0;font-size:12px}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.detail-card{background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:14px}
+.detail-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#475569;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.detail-price{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;margin-bottom:8px}
+.detail-items{display:flex;flex-direction:column;gap:4px}
+.detail-item{font-size:11px;color:#64748b;display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.detail-item::before{content:'→';flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;margin-top:1px}
+
+/* footer */
+.footer{margin-top:48px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#1e2d40;letter-spacing:.1em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOP -->
+  <div class="top">
+    <div class="logo">n0hacks</div>
+    <div class="doc-id">WEB-01 · 2026</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="tag">// Universidad Malta · Marca A</div>
+    <div class="hero-title">Plataforma educativa<br>completa y lista para vender.</div>
+    <div class="hero-sub">LMS con área de alumnos, cursos, evaluaciones, pasarela de pago y SEO desde el día uno. GDPR compliant, optimizada para captar desde motores de búsqueda y de IA.</div>
+    <div class="price-row">
+      <div class="price">8.750 €</div>
+      <div class="price-label">pago único · desarrollo completo</div>
+    </div>
+  </div>
+
+  <!-- QUÉ INCLUYE -->
+  <div class="section">
+    <div class="s-title">Qué incluye</div>
+    <div class="feat-grid">
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">Registro y área privada de alumnos</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">Catálogo de cursos y contenidos</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">Sistema de tests y evaluaciones</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">Pasarela de pago · matrículas online</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">Panel de administración completo</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">SEO técnico + on-page desde el lanzamiento</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">AEO · visible en ChatGPT, Perplexity, Google AI</span></div>
+      <div class="feat"><span class="feat-icon">→</span><span class="feat-text">GDPR compliant · UE / Malta</span></div>
+    </div>
+  </div>
+
+  <!-- MANTENIMIENTO MENSUAL -->
+  <div class="section">
+    <div class="s-title">Mantenimiento mensual (opcional)</div>
+    <div class="retainer-row">
+      <div class="ret-card ops">
+        <div class="ret-label">⚙ Operaciones</div>
+        <div class="ret-price">380 €<span style="font-size:12px;font-weight:400;color:#475569">/mes</span></div>
+        <div class="ret-items">
+          <div class="ret-item">Hosting premium · backups diarios</div>
+          <div class="ret-item">Actualizaciones de seguridad</div>
+          <div class="ret-item">Monitorización 24h</div>
+          <div class="ret-item">Soporte técnico mensual</div>
+        </div>
+      </div>
+      <div class="ret-card seo">
+        <div class="ret-label">◎ SEO · AEO</div>
+        <div class="ret-price">650 €<span style="font-size:12px;font-weight:400;color:#475569">/mes</span></div>
+        <div class="ret-items">
+          <div class="ret-item">SEO técnico mensual · on-page</div>
+          <div class="ret-item">Link building · contenido</div>
+          <div class="ret-item">Visibilidad motores de IA</div>
+          <div class="ret-item">Reporting mensual de resultados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <div class="s-title">Entrega · 4–5 semanas</div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot">S1</div>
+        <div class="tl-content">
+          <div class="tl-week">Semana 1</div>
+          <div class="tl-title">Diseño y arquitectura</div>
+          <div class="tl-desc">Wireframes, identidad visual, stack técnico y entornos. Aprobación antes de desarrollo.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">S2</div>
+        <div class="tl-content">
+          <div class="tl-week">Semana 2–3</div>
+          <div class="tl-title">Desarrollo LMS</div>
+          <div class="tl-desc">Área de alumnos, cursos, tests, panel de administración y pasarela de pago.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">S3</div>
+        <div class="tl-content">
+          <div class="tl-week">Semana 3–4</div>
+          <div class="tl-title">SEO · AEO · Integraciones</div>
+          <div class="tl-desc">SEO técnico, schema markup, Core Web Vitals, visibilidad en motores de IA.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">✓</div>
+        <div class="tl-content">
+          <div class="tl-week">Semana 4–5</div>
+          <div class="tl-title">QA · Revisión · Lanzamiento</div>
+          <div class="tl-desc">Testing, correcciones, formación en el panel y go-live.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTAL -->
+  <div class="section">
+    <div class="s-title">Resumen económico</div>
+    <div class="total">
+      <div class="total-left">
+        <h4>Inversión total</h4>
+        <p>Desarrollo · pago único<br><span style="color:#22c55e">+</span> Mantenimiento desde go-live (opcional)</p>
+      </div>
+      <div>
+        <div class="total-num">8.750 €</div>
+        <div class="total-note">+ 380 €/mes ops · + 650 €/mes SEO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKUPS -->
+  <div class="section">
+    <div class="s-title">Backups</div>
+    <div class="notice included">
+      <span class="notice-icon">✓</span>
+      El backup básico ya está <strong>incluido en el fee mensual de 380 €</strong>. No hay que arrancarlo desde cero — entra en marcha desde el go-live. Las upgrades son opcionales.
+    </div>
+    <div class="addon-grid">
+      <div class="addon-card">
+        <div class="addon-price" style="color:#3b82f6">Incluido</div>
+        <div class="addon-name">Backup Diario</div>
+        <div class="addon-items">
+          <div class="addon-item" style="color:#94a3b8">Snapshot completo cada 24h</div>
+          <div class="addon-item" style="color:#94a3b8">Retención 30 días</div>
+          <div class="addon-item" style="color:#94a3b8">En los 380 €/mes de ops</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-price" style="color:#06b6d4">+60 €/mes</div>
+        <div class="addon-name">Backup Remoto</div>
+        <div class="addon-items">
+          <div class="addon-item">Copia semanal a datacenter secundario</div>
+          <div class="addon-item">Retención 90 días</div>
+          <div class="addon-item">Geo-redundancia UE</div>
+          <div class="addon-item">Restauración &lt; 8h</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-price" style="color:#8b5cf6">+140 €/mes</div>
+        <div class="addon-name">Backup Continuo (PITR)</div>
+        <div class="addon-items">
+          <div class="addon-item">Restauración a cualquier punto en el tiempo</div>
+          <div class="addon-item">Retención extendida</div>
+          <div class="addon-item">Nivel enterprise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLAs -->
+  <div class="section">
+    <div class="s-title">SLAs — Acuerdos de Nivel de Servicio</div>
+    <div class="notice later">
+      <span class="notice-icon">⏳</span>
+      Los SLAs se activan <strong>cuando la plataforma esté funcionando al 100%</strong>. El estándar ya va incluido en el mantenimiento base; los niveles superiores se contratan cuando haya tráfico real y alumnos activos. Las horas adicionales de soporte se facturan a <strong>25–40 €/h</strong> según nivel y urgencia.
+    </div>
+    <div class="addon-grid">
+      <div class="addon-card">
+        <div class="addon-price" style="color:#22c55e">Incluido</div>
+        <div class="addon-name">SLA Estándar</div>
+        <div class="addon-items">
+          <div class="addon-item" style="color:#94a3b8">Uptime 99 %</div>
+          <div class="addon-item" style="color:#94a3b8">Respuesta &lt; 24h</div>
+          <div class="addon-item" style="color:#94a3b8">En los 380 €/mes de ops</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-price" style="color:#3b82f6">+120 €/mes</div>
+        <div class="addon-name">SLA Avanzado</div>
+        <div class="addon-items">
+          <div class="addon-item">Uptime 99,5 %</div>
+          <div class="addon-item">Respuesta &lt; 8h</div>
+          <div class="addon-item">Soporte prioritario</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-price" style="color:#f97316">+280 €/mes</div>
+        <div class="addon-name">SLA Enterprise 24/7</div>
+        <div class="addon-items">
+          <div class="addon-item">Uptime 99,9 %</div>
+          <div class="addon-item">Respuesta &lt; 1h · 24/7</div>
+          <div class="addon-item">Recomendado con alumnos activos</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#0c1220;border:1px solid rgba(234,179,8,.25);border-radius:7px;padding:12px 16px;margin-top:8px;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:12px;color:#94a3b8">Horas adicionales de soporte · fuera de cuota mensual</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:#fde047">25 – 40 €<span style="font-size:11px;font-weight:400;color:#475569"> / hora</span></span>
+    </div>
+  </div>
+
+  <!-- CRM -->
+  <div class="section">
+    <div class="s-title">CRM — Gestión de Alumnos y Leads</div>
+    <div class="notice scratch">
+      <span class="notice-icon">⚠</span>
+      El CRM <strong>hay que desarrollarlo desde cero</strong>. Se construye integrado con la plataforma educativa y el formulario de leads de Andorra. Pago único de setup + mantenimiento mensual.
+    </div>
+    <div class="two-col">
+      <div class="detail-card">
+        <div class="detail-label">Setup base</div>
+        <div class="detail-price" style="color:#22c55e">2.800 €</div>
+        <div class="detail-items">
+          <div class="detail-item">Pipeline de leads y alumnos</div>
+          <div class="detail-item">Integración con LMS Malta A</div>
+          <div class="detail-item">Asignación por territorio (Malta / Andorra)</div>
+          <div class="detail-item">GDPR compliant desde el día 1</div>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">Módulos adicionales</div>
+        <div class="detail-price" style="color:#06b6d4">+1.600 €</div>
+        <div class="detail-items">
+          <div class="detail-item">+950 € · Automatizaciones de email y pipeline comercial</div>
+          <div class="detail-item">+650 € · Dashboard KPIs y reportes exportables</div>
+          <div class="detail-item" style="color:#22c55e">+150 €/mes · Mantenimiento mensual</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+      <span style="font-size:12px;color:#94a3b8">Total CRM · Setup completo</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#22c55e">4.400 € <span style="font-size:12px;font-weight:400;color:#475569">+ 150 €/mes</span></span>
+    </div>
+  </div>
+
+  <!-- INTRANET -->
+  <div class="section">
+    <div class="s-title">Intranet — Portal Interno del Equipo</div>
+    <div class="notice scratch">
+      <span class="notice-icon">⚠</span>
+      La intranet <strong>hay que construirla desde cero</strong>. Centraliza documentación, tareas, comunicaciones internas y acceso al CRM con roles diferenciados (admin, profesor, comercial, gestor Andorra).
+    </div>
+    <div class="two-col">
+      <div class="detail-card">
+        <div class="detail-label">Setup base</div>
+        <div class="detail-price" style="color:#6366f1">3.200 €</div>
+        <div class="detail-items">
+          <div class="detail-item">Portal privado con roles y permisos</div>
+          <div class="detail-item">Gestión de documentación interna</div>
+          <div class="detail-item">Conexión directa con las 3 plataformas públicas</div>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">Módulos adicionales</div>
+        <div class="detail-price" style="color:#06b6d4">+1.900 €</div>
+        <div class="detail-items">
+          <div class="detail-item">+800 € · Gestión de tareas operativas</div>
+          <div class="detail-item">+600 € · Integración CRM en tiempo real</div>
+          <div class="detail-item">+500 € · Comunicaciones internas + notificaciones</div>
+          <div class="detail-item" style="color:#22c55e">+120 €/mes · Mantenimiento mensual</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+      <span style="font-size:12px;color:#94a3b8">Total Intranet · Setup completo</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#6366f1">5.100 € <span style="font-size:12px;font-weight:400;color:#475569">+ 120 €/mes</span></span>
+    </div>
+  </div>
+
+  <!-- RESUMEN TOTAL CLIENTE -->
+  <div class="section">
+    <div class="s-title">Compromiso total · Web A + CRM + Intranet</div>
+    <div style="background:#0c1220;border:1px solid #1a2540;border-radius:7px;padding:16px;display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <span style="color:#64748b">Web A · LMS educativa</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#94a3b8">8.750 €</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <span style="color:#64748b">CRM · Setup completo</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#94a3b8">4.400 €</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <span style="color:#64748b">Intranet · Setup completo</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#94a3b8">5.100 €</span>
+      </div>
+      <div style="height:1px;background:#1a2540;margin:4px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:11px;color:#475569;text-transform:uppercase;letter-spacing:.08em">Total negociado</span>
+        <div style="text-align:right">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569;text-decoration:line-through;margin-right:8px">18.250 €</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#22c55e">15.000 €</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.1em">Plan de pago acordado con el cliente</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:#0c1220;border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:16px;text-align:center">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#475569;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px">1.º Tramo · Inicio</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#22c55e;line-height:1">7.500 €</div>
+          <div style="font-size:10px;color:#64748b;margin-top:6px">Al firmar el acuerdo</div>
+        </div>
+        <div style="background:#0c1220;border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:16px;text-align:center">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#475569;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px">2.º Tramo · Entrega</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#22c55e;line-height:1">7.500 €</div>
+          <div style="font-size:10px;color:#64748b;margin-top:6px">Al finalizar el proyecto</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:4px;border-top:1px solid #1a2540">
+        <span style="font-size:11px;color:#475569">Total a pagar</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#22c55e">15.000 €</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">n0hacks · onyhackplayer@gmail.com</div>
+
+</div>
+</body>
+</html>
