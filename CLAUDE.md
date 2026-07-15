@@ -6,7 +6,7 @@
 
 ## Estado del despliegue (actualizado 2026-07-14)
 
-- **Portada (landing):** en vivo en `http://uclcampus.com`, desplegada gratis en GitHub Pages desde el repo público [`xeMOny/uclcampus-landing`](https://github.com/xeMOny/uclcampus-landing) (build estático de `apps/web-lms`, solo `Home.tsx`). Contenido con textos/precios de cursos y teléfono aún placeholder — pendiente sustituir con datos reales.
+- **Portada (landing):** en vivo en `http://uclcampus.com`, desplegada gratis en GitHub Pages desde el repo público [`xeMOny/n0hacks2`](https://github.com/xeMOny/n0hacks2) (build estático de `apps/web-lms`, solo `Home.tsx`; el repo se renombró desde `uclcampus-landing`, ya no vive ahí). Contenido con textos/precios de cursos y teléfono aún placeholder — pendiente sustituir con datos reales.
 - **DNS (Hostinger):** registros `ALIAS @` y `CNAME www` apuntan a `xemony.github.io`. HTTPS de GitHub Pages puede tardar hasta 24h en aprovisionarse tras el cambio de DNS; mientras tanto sirve por `http://`.
 - **Auto-deploy:** `.github/workflows/deploy-landing.yml` reconstruye y publica la portada en cada push a `apps/web-lms/**` (usa GitHub Actions + Pages, no requiere VPS).
 - **VPS (LMS+CRM+Intranet completo):** NO comprado. Se cotizó Hostinger VPS (KVM1 ~5,49€/mes, KVM2 ~7,79€/mes) como alternativa más barata al plan original (DigitalOcean/Hetzner 25€/mes), pero el usuario pidió pausar la compra — solo quería dominio + portada por ahora. Retomar cuando se necesite desplegar el backend Node/Postgres/Docker real.

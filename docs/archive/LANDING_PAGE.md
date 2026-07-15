@@ -1,5 +1,10 @@
 # Landing Page · Universidad Malta
 
+> ⚠️ **Archivado, contenido desactualizado.** Describe la primera versión del scaffold
+> (tema azul, cursos hardcodeados, sin i18n). El diseño actual usa paleta esmeralda/ámbar,
+> textos vía `react-i18next` (`src/i18n/locales/*.json`) y RGPD real. Se conserva solo como
+> referencia histórica — no seguir estas instrucciones para editar la landing actual.
+
 **Estado:** ✅ Completado (listo para editar)  
 **Ubicación:** `apps/web-lms/src/pages/Home.tsx`
 
