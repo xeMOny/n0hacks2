@@ -19,6 +19,14 @@ import ChatWidget from '../components/ChatWidget';
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
 import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
+import testimonialMarta from '../assets/testimonials/marta.jpg';
+import testimonialJordi from '../assets/testimonials/jordi.jpg';
+import testimonialAina from '../assets/testimonials/aina.jpg';
+
+// Fotos de banco (Unsplash, licencia libre) a modo de placeholder mientras no
+// hay fotos reales de alumnos. Sustituir por fotos reales en cuanto el
+// cliente las facilite.
+const testimonialPhotos = [testimonialMarta, testimonialJordi, testimonialAina];
 
 // Sin cuentas de marca reales todavía: no se muestran iconos de redes
 // sociales apuntando a pantallas de login genéricas. Añadir aquí en cuanto
@@ -235,9 +243,11 @@ export default function Home() {
                 <Quote className="text-brand-sky mb-4" size={28} />
                 <p className="text-slate-700 mb-6 italic">&ldquo;{item.quote}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-brand-blue flex items-center justify-center font-bold text-white text-sm">
-                    {item.initials}
-                  </div>
+                  <img
+                    src={testimonialPhotos[i]}
+                    alt=""
+                    className="w-11 h-11 rounded-full object-cover"
+                  />
                   <div>
                     <div className="font-semibold text-brand-navy">{item.name}</div>
                     <div className="text-xs text-slate-500">{item.program}</div>
