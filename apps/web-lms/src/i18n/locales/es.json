@@ -1,4 +1,7 @@
 {
+  "common": {
+    "back_to_home": "Volver al inicio"
+  },
   "nav": {
     "students_area": "Área alumnos",
     "staff_area": "Área personal",
@@ -48,7 +51,6 @@
   },
   "news": {
     "section_title": "Novedades",
-    "read_more": "Leer más",
     "items": [
       { "date": "3 jul 2026", "title": "Nueva edición del programa de Desarrollo Web", "excerpt": "Ampliamos plazas para el semestre de otoño con dos nuevos itinerarios especializados." },
       { "date": "18 jun 2026", "title": "Acuerdo de prácticas con empresas del sector", "excerpt": "Alumnos del último curso podrán optar a prácticas remuneradas en más de 20 compañías colaboradoras." },
@@ -71,12 +73,22 @@
     "student_access": "Acceso alumnos",
     "contact_title": "Contacto",
     "location": "Malta · Andorra",
-    "copyright": "© 2026 Universidad Malta. Todos los derechos reservados.",
+    "copyright": "© 2026 UCLCampus. Todos los derechos reservados.",
     "cookie_policy_link": "Política de Cookies",
     "privacy_policy_link": "Política de Privacidad",
     "cookie_settings_link": "Configuración de cookies",
     "legal_notice_link": "Aviso Legal",
     "accessibility_link": "Accesibilidad"
+  },
+  "chat": {
+    "title": "Asistente UCLCampus",
+    "welcome": "¡Hola! Pregúntame sobre nuestros programas, precios o admisiones.",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "typing": "Escribiendo...",
+    "close": "Cerrar chat",
+    "launcher_label": "Abrir chat de ayuda",
+    "error": "No se ha podido enviar el mensaje. Inténtalo de nuevo."
   },
   "cookie_banner": {
     "title": "Usamos cookies",
@@ -126,7 +138,7 @@
     "title": "Política de Privacidad",
     "last_updated": "Última actualización: julio de 2026",
     "controller_title": "Responsable del tratamiento",
-    "controller_body": "Universidad Malta (nombre comercial). Datos de la entidad legal, domicilio social y NIF pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
+    "controller_body": "UCLCampus (nombre comercial). Datos de la entidad legal, domicilio social y NIF pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
     "data_title": "Qué datos recogemos",
     "data_intro": "Según cómo interactúes con nosotros, podemos recoger:",
     "data_identification": "Datos de identificación: nombre completo, email, teléfono.",
@@ -160,15 +172,15 @@
     "title": "Aviso Legal",
     "last_updated": "Última actualización: julio de 2026",
     "identity_title": "Identidad del titular",
-    "identity_body": "Universidad Malta (nombre comercial). Razón social, domicilio fiscal, NIF y datos de inscripción registral pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
+    "identity_body": "UCLCampus (nombre comercial). Razón social, domicilio fiscal, NIF y datos de inscripción registral pendientes de completar por el titular del proyecto antes de publicar en producción. Contacto: info@uclcampus.com.",
     "purpose_title": "Objeto del sitio web",
     "purpose_body": "Este sitio ofrece información sobre nuestros programas formativos, permite solicitar información, y da acceso a la plataforma de formación (LMS) a los alumnos matriculados.",
     "ip_title": "Propiedad intelectual",
-    "ip_body": "Los contenidos de este sitio (textos, diseño, logotipos, código) son propiedad de Universidad Malta o de terceros que han autorizado su uso, salvo que se indique lo contrario. Queda prohibida su reproducción sin autorización expresa.",
+    "ip_body": "Los contenidos de este sitio (textos, diseño, logotipos, código) son propiedad de UCLCampus o de terceros que han autorizado su uso, salvo que se indique lo contrario. Queda prohibida su reproducción sin autorización expresa.",
     "liability_title": "Responsabilidad",
     "liability_body": "Trabajamos para que la información publicada sea exacta y esté actualizada, pero no garantizamos la ausencia de errores. Nos reservamos el derecho a modificar el contenido de este sitio en cualquier momento.",
     "law_title": "Legislación aplicable",
-    "law_body": "Este aviso legal se rige por la legislación aplicable en materia de servicios de la sociedad de la información y protección de datos vigente en el territorio donde opera Universidad Malta."
+    "law_body": "Este aviso legal se rige por la legislación aplicable en materia de servicios de la sociedad de la información y protección de datos vigente en el territorio donde opera UCLCampus."
   },
   "accessibility_page": {
     "title": "Accesibilidad",

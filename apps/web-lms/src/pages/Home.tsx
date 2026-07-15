@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Search,
-  GraduationCap,
   Globe2,
   Users,
   Award,
@@ -13,24 +12,17 @@ import {
   Newspaper,
   MapPin,
   Calendar,
-  ChevronRight,
 } from 'lucide-react';
-import { SiFacebook, SiX, SiInstagram, SiThreads, SiYoutube, SiTiktok } from 'react-icons/si';
-import { FaLinkedinIn } from 'react-icons/fa6';
 import { openCookieSettings } from '../lib/cookieConsent';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import ChatWidget from '../components/ChatWidget';
+import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
+import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
+import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
 
-// Enlazan al login de cada red, no al perfil: todavía no existen las cuentas
-// de marca. Sustituir cada `href` por la URL del perfil real en cuanto se creen.
-const socialLinks = [
-  { icon: SiFacebook, label: 'Facebook', href: 'https://www.facebook.com/login/' },
-  { icon: SiX, label: 'X (Twitter)', href: 'https://x.com/login' },
-  { icon: FaLinkedinIn, label: 'LinkedIn', href: 'https://www.linkedin.com/login' },
-  { icon: SiInstagram, label: 'Instagram', href: 'https://www.instagram.com/accounts/login/' },
-  { icon: SiThreads, label: 'Threads', href: 'https://www.threads.net/login' },
-  { icon: SiYoutube, label: 'YouTube', href: 'https://accounts.google.com/ServiceLogin?service=youtube' },
-  { icon: SiTiktok, label: 'TikTok', href: 'https://www.tiktok.com/login' },
-];
+// Sin cuentas de marca reales todavía: no se muestran iconos de redes
+// sociales apuntando a pantallas de login genéricas. Añadir aquí en cuanto
+// existan los perfiles reales de UCLCampus.
 
 const featureIcons = [BookOpen, Users, Award];
 
@@ -61,87 +53,100 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-emerald-50">
-      {/* Header único: logo + utilidades */}
-      <header className="sticky top-0 bg-emerald-950/95 backdrop-blur z-50 border-b border-emerald-800/60">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center gap-2 text-xl font-bold whitespace-nowrap"
-          >
-            <GraduationCap className="text-amber-400" size={26} />
-            <span className="hidden sm:inline">Universidad Malta</span>
-          </motion.div>
+    <div className="min-h-screen bg-white text-slate-700">
+      {/* Header único: logo + navegación + utilidades, todo en una sola barra
+          (a propósito más arriba que en IE University, que separa una barra
+          de utilidades sobre la barra de navegación principal) */}
+      <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
+          <a href="/" className="shrink-0 flex items-center">
+            <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
+          </a>
 
-          <div className="flex items-center gap-4 text-xs text-emerald-300 whitespace-nowrap">
-            <a href="/mi-area" className="hidden lg:inline hover:text-amber-400 transition">{t('nav.students_area')}</a>
-            <a href="/login" className="hidden lg:inline hover:text-amber-400 transition">{t('nav.staff_area')}</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
+            <a href="#cursos" className="hover:text-brand-blue transition">{t('nav.programs')}</a>
+            <a href="#sobre" className="hover:text-brand-blue transition">{t('nav.about')}</a>
+            <a href="#novedades" className="hover:text-brand-blue transition">{t('nav.news')}</a>
+            <a href="#contacto" className="hover:text-brand-blue transition">{t('nav.contact')}</a>
+          </nav>
+
+          <div className="flex items-center gap-4 text-xs font-medium text-slate-500 whitespace-nowrap">
+            <a href="/mi-area" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.students_area')}</a>
+            <a href="/login" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.staff_area')}</a>
+            <span className="hidden lg:block w-px h-4 bg-slate-300" aria-hidden="true" />
             <LanguageSwitcher />
           </div>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 pt-20 pb-12 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent"
-        >
-          {t('hero.title')}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl text-emerald-200 mb-10 max-w-2xl mx-auto"
-        >
-          {t('hero.subtitle')}
-        </motion.p>
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-mist to-white">
+        <img
+          src={logoIcon}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute -right-20 -top-14 w-80 md:w-[28rem] opacity-[0.05]"
+        />
+        <div className="relative max-w-5xl mx-auto px-4 pt-20 pb-14 md:pt-28 md:pb-20 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold mb-6 text-brand-navy tracking-tight"
+          >
+            {t('hero.title')}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto"
+          >
+            {t('hero.subtitle')}
+          </motion.p>
 
-        {/* Buscador de programas */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="max-w-3xl mx-auto bg-emerald-900/60 border border-emerald-700/60 rounded-xl p-4 flex flex-col md:flex-row gap-3"
-        >
-          <select
-            value={modalidad}
-            onChange={(e) => setModalidad(e.target.value)}
-            className="bg-emerald-950 border border-emerald-700 rounded-lg px-4 py-2 text-sm text-emerald-100"
+          {/* Buscador de programas */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="max-w-3xl mx-auto bg-white shadow-lg shadow-slate-300/30 border border-slate-200 rounded-xl p-4 flex flex-col md:flex-row gap-3"
           >
-            <option value="all">{t('hero.modality_all')}</option>
-            <option value="online">{t('hero.modality_online')}</option>
-            <option value="hybrid">{t('hero.modality_hybrid')}</option>
-          </select>
-          <select
-            value={nivel}
-            onChange={(e) => setNivel(e.target.value)}
-            className="bg-emerald-950 border border-emerald-700 rounded-lg px-4 py-2 text-sm text-emerald-100"
-          >
-            <option value="all">{t('hero.level_all')}</option>
-            <option value="degree">{t('hero.level_degree')}</option>
-            <option value="postgrad">{t('hero.level_postgrad')}</option>
-          </select>
-          <a
-            href="#cursos"
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 px-6 py-2 rounded-lg font-semibold transition"
-          >
-            <Search size={18} /> {t('hero.search_cta')}
-          </a>
-        </motion.div>
+            <select
+              value={modalidad}
+              onChange={(e) => setModalidad(e.target.value)}
+              className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
+            >
+              <option value="all">{t('hero.modality_all')}</option>
+              <option value="online">{t('hero.modality_online')}</option>
+              <option value="hybrid">{t('hero.modality_hybrid')}</option>
+            </select>
+            <select
+              value={nivel}
+              onChange={(e) => setNivel(e.target.value)}
+              className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
+            >
+              <option value="all">{t('hero.level_all')}</option>
+              <option value="degree">{t('hero.level_degree')}</option>
+              <option value="postgrad">{t('hero.level_postgrad')}</option>
+            </select>
+            <a
+              href="#cursos"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-6 py-2 rounded-lg font-semibold transition"
+            >
+              <Search size={18} /> {t('hero.search_cta')}
+            </a>
+          </motion.div>
+        </div>
       </section>
 
       {/* Estadísticas */}
-      <section className="border-y border-emerald-800/60 bg-emerald-950/60">
+      <section className="bg-brand-navy">
         <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {Object.values(stats).map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}>
-              <div className="text-3xl md:text-4xl font-bold text-amber-400">{s.value}</div>
-              <div className="text-sm text-emerald-300 mt-1">{s.label}</div>
+              <div className="text-3xl md:text-4xl font-bold text-brand-sky">{s.value}</div>
+              <div className="text-sm text-slate-300 mt-1">{s.label}</div>
             </motion.div>
           ))}
         </div>
@@ -159,11 +164,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-emerald-900/40 border border-emerald-800/60 rounded-lg p-8 text-center hover:border-amber-500/60 transition"
+                className="bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
               >
-                <Icon className="w-12 h-12 mx-auto mb-4 text-amber-400" />
-                <h3 className="text-xl font-bold mb-2">{f.title}</h3>
-                <p className="text-emerald-300">{f.desc}</p>
+                <Icon className="w-12 h-12 mx-auto mb-4 text-brand-blue" />
+                <h3 className="text-xl font-bold mb-2 text-brand-navy">{f.title}</h3>
+                <p className="text-slate-600">{f.desc}</p>
               </motion.div>
             );
           })}
@@ -171,45 +176,52 @@ export default function Home() {
       </section>
 
       {/* Cursos */}
-      <section id="cursos" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-4xl font-bold">{t('courses.section_title')}</h2>
-          <Globe2 className="text-amber-400 hidden md:block" size={32} />
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {courses
-            .filter((c) => modeMatch(c.mode))
-            .filter((c) => levelMatch(c.level))
-            .map((course, i) => (
-              <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-800/60 rounded-lg p-8 hover:border-amber-500/60 transition"
-              >
-                <div className="flex gap-2 mb-4">
-                  <span className="text-xs bg-emerald-800 text-emerald-200 px-2 py-1 rounded">{course.mode}</span>
-                  <span className="text-xs bg-emerald-800 text-emerald-200 px-2 py-1 rounded">{course.level}</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">{course.title}</h3>
-                <p className="text-emerald-300 mb-6">{course.desc}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-3xl font-bold text-amber-400">{course.price}</span>
-                  <button className="bg-amber-500 hover:bg-amber-400 text-emerald-950 px-6 py-2 rounded-lg font-semibold transition">
-                    {t('courses.enroll')}
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+      <section id="cursos" className="bg-brand-mist py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-4xl font-bold text-brand-navy">{t('courses.section_title')}</h2>
+            <Globe2 className="text-brand-blue hidden md:block" size={32} />
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {courses
+              .filter((c) => modeMatch(c.mode))
+              .filter((c) => levelMatch(c.level))
+              .map((course, i) => (
+                <motion.div
+                  key={course.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-brand-sky transition"
+                >
+                  <div className="flex gap-2 mb-4">
+                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{course.mode}</span>
+                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{course.level}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-brand-navy">{course.title}</h3>
+                  <p className="text-slate-600 mb-6">{course.desc}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-3xl font-bold text-brand-blue">{course.price}</span>
+                    {/* No hay pasarela de matrícula/pago real todavía: lleva al
+                        formulario de contacto en vez de ser un botón sin acción. */}
+                    <a
+                      href="#contacto"
+                      className="bg-brand-blue hover:bg-brand-navy text-white px-6 py-2 rounded-lg font-semibold transition"
+                    >
+                      {t('courses.enroll')}
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+          </div>
         </div>
       </section>
 
       {/* Testimonios */}
-      <section className="bg-emerald-950/60 border-y border-emerald-800/60 py-20">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">{t('testimonials.section_title')}</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-brand-navy">{t('testimonials.section_title')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((item, i) => (
               <motion.div
@@ -218,17 +230,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-emerald-900/40 border border-emerald-800/60 rounded-lg p-8"
+                className="bg-brand-mist border border-slate-200 rounded-xl p-8"
               >
-                <Quote className="text-amber-400 mb-4" size={28} />
-                <p className="text-emerald-200 mb-6 italic">&ldquo;{item.quote}&rdquo;</p>
+                <Quote className="text-brand-sky mb-4" size={28} />
+                <p className="text-slate-700 mb-6 italic">&ldquo;{item.quote}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-emerald-950 text-sm">
+                  <div className="w-11 h-11 rounded-full bg-brand-blue flex items-center justify-center font-bold text-white text-sm">
                     {item.initials}
                   </div>
                   <div>
-                    <div className="font-semibold">{item.name}</div>
-                    <div className="text-xs text-emerald-400">{item.program}</div>
+                    <div className="font-semibold text-brand-navy">{item.name}</div>
+                    <div className="text-xs text-slate-500">{item.program}</div>
                   </div>
                 </div>
               </motion.div>
@@ -238,44 +250,44 @@ export default function Home() {
       </section>
 
       {/* Novedades */}
-      <section id="novedades" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="flex items-center gap-3 mb-12">
-          <Newspaper className="text-amber-400" size={28} />
-          <h2 className="text-4xl font-bold">{t('news.section_title')}</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {news.map((n, i) => (
-            <motion.a
-              key={i}
-              href="#"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="block bg-emerald-900/40 border border-emerald-800/60 rounded-lg p-6 hover:border-amber-500/60 transition group"
-            >
-              <div className="flex items-center gap-2 text-xs text-emerald-400 mb-3">
-                <Calendar size={14} /> {n.date}
-              </div>
-              <h3 className="font-bold mb-2 group-hover:text-amber-400 transition">{n.title}</h3>
-              <p className="text-sm text-emerald-300 mb-4">{n.excerpt}</p>
-              <span className="inline-flex items-center gap-1 text-sm text-amber-400">
-                {t('news.read_more')} <ChevronRight size={14} />
-              </span>
-            </motion.a>
-          ))}
+      <section id="novedades" className="bg-brand-mist py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center gap-3 mb-12">
+            <Newspaper className="text-brand-blue" size={28} />
+            <h2 className="text-4xl font-bold text-brand-navy">{t('news.section_title')}</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Sin sistema de artículos/blog todavía: son tarjetas informativas,
+                no enlaces (antes tenían href="#" y no llevaban a ningún sitio). */}
+            {news.map((n, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm"
+              >
+                <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
+                  <Calendar size={14} /> {n.date}
+                </div>
+                <h3 className="font-bold mb-2 text-brand-navy">{n.title}</h3>
+                <p className="text-sm text-slate-600">{n.excerpt}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-amber-500/10 via-amber-400/10 to-amber-500/10 border-t border-emerald-800/60 py-16">
+      <section className="bg-brand-navy py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">{t('cta.title')}</h2>
-          <p className="text-emerald-200 mb-8">{t('cta.subtitle')}</p>
+          <h2 className="text-3xl font-bold mb-6 text-white">{t('cta.title')}</h2>
+          <p className="text-slate-300 mb-8">{t('cta.subtitle')}</p>
           <motion.a
             href="#contacto"
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 px-10 py-4 rounded-lg font-bold text-lg transition"
+            className="inline-flex items-center gap-2 bg-white hover:bg-brand-mist text-brand-navy px-10 py-4 rounded-lg font-bold text-lg transition"
           >
             {t('cta.button')} <ArrowRight size={20} />
           </motion.a>
@@ -283,33 +295,33 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="contacto" className="bg-emerald-950 border-t border-emerald-800/60 py-16">
+      <footer id="contacto" className="bg-brand-navy border-t border-white/10 py-16">
         <div className="max-w-6xl mx-auto px-4">
           {/* 3 columnas de enlaces, centradas, con cabecera en negrita */}
           <div className="grid sm:grid-cols-3 gap-10 mb-16 text-center">
             <div>
-              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.legal_title')}</h4>
-              <ul className="text-sm text-emerald-400 space-y-3">
-                <li><a href="/aviso-legal" className="hover:text-amber-400 transition">{t('footer.legal_notice_link')}</a></li>
-                <li><a href="/privacidad" className="hover:text-amber-400 transition">{t('footer.privacy_policy_link')}</a></li>
-                <li><a href="/cookies" className="hover:text-amber-400 transition">{t('footer.cookie_policy_link')}</a></li>
+              <h4 className="font-bold mb-4 text-white">{t('footer.legal_title')}</h4>
+              <ul className="text-sm text-slate-300 space-y-3">
+                <li><a href="/aviso-legal" className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</a></li>
+                <li><a href="/privacidad" className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</a></li>
+                <li><a href="/cookies" className="hover:text-brand-sky transition">{t('footer.cookie_policy_link')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.website_title')}</h4>
-              <ul className="text-sm text-emerald-400 space-y-3">
-                <li><a href="#cursos" className="hover:text-amber-400 transition">{t('footer.programs_title')}</a></li>
-                <li><a href="#novedades" className="hover:text-amber-400 transition">{t('footer.news_link')}</a></li>
-                <li><a href="/accesibilidad" className="hover:text-amber-400 transition">{t('footer.accessibility_link')}</a></li>
+              <h4 className="font-bold mb-4 text-white">{t('footer.website_title')}</h4>
+              <ul className="text-sm text-slate-300 space-y-3">
+                <li><a href="#cursos" className="hover:text-brand-sky transition">{t('footer.programs_title')}</a></li>
+                <li><a href="#novedades" className="hover:text-brand-sky transition">{t('footer.news_link')}</a></li>
+                <li><a href="/accesibilidad" className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-emerald-50">{t('footer.contact_title')}</h4>
-              <ul className="text-sm text-emerald-400 space-y-3">
-                <li><a href="mailto:info@uclcampus.com" className="hover:text-amber-400 transition">{t('cta.button')}</a></li>
-                <li><a href="/login" className="hover:text-amber-400 transition">{t('footer.student_access')}</a></li>
+              <h4 className="font-bold mb-4 text-white">{t('footer.contact_title')}</h4>
+              <ul className="text-sm text-slate-300 space-y-3">
+                <li><a href="mailto:info@uclcampus.com" className="hover:text-brand-sky transition">{t('cta.button')}</a></li>
+                <li><a href="/login" className="hover:text-brand-sky transition">{t('footer.student_access')}</a></li>
                 <li>
-                  <button type="button" onClick={() => openCookieSettings()} className="hover:text-amber-400 transition">
+                  <button type="button" onClick={() => openCookieSettings()} className="hover:text-brand-sky transition">
                     {t('footer.cookie_settings_link')}
                   </button>
                 </li>
@@ -319,34 +331,20 @@ export default function Home() {
 
           {/* Marca centrada */}
           <div className="flex flex-col items-center gap-2 mb-10">
-            <GraduationCap className="text-amber-400" size={36} />
-            <div className="text-2xl font-bold tracking-wide text-emerald-50">UNIVERSIDAD MALTA</div>
-            <p className="text-emerald-500 text-xs flex items-center gap-1">
+            <img src={logoVerticalWhite} alt="UCLCampus" className="h-24 w-auto" />
+            <p className="text-slate-400 text-xs flex items-center gap-1">
               <MapPin size={12} /> {t('footer.location')}
             </p>
           </div>
 
-          {/* Copyright + redes sociales */}
-          <div className="border-t border-emerald-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-emerald-500">
+          {/* Copyright */}
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
             <p>{t('footer.copyright')}</p>
-            <div className="flex gap-4">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  title={s.label}
-                  className="text-emerald-400 hover:text-amber-400 transition"
-                >
-                  <s.icon size={18} />
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </footer>
+
+      <ChatWidget />
     </div>
   );
 }

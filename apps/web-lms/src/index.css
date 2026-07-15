@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
 /*
+ * Paleta de marca UCLCampus, tomada del logo del cliente (azules + blanco).
+ * brand-navy: azul de fondo/texto fuerte (más oscuro que el del logo, para
+ * mejor contraste en textos sobre blanco). brand-blue: azul exacto del icono
+ * del logo. brand-sky: celeste exacto del icono. brand-mist: tinte muy claro
+ * usado para alternar el fondo de secciones sin salir de blanco/azul.
+ */
+@theme {
+  --color-brand-navy: #1c2b5e;
+  --color-brand-blue: #2f408e;
+  --color-brand-sky: #6fb8ce;
+  --color-brand-mist: #eef4f7;
+}
+
+/*
  * Estilos base heredados del scaffold inicial (Login/CourseCatalog/
  * StudentDashboard todavía no tienen su propio diseño con Tailwind y
  * dependen de estos defaults). Van en @layer base para que SIEMPRE pierdan

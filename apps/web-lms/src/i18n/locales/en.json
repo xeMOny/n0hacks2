@@ -1,4 +1,7 @@
 {
+  "common": {
+    "back_to_home": "Back to home"
+  },
   "nav": {
     "students_area": "Student area",
     "staff_area": "Staff area",
@@ -48,7 +51,6 @@
   },
   "news": {
     "section_title": "News",
-    "read_more": "Read more",
     "items": [
       { "date": "Jul 3, 2026", "title": "New intake for the Web Development program", "excerpt": "We're expanding places for the autumn semester with two new specialized tracks." },
       { "date": "Jun 18, 2026", "title": "Internship agreement with industry companies", "excerpt": "Final-year students can now apply for paid internships at more than 20 partner companies." },
@@ -71,12 +73,22 @@
     "student_access": "Student access",
     "contact_title": "Contact",
     "location": "Malta · Andorra",
-    "copyright": "© 2026 Universidad Malta. All rights reserved.",
+    "copyright": "© 2026 UCLCampus. All rights reserved.",
     "cookie_policy_link": "Cookie Policy",
     "privacy_policy_link": "Privacy Policy",
     "cookie_settings_link": "Cookie settings",
     "legal_notice_link": "Legal Notice",
     "accessibility_link": "Accessibility"
+  },
+  "chat": {
+    "title": "UCLCampus Assistant",
+    "welcome": "Hi! Ask me about our programs, prices, or admissions.",
+    "placeholder": "Type your question...",
+    "send": "Send",
+    "typing": "Typing...",
+    "close": "Close chat",
+    "launcher_label": "Open help chat",
+    "error": "Couldn't send the message. Please try again."
   },
   "cookie_banner": {
     "title": "We use cookies",
@@ -126,7 +138,7 @@
     "title": "Privacy Policy",
     "last_updated": "Last updated: July 2026",
     "controller_title": "Data controller",
-    "controller_body": "Universidad Malta (trading name). Legal entity details, registered address, and tax ID pending completion by the project owner before going live. Contact: info@uclcampus.com.",
+    "controller_body": "UCLCampus (trading name). Legal entity details, registered address, and tax ID pending completion by the project owner before going live. Contact: info@uclcampus.com.",
     "data_title": "What data we collect",
     "data_intro": "Depending on how you interact with us, we may collect:",
     "data_identification": "Identification data: full name, email, phone number.",
@@ -160,15 +172,15 @@
     "title": "Legal Notice",
     "last_updated": "Last updated: July 2026",
     "identity_title": "Identity of the site owner",
-    "identity_body": "Universidad Malta (trading name). Legal entity name, registered address, tax ID, and registry details pending completion by the project owner before going live. Contact: info@uclcampus.com.",
+    "identity_body": "UCLCampus (trading name). Legal entity name, registered address, tax ID, and registry details pending completion by the project owner before going live. Contact: info@uclcampus.com.",
     "purpose_title": "Purpose of this website",
     "purpose_body": "This site provides information about our educational programs, lets you request information, and gives enrolled students access to the learning platform (LMS).",
     "ip_title": "Intellectual property",
-    "ip_body": "The content of this site (text, design, logos, code) is the property of Universidad Malta or third parties who have authorized its use, unless stated otherwise. Reproduction without express authorization is prohibited.",
+    "ip_body": "The content of this site (text, design, logos, code) is the property of UCLCampus or third parties who have authorized its use, unless stated otherwise. Reproduction without express authorization is prohibited.",
     "liability_title": "Liability",
     "liability_body": "We work to keep the information published here accurate and up to date, but we do not guarantee it is free of errors. We reserve the right to modify the content of this site at any time.",
     "law_title": "Applicable law",
-    "law_body": "This legal notice is governed by the applicable legislation on information society services and data protection in force in the territory where Universidad Malta operates."
+    "law_body": "This legal notice is governed by the applicable legislation on information society services and data protection in force in the territory where UCLCampus operates."
   },
   "accessibility_page": {
     "title": "Accessibility",

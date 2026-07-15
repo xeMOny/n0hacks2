@@ -53,19 +53,23 @@ export default function CookieConsent() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 inset-x-0 z-[100] p-4"
+          className="fixed bottom-0 inset-x-0 z-[100] p-4 pointer-events-none"
         >
-          <div className="relative max-w-3xl mx-auto bg-emerald-950 border border-emerald-700/60 rounded-xl shadow-2xl shadow-black/40 overflow-hidden">
+          {/* La tarjeta es más estrecha que este contenedor (max-w-3xl
+              centrada); sin pointer-events-none arriba + auto aquí, la franja
+              invisible a los lados de la tarjeta tapaba clics en cualquier
+              elemento flotante de esa franja (p.ej. el lanzador del chat). */}
+          <div className="relative max-w-3xl mx-auto bg-white border border-slate-200 rounded-xl shadow-2xl shadow-slate-900/20 overflow-hidden pointer-events-auto">
             <div className="p-5">
               <div className="flex items-start gap-3">
-                <Cookie className="text-amber-400 shrink-0 mt-0.5" size={22} />
+                <Cookie className="text-brand-blue shrink-0 mt-0.5" size={22} />
                 <div className="flex-1">
-                  <h2 className="font-bold mb-1">{t("cookie_banner.title")}</h2>
-                  <p className="text-sm text-emerald-300">
+                  <h2 className="font-bold mb-1 text-brand-navy">{t("cookie_banner.title")}</h2>
+                  <p className="text-sm text-slate-600">
                     {t("cookie_banner.description_pre")}{" "}
-                    <span className="text-amber-400">{t("cookie_banner.cookie_settings")}</span>{" "}
+                    <span className="text-brand-blue">{t("cookie_banner.cookie_settings")}</span>{" "}
                     {t("cookie_banner.description_mid")}{" "}
-                    <a href="/cookies" className="underline hover:text-amber-400 transition">
+                    <a href="/cookies" className="underline hover:text-brand-blue transition">
                       {t("cookie_banner.cookie_policy")}
                     </a>
                     .
@@ -74,12 +78,12 @@ export default function CookieConsent() {
               </div>
 
               {showSettings && (
-                <div className="mt-5 space-y-3 border-t border-emerald-800/60 pt-4">
+                <div className="mt-5 space-y-3 border-t border-slate-200 pt-4">
                   {categories.map((c) => (
                     <div key={c.key} className="flex items-start justify-between gap-4">
                       <div>
-                        <div className="font-semibold text-sm">{c.title}</div>
-                        <p className="text-xs text-emerald-400">{c.desc}</p>
+                        <div className="font-semibold text-sm text-brand-navy">{c.title}</div>
+                        <p className="text-xs text-slate-500">{c.desc}</p>
                       </div>
                       <button
                         type="button"
@@ -88,11 +92,11 @@ export default function CookieConsent() {
                         disabled={c.locked}
                         onClick={() => setChoice((prev) => ({ ...prev, [c.key]: !prev[c.key] }))}
                         className={`shrink-0 w-11 h-6 rounded-full transition relative ${
-                          c.locked || choice[c.key] ? "bg-amber-500" : "bg-emerald-800"
+                          c.locked || choice[c.key] ? "bg-brand-blue" : "bg-slate-300"
                         } ${c.locked ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}`}
                       >
                         <span
-                          className={`absolute top-0.5 w-5 h-5 rounded-full bg-emerald-950 transition ${
+                          className={`absolute top-0.5 w-5 h-5 rounded-full bg-white transition ${
                             c.locked || choice[c.key] ? "left-5" : "left-0.5"
                           }`}
                         />
@@ -107,7 +111,7 @@ export default function CookieConsent() {
                   <button
                     type="button"
                     onClick={() => setShowSettings(true)}
-                    className="text-sm text-emerald-300 hover:text-amber-400 transition sm:mr-auto"
+                    className="text-sm text-slate-500 hover:text-brand-blue transition sm:mr-auto"
                   >
                     {t("cookie_banner.personalize")}
                   </button>
@@ -115,7 +119,7 @@ export default function CookieConsent() {
                 <button
                   type="button"
                   onClick={rejectAll}
-                  className="px-5 py-2 rounded-lg text-sm font-semibold border border-emerald-700 text-emerald-100 hover:bg-emerald-900 transition"
+                  className="px-5 py-2 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-100 transition"
                 >
                   {t("cookie_banner.reject")}
                 </button>
@@ -123,7 +127,7 @@ export default function CookieConsent() {
                   <button
                     type="button"
                     onClick={saveCustom}
-                    className="inline-flex items-center justify-center gap-1 px-5 py-2 rounded-lg text-sm font-semibold bg-amber-500 hover:bg-amber-400 text-emerald-950 transition"
+                    className="inline-flex items-center justify-center gap-1 px-5 py-2 rounded-lg text-sm font-semibold bg-brand-blue hover:bg-brand-navy text-white transition"
                   >
                     <Check size={16} /> {t("cookie_banner.save_preferences")}
                   </button>
@@ -131,7 +135,7 @@ export default function CookieConsent() {
                   <button
                     type="button"
                     onClick={acceptAll}
-                    className="px-5 py-2 rounded-lg text-sm font-semibold bg-amber-500 hover:bg-amber-400 text-emerald-950 transition"
+                    className="px-5 py-2 rounded-lg text-sm font-semibold bg-brand-blue hover:bg-brand-navy text-white transition"
                   >
                     {t("cookie_banner.accept_all")}
                   </button>
@@ -144,7 +148,7 @@ export default function CookieConsent() {
               onClick={rejectAll}
               aria-label={t("cookie_banner.close")}
               title={t("cookie_banner.close")}
-              className="absolute top-3 right-3 text-emerald-500 hover:text-amber-400 transition"
+              className="absolute top-3 right-3 text-slate-400 hover:text-brand-blue transition"
             >
               <X size={18} />
             </button>

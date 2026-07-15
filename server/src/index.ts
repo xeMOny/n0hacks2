@@ -8,6 +8,7 @@ import { authRouter } from "./modules/auth/routes.js";
 import { lmsRouter } from "./modules/lms/routes.js";
 import { crmRouter } from "./modules/crm/routes.js";
 import { intranetRouter } from "./modules/intranet/routes.js";
+import { chatRouter } from "./modules/chat/routes.js";
 
 const app = express();
 
@@ -46,12 +47,26 @@ const apiLimiter = rateLimit({
 });
 app.use("/api", apiLimiter);
 
+// Rate limiting específico para el chat: es un endpoint público sin login
+// que llama a la API de Anthropic, así que cada request tiene coste real en
+// tokens. Más estricto que el límite general para acotar el gasto ante abuso
+// o un bot haciendo scraping del formulario.
+const chatLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Demasiados mensajes, inténtalo de nuevo más tarde" },
+});
+app.use("/api/chat", chatLimiter);
+
 app.get("/health", (_req, res) => res.json({ status: "ok" }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/lms", lmsRouter);
 app.use("/api/crm", crmRouter);
 app.use("/api/intranet", intranetRouter);
+app.use("/api/chat", chatRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ error: "No encontrado" });

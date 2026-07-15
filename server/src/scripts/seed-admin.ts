@@ -32,7 +32,9 @@ export async function ensureAdmin(
     return { created: false, email: opts.email };
   }
 
-  const password_hash = await bcrypt.hash(opts.password, 10);
+  // 12 rondas, igual que en modules/auth/routes.ts (createUserSchema) — antes
+  // este script usaba 10, una inconsistencia sin motivo real.
+  const password_hash = await bcrypt.hash(opts.password, 12);
   await db.query(
     `INSERT INTO users (email, password_hash, full_name, role)
      VALUES ($1, $2, $3, 'admin')

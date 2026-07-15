@@ -7,7 +7,7 @@ export interface CookieConsent {
   updatedAt: string;
 }
 
-const STORAGE_KEY = "malta_cookie_consent";
+const STORAGE_KEY = "uclcampus_cookie_consent";
 const OPEN_SETTINGS_EVENT = "cookie-settings:open";
 const CHANGE_EVENT = "cookie-consent:change";
 

@@ -37,7 +37,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="appearance-none bg-emerald-900/60 border border-emerald-700/60 rounded-full pl-2.5 pr-3 py-1 flex items-center gap-1.5 text-emerald-200 hover:text-amber-400 hover:border-amber-500/60 transition text-xs font-medium"
+        className="appearance-none bg-white border border-slate-300 rounded-full pl-2.5 pr-3 py-1 flex items-center gap-1.5 text-brand-navy hover:text-brand-blue hover:border-brand-blue/60 transition text-xs font-medium"
       >
         <Globe size={14} />
         {LABELS[current].short}
@@ -50,7 +50,7 @@ export default function LanguageSwitcher() {
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
             role="listbox"
-            className="absolute right-0 mt-2 w-40 bg-emerald-950 border border-emerald-700/60 rounded-lg shadow-xl shadow-black/40 overflow-hidden z-[70]"
+            className="absolute right-0 mt-2 w-40 bg-white border border-slate-200 rounded-lg shadow-xl shadow-slate-300/40 overflow-hidden z-[70]"
           >
             {SUPPORTED_LANGUAGES.map((lang) => (
               <li key={lang}>
@@ -59,13 +59,13 @@ export default function LanguageSwitcher() {
                   role="option"
                   aria-selected={current === lang}
                   onClick={() => choose(lang)}
-                  className="appearance-none bg-transparent w-full flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-left text-emerald-100 hover:bg-emerald-900 hover:text-amber-400 transition"
+                  className="appearance-none bg-transparent w-full flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-left text-brand-navy hover:bg-brand-mist hover:text-brand-blue transition"
                 >
                   <span>
                     <span className="font-semibold">{LABELS[lang].short}</span>
-                    <span className="text-emerald-400 ml-2">{LABELS[lang].full}</span>
+                    <span className="text-slate-400 ml-2">{LABELS[lang].full}</span>
                   </span>
-                  {current === lang && <Check size={14} className="text-amber-400" />}
+                  {current === lang && <Check size={14} className="text-brand-blue" />}
                 </button>
               </li>
             ))}

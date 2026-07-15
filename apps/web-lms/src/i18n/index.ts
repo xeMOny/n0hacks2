@@ -23,7 +23,7 @@ i18n
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
-      lookupLocalStorage: "malta_lang",
+      lookupLocalStorage: "uclcampus_lang",
     },
   });
 

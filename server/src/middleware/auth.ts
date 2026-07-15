@@ -8,7 +8,7 @@ export interface AuthedRequest extends Request {
   user?: { id: string; role: Role; email: string };
 }
 
-export const AUTH_COOKIE_NAME = "malta_session";
+export const AUTH_COOKIE_NAME = "uclcampus_session";
 
 function extractToken(req: Request): string | undefined {
   // Cookie httpOnly primero (flujo normal del navegador).
