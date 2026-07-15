@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      GitHub Pages no permite fijar cabeceras HTTP propias, así que la CSP
+      va aquí como meta tag (única vía disponible en un hosting estático).
+      script-src 'self' es seguro porque el build de Vite no genera scripts
+      inline, todo son módulos con src= al mismo origen. Si en el futuro se
+      apunta a un backend real (VITE_API_BASE en otro dominio), añadir ese
+      origen a connect-src o esta política romperá las llamadas a la API.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Malta Campus · LMS</title>
   </head>
   <body>
