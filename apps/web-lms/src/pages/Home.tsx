@@ -162,6 +162,7 @@ export default function Home() {
 
       {/* Features */}
       <section id="sobre" className="max-w-6xl mx-auto px-4 py-20">
+        <h2 className="text-4xl font-bold text-brand-navy text-center mb-12">{t('nav.about')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((f, i) => {
             const Icon = featureIcons[i];

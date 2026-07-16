@@ -14,7 +14,47 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>UCLCampus · LMS</title>
+    <link rel="canonical" href="https://uclcampus.com/">
+    <meta name="theme-color" content="#1c2b5e">
+    <title>UCLCampus · Formación online de calidad</title>
+
+    <!-- SEO -->
+    <meta name="description" content="UCLCampus: universidad online con programas de grado y postgrado en desarrollo web, gestión de proyectos y marketing digital, diseñados junto a profesionales del sector.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UCLCampus">
+    <meta property="og:title" content="UCLCampus · Formación online de calidad">
+    <meta property="og:description" content="Programas de grado y postgrado online diseñados junto a profesionales del sector. Desarrollo web, gestión de proyectos y marketing digital.">
+    <meta property="og:url" content="https://uclcampus.com/">
+    <meta property="og:image" content="https://uclcampus.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UCLCampus · Formación online de calidad">
+    <meta name="twitter:description" content="Programas de grado y postgrado online diseñados junto a profesionales del sector.">
+    <meta name="twitter:image" content="https://uclcampus.com/og-image.png">
+
+    <!--
+      JSON-LD (datos estructurados): un <script type="application/ld+json">
+      es un bloque de datos, no código ejecutable, así que la CSP
+      "script-src 'self'" de arriba no lo bloquea (los navegadores no aplican
+      script-src a bloques que no son JS ejecutable).
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "UCLCampus",
+      "url": "https://uclcampus.com/",
+      "logo": "https://uclcampus.com/logo-schema.png",
+      "description": "Universidad online con programas de grado y postgrado en desarrollo web, gestión de proyectos y marketing digital."
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
