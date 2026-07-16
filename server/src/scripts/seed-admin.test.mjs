@@ -47,7 +47,7 @@ async function run() {
     const db = { query: async () => { dbTouched = true; return { rows: [] }; } };
     await assert.rejects(() => ensureAdmin(db, { email: "a@b.com", password: "corta" }));
     assert.equal(dbTouched, false);
-    console.log("OK: rechaza password < 8 caracteres sin tocar la DB");
+    console.log("OK: rechaza password < 10 caracteres sin tocar la DB");
   }
 
   // Caso 4: falta email -> debe rechazar

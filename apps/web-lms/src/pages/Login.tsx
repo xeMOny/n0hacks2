@@ -24,8 +24,22 @@ export default function Login() {
     <main style={{ padding: 32, maxWidth: 320 }}>
       <h2>Acceder</h2>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input placeholder="Contraseña" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="email"
+          name="email"
+          autoComplete="username"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Entrar</button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>

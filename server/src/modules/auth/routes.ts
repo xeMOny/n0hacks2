@@ -20,7 +20,7 @@ const loginSchema = z.object({
 
 const createUserSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
-  password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
+  password: z.string().min(10, "La contraseña debe tener al menos 10 caracteres"),
   role: z.enum(["admin", "direccion", "profesor", "comercial", "gestor_andorra"]),
   full_name: z.string().trim().min(1),
 });
@@ -49,6 +49,10 @@ authRouter.post("/login", validateBody(loginSchema), async (req, res) => {
   const hashToCompare = user?.password_hash ?? "$2a$12$invalidinvalidinvalidinvalidinvalidinvalidinvalidinv.";
   const valid = await bcrypt.compare(password, hashToCompare);
   if (!user || !valid) {
+    // OWASP A9 (Security Logging and Monitoring Failures): sin esto no hay
+    // forma de detectar fuerza bruta ni credential stuffing. Nunca se loguea
+    // la contraseña, solo el email intentado y la IP de origen.
+    console.warn(`Login fallido para "${email}" desde IP ${req.ip}`);
     return res.status(401).json({ error: "Credenciales inválidas" });
   }
 

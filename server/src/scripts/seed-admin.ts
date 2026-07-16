@@ -23,8 +23,10 @@ export async function ensureAdmin(
   if (!opts.email || !opts.password) {
     throw new Error("ADMIN_EMAIL y ADMIN_PASSWORD son obligatorios");
   }
-  if (opts.password.length < 8) {
-    throw new Error("ADMIN_PASSWORD debe tener al menos 8 caracteres");
+  // Mismo mínimo que createUserSchema en modules/auth/routes.ts — antes este
+  // script exigía 8 y el resto de la app 10, una inconsistencia sin motivo real.
+  if (opts.password.length < 10) {
+    throw new Error("ADMIN_PASSWORD debe tener al menos 10 caracteres");
   }
 
   const existing = await db.query("SELECT id FROM users WHERE role = 'admin' LIMIT 1");
