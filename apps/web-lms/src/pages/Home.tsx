@@ -17,6 +17,7 @@ import {
 import { openCookieSettings } from '../lib/cookieConsent';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import ChatWidget from '../components/ChatWidget';
+import SocialBar from '../components/SocialBar';
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
 import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
@@ -28,10 +29,6 @@ import testimonialAina from '../assets/testimonials/aina.jpg';
 // hay fotos reales de alumnos. Sustituir por fotos reales en cuanto el
 // cliente las facilite.
 const testimonialPhotos = [testimonialMarta, testimonialJordi, testimonialAina];
-
-// Sin cuentas de marca reales todavía: no se muestran iconos de redes
-// sociales apuntando a pantallas de login genéricas. Añadir aquí en cuanto
-// existan los perfiles reales de UCLCampus.
 
 const featureIcons = [BookOpen, Users, Award];
 
@@ -63,6 +60,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
+      {/* Barra de utilidad: solo redes sociales, no sticky (se pierde al hacer
+          scroll). El idioma sigue viviendo en la cabecera principal de abajo,
+          no aquí, para no duplicar el selector ni perderlo al hacer scroll. */}
+      <SocialBar />
+
       {/* Header único: logo + navegación + utilidades, todo en una sola barra
           (a propósito más arriba que en IE University, que separa una barra
           de utilidades sobre la barra de navegación principal) */}
