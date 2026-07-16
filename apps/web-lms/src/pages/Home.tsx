@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
@@ -67,9 +68,9 @@ export default function Home() {
           de utilidades sobre la barra de navegación principal) */}
       <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
-          <a href="/" className="shrink-0 flex items-center">
+          <Link to="/" className="shrink-0 flex items-center">
             <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
             <a href="#cursos" className="hover:text-brand-blue transition">{t('nav.programs')}</a>
@@ -79,8 +80,8 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-4 text-xs font-medium text-slate-500 whitespace-nowrap">
-            <a href="/mi-area" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.students_area')}</a>
-            <a href="/login" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.staff_area')}</a>
+            <Link to="/mi-area" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.students_area')}</Link>
+            <Link to="/login" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
             <span className="hidden lg:block w-px h-4 bg-slate-300" aria-hidden="true" />
             <LanguageSwitcher />
           </div>
@@ -313,9 +314,9 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4 text-white">{t('footer.legal_title')}</h4>
               <ul className="text-sm text-slate-300 space-y-3">
-                <li><a href="/aviso-legal" className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</a></li>
-                <li><a href="/privacidad" className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</a></li>
-                <li><a href="/cookies" className="hover:text-brand-sky transition">{t('footer.cookie_policy_link')}</a></li>
+                <li><Link to="/aviso-legal" className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</Link></li>
+                <li><Link to="/privacidad" className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</Link></li>
+                <li><Link to="/cookies" className="hover:text-brand-sky transition">{t('footer.cookie_policy_link')}</Link></li>
               </ul>
             </div>
             <div>
@@ -323,14 +324,14 @@ export default function Home() {
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="#cursos" className="hover:text-brand-sky transition">{t('footer.programs_title')}</a></li>
                 <li><a href="#novedades" className="hover:text-brand-sky transition">{t('footer.news_link')}</a></li>
-                <li><a href="/accesibilidad" className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</a></li>
+                <li><Link to="/accesibilidad" className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4 text-white">{t('footer.contact_title')}</h4>
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="mailto:info@uclcampus.com" className="hover:text-brand-sky transition">{t('cta.button')}</a></li>
-                <li><a href="/login" className="hover:text-brand-sky transition">{t('footer.student_access')}</a></li>
+                <li><Link to="/login" className="hover:text-brand-sky transition">{t('footer.student_access')}</Link></li>
                 <li>
                   <button type="button" onClick={() => openCookieSettings()} className="hover:text-brand-sky transition">
                     {t('footer.cookie_settings_link')}

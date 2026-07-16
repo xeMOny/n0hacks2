@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, X, Check } from "lucide-react";
 import { getConsent, saveConsent, onOpenCookieSettings } from "../lib/cookieConsent";
@@ -69,9 +70,9 @@ export default function CookieConsent() {
                     {t("cookie_banner.description_pre")}{" "}
                     <span className="text-brand-blue">{t("cookie_banner.cookie_settings")}</span>{" "}
                     {t("cookie_banner.description_mid")}{" "}
-                    <a href="/cookies" className="underline hover:text-brand-blue transition">
+                    <Link to="/cookies" className="underline hover:text-brand-blue transition">
                       {t("cookie_banner.cookie_policy")}
-                    </a>
+                    </Link>
                     .
                   </p>
                 </div>
