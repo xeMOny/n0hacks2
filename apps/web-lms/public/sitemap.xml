@@ -6,22 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://uclcampus.com/privacidad</loc>
+    <loc>https://uclcampus.com/privacidad/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://uclcampus.com/aviso-legal</loc>
+    <loc>https://uclcampus.com/aviso-legal/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://uclcampus.com/cookies</loc>
+    <loc>https://uclcampus.com/cookies/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://uclcampus.com/accesibilidad</loc>
+    <loc>https://uclcampus.com/accesibilidad/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
