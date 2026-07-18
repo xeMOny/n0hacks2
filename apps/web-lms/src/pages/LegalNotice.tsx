@@ -9,6 +9,7 @@ export default function LegalNotice() {
     <LegalPageLayout
       icon={Scale}
       title={t("legal_notice_page.title")}
+      path="/aviso-legal/"
       lastUpdated={t("legal_notice_page.last_updated")}
     >
       <LegalSection title={t("legal_notice_page.identity_title")}>

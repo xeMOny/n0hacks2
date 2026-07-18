@@ -28,7 +28,12 @@ import puppeteer from "puppeteer";
 
 const DIST = path.resolve(import.meta.dirname, "..", "dist");
 const PORT = 4399;
-const ROUTES = ["/", "/privacidad", "/aviso-legal", "/cookies", "/accesibilidad"];
+// Con barra final en las legales: GitHub Pages redirige (301) /privacidad
+// -> /privacidad/ antes de servir el index.html de esa carpeta, así que la
+// URL final real siempre lleva barra — generar el snapshot ya desde esa
+// ruta evita que el <link rel="canonical"> capturado apunte a la URL que
+// redirige en vez de a la que responde 200 directamente.
+const ROUTES = ["/", "/privacidad/", "/aviso-legal/", "/cookies/", "/accesibilidad/"];
 
 const MIME = {
   ".html": "text/html; charset=utf-8",

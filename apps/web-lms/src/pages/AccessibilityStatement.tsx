@@ -9,6 +9,7 @@ export default function AccessibilityStatement() {
     <LegalPageLayout
       icon={Accessibility}
       title={t("accessibility_page.title")}
+      path="/accesibilidad/"
       lastUpdated={t("accessibility_page.last_updated")}
     >
       <LegalSection title={t("accessibility_page.commitment_title")}>

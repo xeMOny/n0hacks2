@@ -3,10 +3,13 @@ import type { LucideIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 
 interface LegalPageLayoutProps {
   icon: LucideIcon;
   title: string;
+  /** Ruta pública real (con barra final: así resuelve GitHub Pages), p.ej. "/privacidad/" */
+  path: string;
   lastUpdated: string;
   children: ReactNode;
 }
@@ -14,8 +17,9 @@ interface LegalPageLayoutProps {
 // Layout compartido por las 4 páginas legales (antes cada una repetía el
 // mismo wrapper con la paleta oscura vieja, ya reemplazada por brand-navy/blue
 // en el resto del sitio).
-export default function LegalPageLayout({ icon: Icon, title, lastUpdated, children }: LegalPageLayoutProps) {
+export default function LegalPageLayout({ icon: Icon, title, path, lastUpdated, children }: LegalPageLayoutProps) {
   const { t } = useTranslation();
+  useDocumentMeta(`${title} · UCLCampus`, path);
   return (
     <div className="min-h-screen bg-white text-slate-700">
       <div className="max-w-3xl mx-auto px-4 py-16">

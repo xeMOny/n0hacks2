@@ -15,6 +15,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import ChatWidget from '../components/ChatWidget';
 import SocialBar from '../components/SocialBar';
@@ -40,6 +41,7 @@ interface StatEntry { value: string; label: string }
 
 export default function Home() {
   const { t } = useTranslation();
+  useDocumentMeta(t('meta.home_title'), '/');
   const [modalidad, setModalidad] = useState('all');
   const [nivel, setNivel] = useState('all');
 

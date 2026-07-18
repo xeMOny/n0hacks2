@@ -37,6 +37,7 @@ export default function CookiePolicy() {
     <LegalPageLayout
       icon={Cookie}
       title={t("cookie_policy_page.title")}
+      path="/cookies/"
       lastUpdated={t("cookie_policy_page.last_updated")}
     >
       <LegalSection title={t("cookie_policy_page.what_title")}>

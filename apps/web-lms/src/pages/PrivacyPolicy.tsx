@@ -9,6 +9,7 @@ export default function PrivacyPolicy() {
     <LegalPageLayout
       icon={ShieldCheck}
       title={t("privacy_policy_page.title")}
+      path="/privacidad/"
       lastUpdated={t("privacy_policy_page.last_updated")}
     >
       <LegalSection title={t("privacy_policy_page.controller_title")}>
