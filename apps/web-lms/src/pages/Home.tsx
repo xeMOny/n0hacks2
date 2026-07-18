@@ -126,6 +126,7 @@ export default function Home() {
             <select
               value={modalidad}
               onChange={(e) => setModalidad(e.target.value)}
+              aria-label={t('hero.modality_label')}
               className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
             >
               <option value="all">{t('hero.modality_all')}</option>
@@ -135,6 +136,7 @@ export default function Home() {
             <select
               value={nivel}
               onChange={(e) => setNivel(e.target.value)}
+              aria-label={t('hero.level_label')}
               className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
             >
               <option value="all">{t('hero.level_all')}</option>
@@ -314,7 +316,7 @@ export default function Home() {
           {/* 3 columnas de enlaces, centradas, con cabecera en negrita */}
           <div className="grid sm:grid-cols-3 gap-10 mb-16 text-center">
             <div>
-              <h4 className="font-bold mb-4 text-white">{t('footer.legal_title')}</h4>
+              <h3 className="font-bold mb-4 text-white">{t('footer.legal_title')}</h3>
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><Link to="/aviso-legal" className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</Link></li>
                 <li><Link to="/privacidad" className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</Link></li>
@@ -322,7 +324,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-white">{t('footer.website_title')}</h4>
+              <h3 className="font-bold mb-4 text-white">{t('footer.website_title')}</h3>
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="#cursos" className="hover:text-brand-sky transition">{t('footer.programs_title')}</a></li>
                 <li><a href="#novedades" className="hover:text-brand-sky transition">{t('footer.news_link')}</a></li>
@@ -330,7 +332,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-white">{t('footer.contact_title')}</h4>
+              <h3 className="font-bold mb-4 text-white">{t('footer.contact_title')}</h3>
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="mailto:info@uclcampus.com" className="hover:text-brand-sky transition">{t('cta.button')}</a></li>
                 <li><Link to="/login" className="hover:text-brand-sky transition">{t('footer.student_access')}</Link></li>

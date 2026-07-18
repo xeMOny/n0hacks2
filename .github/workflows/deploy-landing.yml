@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         working-directory: apps/web-lms
         run: npm ci
+      - name: Install Chrome for prerendering
+        working-directory: apps/web-lms
+        run: npx puppeteer browsers install chrome
       - name: Build
         working-directory: apps/web-lms
         run: npm run build

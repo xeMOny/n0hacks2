@@ -37,18 +37,20 @@ export default function App() {
   return (
     <div>
       <InternalNav />
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cursos" element={<CourseCatalog />} />
-          <Route path="/mi-area" element={<StudentDashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cookies" element={<CookiePolicy />} />
-          <Route path="/privacidad" element={<PrivacyPolicy />} />
-          <Route path="/aviso-legal" element={<LegalNotice />} />
-          <Route path="/accesibilidad" element={<AccessibilityStatement />} />
-        </Routes>
-      </Suspense>
+      <main>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cursos" element={<CourseCatalog />} />
+            <Route path="/mi-area" element={<StudentDashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="/privacidad" element={<PrivacyPolicy />} />
+            <Route path="/aviso-legal" element={<LegalNotice />} />
+            <Route path="/accesibilidad" element={<AccessibilityStatement />} />
+          </Routes>
+        </Suspense>
+      </main>
       <CookieConsent />
     </div>
   );

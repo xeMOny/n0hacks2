@@ -16,7 +16,7 @@ export default function CourseCatalog() {
   }, []);
 
   return (
-    <main style={{ padding: 32 }}>
+    <main className="legacy-app" style={{ padding: 32 }}>
       <h2>Catálogo de cursos</h2>
       {courses.length === 0 && <p>Sin cursos publicados todavía.</p>}
       <ul>

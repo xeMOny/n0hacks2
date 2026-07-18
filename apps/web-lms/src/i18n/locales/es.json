@@ -16,9 +16,11 @@
     "modality_all": "Todas",
     "modality_online": "Online",
     "modality_hybrid": "Semipresencial",
+    "modality_label": "Modalidad",
     "level_all": "Todos",
     "level_degree": "Grado",
     "level_postgrad": "Postgrado",
+    "level_label": "Nivel",
     "search_cta": "Buscar programas"
   },
   "stats": {

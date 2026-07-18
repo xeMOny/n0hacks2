@@ -10,10 +10,18 @@
       inline, todo son módulos con src= al mismo origen. Si en el futuro se
       apunta a un backend real (VITE_API_BASE en otro dominio), añadir ese
       origen a connect-src o esta política romperá las llamadas a la API.
+
+      frame-ancestors no tiene efecto aquí: los navegadores lo ignoran por
+      completo cuando la CSP llega vía <meta> en vez de una cabecera HTTP
+      real (confirmado con un warning real en consola). Se deja en la
+      directiva por si algún día se pasa a un hosting con cabeceras propias,
+      pero la protección anti-clickjacking real de esta web es el chequeo en
+      JS al arrancar src/main.tsx (window.top !== window.self).
     -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="manifest" href="/manifest.webmanifest">
     <link rel="canonical" href="https://uclcampus.com/">
     <meta name="theme-color" content="#1c2b5e">
     <title>UCLCampus · Formación online de calidad</title>

@@ -16,9 +16,11 @@
     "modality_all": "Toutes",
     "modality_online": "En ligne",
     "modality_hybrid": "Semi-présentiel",
+    "modality_label": "Modalité",
     "level_all": "Tous",
     "level_degree": "Licence",
     "level_postgrad": "Master",
+    "level_label": "Niveau",
     "search_cta": "Rechercher des programmes"
   },
   "stats": {

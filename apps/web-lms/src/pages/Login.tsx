@@ -21,7 +21,7 @@ export default function Login() {
   }
 
   return (
-    <main style={{ padding: 32, maxWidth: 320 }}>
+    <main className="legacy-app" style={{ padding: 32, maxWidth: 320 }}>
       <h2>Acceder</h2>
       <form onSubmit={handleSubmit}>
         <input

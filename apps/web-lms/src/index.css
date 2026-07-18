@@ -23,9 +23,18 @@
  * especificidad (p.ej. todos los <button> salían azules por el
  * `button{background:var(--accent)}` de aquí abajo, incluso los que ya
  * tenían bg-amber-500 de Tailwind).
+ *
+ * Escopado a `.legacy-app`: selectores de elemento tan genéricos como
+ * `nav a` o `button` se aplicaban a CUALQUIER <nav>/<button> del sitio,
+ * incluida la landing pública — el `<nav>` del header y varios <button>
+ * sin su propio color/fondo de Tailwind (p.ej. "Configurar cookies" del
+ * footer, o el botón "Rechazar" del banner de cookies) heredaban este
+ * tema oscuro de scaffold y quedaban con muy mal contraste (confirmado
+ * con axe-core: texto gris #8b96a3 sobre blanco, o texto oscuro/blanco
+ * sobre el azul #4f8cff de --accent). Login/CourseCatalog/StudentDashboard
+ * llevan la clase `legacy-app` en su elemento raíz para seguir viéndose
+ * exactamente igual que antes.
  */
-@layer base {
-
 :root {
   --bg: #0b0f14;
   --surface: #12181f;
@@ -44,27 +53,29 @@ body {
   color: var(--text);
 }
 
-nav {
+@layer base {
+
+.legacy-app nav {
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
 
-nav a {
+.legacy-app nav a {
   color: var(--text-dim);
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
 }
 
-nav a:hover { color: var(--accent); }
+.legacy-app nav a:hover { color: var(--accent); }
 
-.page { padding: 32px; max-width: 1000px; }
+.legacy-app .page { padding: 32px; max-width: 1000px; }
 
-h1, h2, h3 { color: var(--text); }
+.legacy-app h1, .legacy-app h2, .legacy-app h3 { color: var(--text); }
 
-.hint { color: var(--text-dim); font-size: 13px; margin-top: -8px; }
+.legacy-app .hint { color: var(--text-dim); font-size: 13px; margin-top: -8px; }
 
-.card {
+.legacy-app .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -72,14 +83,14 @@ h1, h2, h3 { color: var(--text); }
   margin-bottom: 16px;
 }
 
-.form-inline {
+.legacy-app .form-inline {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
 }
 
-input, select, button {
+.legacy-app input, .legacy-app select, .legacy-app button {
   background: #1a222b;
   border: 1px solid var(--border);
   color: var(--text);
@@ -88,7 +99,7 @@ input, select, button {
   font-size: 14px;
 }
 
-button {
+.legacy-app button {
   background: var(--accent);
   color: white;
   border: none;
@@ -96,27 +107,27 @@ button {
   font-weight: 600;
 }
 
-button:disabled { opacity: 0.6; cursor: default; }
+.legacy-app button:disabled { opacity: 0.6; cursor: default; }
 
-.toolbar { margin-bottom: 12px; }
+.legacy-app .toolbar { margin-bottom: 12px; }
 
-.table { width: 100%; border-collapse: collapse; }
-.table th, .table td {
+.legacy-app .table { width: 100%; border-collapse: collapse; }
+.legacy-app .table th, .legacy-app .table td {
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
-.table th { color: var(--text-dim); font-weight: 600; }
+.legacy-app .table th { color: var(--text-dim); font-weight: 600; }
 
-.empty { color: var(--text-dim); font-style: italic; }
+.legacy-app .empty { color: var(--text-dim); font-style: italic; }
 
-.kanban {
+.legacy-app .kanban {
   display: flex;
   gap: 12px;
   overflow-x: auto;
 }
-.kanban-column {
+.legacy-app .kanban-column {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -124,9 +135,9 @@ button:disabled { opacity: 0.6; cursor: default; }
   min-width: 220px;
   flex: 1;
 }
-.kanban-column h3 { font-size: 14px; display: flex; justify-content: space-between; }
-.count { color: var(--text-dim); font-weight: 400; }
-.kanban-card {
+.legacy-app .kanban-column h3 { font-size: 14px; display: flex; justify-content: space-between; }
+.legacy-app .count { color: var(--text-dim); font-weight: 400; }
+.legacy-app .kanban-card {
   background: #1a222b;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -136,7 +147,7 @@ button:disabled { opacity: 0.6; cursor: default; }
   flex-direction: column;
   gap: 6px;
 }
-.badge {
+.legacy-app .badge {
   align-self: flex-start;
   background: var(--accent);
   color: white;
@@ -145,15 +156,15 @@ button:disabled { opacity: 0.6; cursor: default; }
   border-radius: 4px;
 }
 
-.task-list { list-style: none; padding: 0; }
-.task-list li {
+.legacy-app .task-list { list-style: none; padding: 0; }
+.legacy-app .task-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid var(--border);
 }
-.task-list li.done span { text-decoration: line-through; color: var(--text-dim); }
-.due { font-size: 12px; color: var(--text-dim); }
+.legacy-app .task-list li.done span { text-decoration: line-through; color: var(--text-dim); }
+.legacy-app .due { font-size: 12px; color: var(--text-dim); }
 
 } /* fin @layer base */

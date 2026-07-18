@@ -16,9 +16,11 @@
     "modality_all": "All",
     "modality_online": "Online",
     "modality_hybrid": "Hybrid",
+    "modality_label": "Modality",
     "level_all": "All",
     "level_degree": "Bachelor's",
     "level_postgrad": "Postgraduate",
+    "level_label": "Level",
     "search_cta": "Search programs"
   },
   "stats": {
