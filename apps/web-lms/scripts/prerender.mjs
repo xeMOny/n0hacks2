@@ -87,7 +87,20 @@ async function main() {
       await page.goto(`http://127.0.0.1:${PORT}${route}`, { waitUntil: "networkidle0", timeout: 30000 });
       // Deja que las transiciones de framer-motion terminen antes de capturar.
       await new Promise((r) => setTimeout(r, 800));
-      const html = await page.evaluate(() => "<!doctype html>\n" + document.documentElement.outerHTML);
+      const html = await page.evaluate((port) => {
+        // Componentes con lazy() + Suspense (p.ej. ChatWidget) disparan su
+        // import() nada más montar, aunque nadie interactúe con ellos — el
+        // navegador inserta entonces un <link rel="modulepreload"> con URL
+        // ABSOLUTA a este mismo servidor temporal (127.0.0.1:<port>) en
+        // <head>. Si eso se guarda tal cual, cualquier otro origen (el test
+        // local en otro puerto, o uclcampus.com real) intenta precargar
+        // desde un host que no existe ahí y la CSP lo bloquea. El import()
+        // real de todos modos usa una ruta relativa y sigue funcionando -
+        // esto es solo la etiqueta de precarga, se puede quitar sin riesgo.
+        const prefix = `http://127.0.0.1:${port}/`;
+        document.querySelectorAll(`link[rel="modulepreload"][href^="${prefix}"]`).forEach((el) => el.remove());
+        return "<!doctype html>\n" + document.documentElement.outerHTML;
+      }, PORT);
       await page.close();
 
       const outDir = route === "/" ? DIST : path.join(DIST, route);

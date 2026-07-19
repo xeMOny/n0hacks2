@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -17,8 +17,13 @@ import {
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-import ChatWidget from '../components/ChatWidget';
 import SocialBar from '../components/SocialBar';
+
+// Lazy: el widget de chat (con su propio framer-motion + cliente de API)
+// no hace falta para el primer pintado, es un botón flotante que la mayoría
+// de visitas nunca abre. Antes se cargaba entero dentro del bundle crítico
+// de la home.
+const ChatWidget = lazy(() => import('../components/ChatWidget'));
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
 import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
@@ -362,7 +367,9 @@ export default function Home() {
         </div>
       </footer>
 
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </div>
   );
 }
