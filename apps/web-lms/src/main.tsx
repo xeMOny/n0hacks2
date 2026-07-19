@@ -4,6 +4,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { initAnalytics } from "./lib/analytics";
+
+initAnalytics();
 
 // La directiva frame-ancestors de la CSP (en index.html) no funciona: va por
 // <meta> porque GitHub Pages no permite cabeceras HTTP propias, y los
