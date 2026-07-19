@@ -21,9 +21,9 @@ export default function CookiePolicy() {
     },
     {
       category: t("cookie_policy_page.row_analytics_category"),
-      name: "N/A",
+      name: "_ga, _ga_*",
       purpose: t("cookie_policy_page.row_analytics_purpose"),
-      duration: "N/A",
+      duration: t("cookie_policy_page.row_analytics_duration"),
     },
     {
       category: t("cookie_policy_page.row_marketing_category"),
