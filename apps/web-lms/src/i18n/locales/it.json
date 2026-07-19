@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "home_title": "UCLCampus · Formazione online di qualità"
+  },
+  "common": {
+    "back_to_home": "Torna alla home"
+  },
+  "nav": {
+    "students_area": "Area studenti",
+    "staff_area": "Area personale",
+    "programs": "Programmi",
+    "about": "Chi siamo",
+    "news": "Novità",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "title": "Formazione Online di Qualità",
+    "subtitle": "Sviluppa le tue competenze con programmi pratici progettati insieme a professionisti del settore.",
+    "modality_all": "Tutte",
+    "modality_online": "Online",
+    "modality_hybrid": "Semipresenziale",
+    "modality_label": "Modalità",
+    "level_all": "Tutti",
+    "level_degree": "Laurea",
+    "level_postgrad": "Master",
+    "level_label": "Livello",
+    "search_cta": "Cerca programmi"
+  },
+  "stats": {
+    "students": { "value": "2.400+", "label": "Studenti attivi" },
+    "countries": { "value": "38", "label": "Paesi di provenienza" },
+    "employability": { "value": "94%", "label": "Occupabilità entro un anno" },
+    "years": { "value": "12", "label": "Anni di esperienza" }
+  },
+  "features": [
+    { "title": "Programmi aggiornati", "desc": "Contenuti rivisti ogni semestre con professionisti attivi del settore" },
+    { "title": "Comunità globale", "desc": "Rete di ex studenti e tutor in oltre 30 paesi" },
+    { "title": "Certificazione riconosciuta", "desc": "Titoli propri con riconoscimento nel settore privato" }
+  ],
+  "courses": {
+    "section_title": "I Nostri Programmi",
+    "enroll": "Iscriviti",
+    "items": [
+      { "title": "Sviluppo Web Full Stack", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Laurea" },
+      { "title": "Gestione dei Progetti", "desc": "Metodologie agili e SCRUM", "price": "€199", "mode": "Semipresenziale", "level": "Master" },
+      { "title": "Marketing Digitale", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Laurea" }
+    ]
+  },
+  "testimonials": {
+    "section_title": "Cosa dicono i nostri studenti",
+    "items": [
+      { "initials": "MC", "name": "Marta C.", "program": "Sviluppo Web Full Stack", "quote": "Il ritmo del programma mi ha permesso di continuare a lavorare mentre studiavo. L'accompagnamento dei tutor ha fatto la differenza." },
+      { "initials": "JP", "name": "Jordi P.", "program": "Gestione dei Progetti", "quote": "Contenuti molto pratici, niente teoria fine a se stessa. Dopo tre mesi dalla fine stavo già applicando quanto imparato al lavoro." },
+      { "initials": "AR", "name": "Aina R.", "program": "Marketing Digitale", "quote": "La comunità di studenti è stata preziosa quanto il programma stesso. Sono ancora in contatto con diversi compagni del mio corso." }
+    ]
+  },
+  "news": {
+    "section_title": "Novità",
+    "items": [
+      { "date": "3 lug 2026", "title": "Nuova edizione del programma di Sviluppo Web", "excerpt": "Ampliamo i posti per il semestre autunnale con due nuovi percorsi specializzati." },
+      { "date": "18 giu 2026", "title": "Accordo di tirocinio con aziende del settore", "excerpt": "Gli studenti dell'ultimo anno potranno accedere a tirocini retribuiti in oltre 20 aziende partner." },
+      { "date": "2 giu 2026", "title": "Giornata di porte aperte online", "excerpt": "Sessione informativa per rispondere a dubbi su ammissioni, borse di studio e modalità di studio." }
+    ]
+  },
+  "cta": {
+    "title": "Pronto per iniziare?",
+    "subtitle": "Unisciti a una comunità di studenti che sta già crescendo professionalmente.",
+    "button": "Richiedi informazioni"
+  },
+  "footer": {
+    "tagline": "Formazione online di qualità per professionisti.",
+    "legal_title": "Legale",
+    "website_title": "Sito Web",
+    "programs_title": "Programmi",
+    "about_title": "Chi siamo",
+    "whoweare": "Chi siamo",
+    "news_link": "Novità",
+    "student_access": "Accesso studenti",
+    "contact_title": "Contatti",
+    "location": "Malta · Andorra",
+    "copyright": "© 2026 UCLCampus. Tutti i diritti riservati.",
+    "cookie_policy_link": "Informativa sui Cookie",
+    "privacy_policy_link": "Informativa sulla Privacy",
+    "cookie_settings_link": "Impostazioni cookie",
+    "legal_notice_link": "Note Legali",
+    "accessibility_link": "Accessibilità"
+  },
+  "chat": {
+    "title": "Assistente UCLCampus",
+    "welcome": "Ciao! Chiedimi pure sui nostri programmi, prezzi o ammissioni.",
+    "placeholder": "Scrivi la tua domanda...",
+    "send": "Invia",
+    "typing": "Sto scrivendo...",
+    "close": "Chiudi chat",
+    "launcher_label": "Apri chat di aiuto",
+    "error": "Impossibile inviare il messaggio. Riprova."
+  },
+  "cookie_banner": {
+    "title": "Utilizziamo i cookie",
+    "description_pre": "Utilizziamo cookie necessari per il funzionamento del sito e, solo con il tuo consenso, cookie analitici e di marketing. Puoi cambiare la tua scelta in qualsiasi momento da",
+    "description_mid": "nel piè di pagina. Maggiori informazioni nella nostra",
+    "cookie_settings": "Impostazioni cookie",
+    "cookie_policy": "Informativa sui Cookie",
+    "necessary_title": "Necessari",
+    "necessary_desc": "Indispensabili per il funzionamento del sito (es. mantenere la sessione attiva). Non possono essere disattivati.",
+    "analytics_title": "Analitici",
+    "analytics_desc": "Ci aiutano a capire come viene usato il sito per migliorarlo. Al momento nessuno è attivo. Si attiverebbero solo se accetti questa categoria.",
+    "marketing_title": "Marketing",
+    "marketing_desc": "Per misurare e personalizzare le campagne pubblicitarie. Al momento nessuno è attivo. Si attiverebbero solo se accetti questa categoria.",
+    "personalize": "Personalizza",
+    "reject": "Rifiuta",
+    "accept_all": "Accetta tutti",
+    "save_preferences": "Salva preferenze",
+    "close": "Chiudi (equivale a rifiutare i cookie opzionali)"
+  },
+  "cookie_policy_page": {
+    "title": "Informativa sui Cookie",
+    "last_updated": "Ultimo aggiornamento: luglio 2026",
+    "what_title": "Cosa sono i cookie?",
+    "what_body": "I cookie sono piccoli file di testo che un sito web salva nel tuo browser. Vengono usati per ricordare informazioni sulla tua visita, come la sessione attiva o le tue preferenze, e in alcuni casi per analizzare l'uso del sito o mostrare pubblicità pertinente.",
+    "table_title": "Cookie che utilizziamo",
+    "table_category": "Categoria",
+    "table_name": "Nome",
+    "table_purpose": "Finalità",
+    "table_duration": "Durata",
+    "row_session_purpose": "Mantiene la tua sessione attiva in modo sicuro (httpOnly, non accessibile da JavaScript).",
+    "row_session_duration": "8 ore",
+    "row_consent_purpose": "Salva la tua scelta sui cookie per non chiedertela di nuovo a ogni visita.",
+    "row_consent_duration": "12 mesi",
+    "row_analytics_category": "Analitici",
+    "row_analytics_purpose": "Google Analytics 4 misura le visite e l'uso del sito in forma aggregata (pagine viste, origine del traffico) per aiutarci a migliorarlo. Si carica solo se accetti questa categoria di cookie.",
+    "row_analytics_duration": "2 anni",
+    "row_marketing_category": "Marketing (inattivi)",
+    "row_marketing_purpose": "Al momento non è attivo alcun cookie di marketing. Se in futuro verrà aggiunta pubblicità o remarketing, comparirà qui prima di essere attivato, e verrà caricato solo se lo accetti.",
+    "legal_title": "Base giuridica e il tuo consenso",
+    "legal_body_1": "I cookie necessari vengono sempre installati perché il sito non può funzionare senza di essi (interesse legittimo / esecuzione del servizio richiesto). I cookie analitici e di marketing vengono installati solo con il tuo consenso esplicito, in conformità al Regolamento Generale sulla Protezione dei Dati (GDPR) e alla normativa sui cookie applicabile.",
+    "legal_body_2": "Puoi revocare il tuo consenso in qualsiasi momento, con la stessa facilità con cui lo hai concesso.",
+    "manage_title": "Gestisci le tue preferenze",
+    "manage_button": "Configura cookie",
+    "browser_title": "Cookie del browser",
+    "browser_body": "Puoi anche bloccare o eliminare i cookie dalle impostazioni del tuo browser. Tieni presente che bloccare i cookie necessari può impedire il corretto funzionamento di alcune parti del sito (come la tua area studenti)."
+  },
+  "privacy_policy_page": {
+    "title": "Informativa sulla Privacy",
+    "last_updated": "Ultimo aggiornamento: luglio 2026",
+    "controller_title": "Titolare del trattamento",
+    "controller_body": "UCLCampus (nome commerciale). Dati dell'entità legale, sede legale e partita IVA da completare da parte del titolare del progetto prima della pubblicazione in produzione. Contatto: info@uclcampus.com.",
+    "data_title": "Quali dati raccogliamo",
+    "data_intro": "A seconda di come interagisci con noi, possiamo raccogliere:",
+    "data_identification": "Dati identificativi: nome completo, email, telefono.",
+    "data_account": "Dati dell'account: email e password (sempre memorizzata cifrata, mai in chiaro).",
+    "data_academic": "Dati accademici e di iscrizione: programmi seguiti, stato dell'iscrizione, voti se applicabile.",
+    "data_commercial": "Dati commerciali (se ci contatti per informazioni): origine del contatto, programma di interesse e cronologia delle comunicazioni, usati internamente nel nostro CRM.",
+    "data_technical": "Dati tecnici minimi: indirizzo IP e user-agent nei log di sicurezza del server, e il cookie di sessione mentre sei autenticato.",
+    "purpose_title": "Per cosa usiamo i tuoi dati",
+    "purpose_1": "Gestire la tua iscrizione e darti accesso alla piattaforma di formazione.",
+    "purpose_2": "Rispondere alle tue richieste di informazioni.",
+    "purpose_3": "Gestire la relazione commerciale con i futuri studenti (CRM interno).",
+    "purpose_4": "Adempiere agli obblighi legali e contrattuali derivanti dalla prestazione del servizio educativo.",
+    "purpose_5": "Inviarti comunicazioni sui nostri programmi, solo se hai dato il tuo consenso esplicito (marketing via email).",
+    "legalbasis_title": "Base giuridica",
+    "legalbasis_body": "Esecuzione di un contratto (iscrizione e prestazione del servizio educativo), consenso (comunicazioni commerciali, cookie non essenziali) e interesse legittimo (sicurezza del servizio, gestione delle richieste).",
+    "retention_title": "Per quanto tempo conserviamo i tuoi dati",
+    "retention_body": "I dati degli studenti vengono conservati per tutta la durata del rapporto accademico e, al termine, per il periodo richiesto dalla normativa educativa e fiscale applicabile. I dati di contatto commerciale senza conversione in iscrizione vengono conservati per un massimo di 24 mesi dall'ultimo contatto, salvo richiesta di cancellazione anticipata.",
+    "recipients_title": "Con chi condividiamo i tuoi dati",
+    "recipients_body": "Non vendiamo né cediamo i tuoi dati a terzi per finalità commerciali estranee al nostro servizio. Possiamo condividere dati con fornitori tecnologici strettamente necessari per gestire la piattaforma (hosting, email transazionali) sotto accordo di riservatezza e trattamento dei dati.",
+    "security_title": "Come proteggiamo i tuoi dati",
+    "security_body": "Le password vengono memorizzate cifrate (bcrypt), le comunicazioni viaggiano cifrate (HTTPS/TLS), l'accesso ai dati è limitato in base ai ruoli, e applichiamo misure tecniche di protezione contro accessi non autorizzati.",
+    "rights_title": "I tuoi diritti",
+    "rights_intro": "Hai diritto di accedere, rettificare, cancellare, opporti, limitare il trattamento e richiedere la portabilità dei tuoi dati personali. Per esercitarli, scrivici a",
+    "rights_outro": "Hai inoltre il diritto di presentare un reclamo all'autorità di controllo competente se ritieni che non abbiamo gestito correttamente la tua richiesta.",
+    "minors_title": "Minori",
+    "minors_body": "I nostri programmi sono rivolti a persone maggiorenni. Non raccogliamo consapevolmente dati di minori di 18 anni.",
+    "changes_title": "Modifiche a questa informativa",
+    "changes_body": "Potremmo aggiornare questa informativa per riflettere cambiamenti legali o del servizio. Pubblicheremo sempre la data dell'ultimo aggiornamento nella parte superiore di questa pagina."
+  },
+  "legal_notice_page": {
+    "title": "Note Legali",
+    "last_updated": "Ultimo aggiornamento: luglio 2026",
+    "identity_title": "Identità del titolare",
+    "identity_body": "UCLCampus (nome commerciale). Ragione sociale, sede fiscale, partita IVA e dati di iscrizione al registro da completare da parte del titolare del progetto prima della pubblicazione in produzione. Contatto: info@uclcampus.com.",
+    "purpose_title": "Oggetto del sito web",
+    "purpose_body": "Questo sito offre informazioni sui nostri programmi formativi, consente di richiedere informazioni e dà accesso alla piattaforma di formazione (LMS) agli studenti iscritti.",
+    "ip_title": "Proprietà intellettuale",
+    "ip_body": "I contenuti di questo sito (testi, design, loghi, codice) sono di proprietà di UCLCampus o di terzi che ne hanno autorizzato l'uso, salvo diversa indicazione. Ne è vietata la riproduzione senza autorizzazione espressa.",
+    "liability_title": "Responsabilità",
+    "liability_body": "Ci impegniamo affinché le informazioni pubblicate siano accurate e aggiornate, ma non garantiamo l'assenza di errori. Ci riserviamo il diritto di modificare il contenuto di questo sito in qualsiasi momento.",
+    "law_title": "Legislazione applicabile",
+    "law_body": "Queste note legali sono regolate dalla legislazione applicabile in materia di servizi della società dell'informazione e protezione dei dati vigente nel territorio in cui opera UCLCampus."
+  },
+  "accessibility_page": {
+    "title": "Accessibilità",
+    "last_updated": "Ultimo aggiornamento: luglio 2026",
+    "commitment_title": "Il nostro impegno",
+    "commitment_body": "Lavoriamo affinché questo sito sia accessibile al maggior numero di persone possibile, indipendentemente dalle loro capacità o dal dispositivo utilizzato, seguendo come riferimento le Linee guida per l'Accessibilità dei Contenuti Web (WCAG).",
+    "status_title": "Stato attuale",
+    "status_body": "Questo sito è in fase di sviluppo attivo. Alcune aree non soddisfano ancora tutti i criteri di accessibilità (ad esempio, revisione completa della navigazione da tastiera e degli screen reader nell'area studenti). Continueremo a correggere questi punti progressivamente.",
+    "contact_title": "Contatti",
+    "contact_body": "Se riscontri una barriera di accessibilità utilizzando questo sito, scrivici e la esamineremo:"
+  }
+}
