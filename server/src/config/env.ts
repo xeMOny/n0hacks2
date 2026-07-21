@@ -43,7 +43,7 @@ const COOKIE_DOMAIN = process.env.COOKIE_DOMAIN || undefined;
 // seguridad del resto de la API — si falta la clave, /api/chat responde 503
 // en vez de tumbar login/CRM/intranet al arrancar.
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || undefined;
-const CHAT_MODEL = process.env.CHAT_MODEL || "claude-haiku-4-5";
+const CHAT_MODEL = process.env.CHAT_MODEL || "claude-fable-5";
 
 export const env = {
   NODE_ENV,
