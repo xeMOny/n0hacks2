@@ -15,6 +15,7 @@ const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const AccessibilityStatement = lazy(() => import("./pages/AccessibilityStatement"));
+const ProgramPage = lazy(() => import("./pages/ProgramPage"));
 
 // Rutas que ya tienen su propia cabecera/navegación real (la home y las 4
 // páginas legales, todas con LegalPageLayout y su enlace "volver al inicio").
@@ -30,7 +31,7 @@ function InternalNav() {
   // prefijo de idioma (/en/privacidad/) — la comparación literal dejaba
   // pasar este nav de debug a las páginas legales prerenderizadas.
   const base = stripLangPrefix(location.pathname).replace(/(.)\/$/, "$1");
-  if (ROUTES_WITH_OWN_CHROME.includes(base)) return null;
+  if (ROUTES_WITH_OWN_CHROME.includes(base) || base.startsWith("/oferta/")) return null;
   return (
     <nav style={{ display: "flex", gap: 16, padding: 16 }}>
       <Link to="/">Inicio</Link>
@@ -70,6 +71,7 @@ function publicRoutes(lang?: SupportedLanguage) {
       <Route path="privacidad" element={wrap(<PrivacyPolicy />)} />
       <Route path="aviso-legal" element={wrap(<LegalNotice />)} />
       <Route path="accesibilidad" element={wrap(<AccessibilityStatement />)} />
+      <Route path="oferta/:slug" element={wrap(<ProgramPage />)} />
     </>
   );
 }

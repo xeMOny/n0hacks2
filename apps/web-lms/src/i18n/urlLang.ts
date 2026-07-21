@@ -1,4 +1,5 @@
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "./index";
+import PROGRAM_SLUGS from "../data/programSlugs.json";
 
 // El español vive en la raíz (dominio .com con público principal español);
 // el resto de idiomas tienen prefijo de URL propio (/en, /fr, /it) para que
@@ -14,7 +15,14 @@ export const PREFIXED_LANGUAGES = SUPPORTED_LANGUAGES.filter(
 // que responde 200 directa en GitHub Pages). Las rutas internas de la app
 // (login, mi-area, cursos) no se localizan: dependen del backend y están
 // bloqueadas en robots.txt.
-export const PUBLIC_PATHS = ["/", "/privacidad/", "/aviso-legal/", "/cookies/", "/accesibilidad/"];
+export const PUBLIC_PATHS = [
+  "/",
+  "/privacidad/",
+  "/aviso-legal/",
+  "/cookies/",
+  "/accesibilidad/",
+  ...PROGRAM_SLUGS.map((slug) => `/oferta/${slug}/`),
+];
 
 export function langFromPath(pathname: string): SupportedLanguage {
   const seg = pathname.split("/")[1];

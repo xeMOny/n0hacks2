@@ -1,0 +1,118 @@
+{
+ "title": "Master en Gestion de Projets Européens",
+ "category": "Affaires",
+ "description": "Ce master est conçu pour ceux qui aspirent à exceller dans le domaine dynamique de la gestion de projets, avec un accent spécifique sur les projets de l'Union européenne.",
+ "careers": [
+  "Gestionnaire de projets européens",
+  "Business Development Manager",
+  "Coordinateur de projets internationaux",
+  "Consultant en gestion de projets",
+  "Chercheur académique ou enseignant",
+  "Analyste ou conseiller en politiques de l'UE",
+  "Directeur de projet d'ONG",
+  "Entrepreneur dans des initiatives financées par l'UE"
+ ],
+ "modules": [
+  {
+   "name": "L'Union européenne et son système institutionnel",
+   "ects": 6,
+   "desc": "Ce module approfondit les multiples aspects de l'Union européenne (UE), en explorant sa genèse, ses fondements historiques et ses bases idéologiques."
+  },
+  {
+   "name": "Introduction à la gestion de projets et à l'analyse du cadre logique",
+   "ects": 12,
+   "desc": "Ce module constitue une introduction complète à la gestion de projets, offrant aux étudiants une compréhension fondamentale du concept, des principes et des aspects pratiques de la gestion de projets."
+  },
+  {
+   "name": "Initiation, planification, mise en œuvre, contrôle et clôture du projet",
+   "ects": 12,
+   "desc": "Ce module explore la gestion et le contrôle de projets, couvrant les méthodologies de développement et de mise en œuvre d'un projet européen du point de vue de la gestion de projets."
+  },
+  {
+   "name": "Les programmes de financement européens dans le Cadre Financier Pluriannuel 2021-2027",
+   "ects": 12,
+   "desc": "Ce module explore les plans de financement du Cadre Financier Pluriannuel 2021/2027, couvrant ses aspects fondamentaux, ses avantages, sa structure, ses modalités de financement et ses initiatives."
+  },
+  {
+   "name": "Règles de participation à l'agenda 2021/2027",
+   "ects": 12,
+   "desc": "Ce module offre une analyse approfondie des règles et procédures régissant la participation aux programmes de l'UE dans le cadre de l'Agenda 2021/2027."
+  },
+  {
+   "name": "Méthodes de recherche",
+   "ects": 6,
+   "desc": "Ce module est conçu pour doter les étudiants des compétences et connaissances essentielles nécessaires pour planifier, mener et rédiger avec succès une thèse."
+  },
+  {
+   "name": "Mémoire de fin de master",
+   "ects": 30,
+   "desc": "Le mémoire de fin de master est un élément obligatoire du Master en Conception et Gestion de Projets de l'UE."
+  }
+ ],
+ "admission": [
+  {
+   "heading": null,
+   "items": [
+    "Le master est ouvert aux diplômés et aux professionnels titulaires d'une qualification minimale de niveau 5 ou équivalent, sans aucune restriction d'origine.",
+    "IELTS 6.0 ou équivalent (pour les étudiants optant pour le master en anglais).",
+    "CELI, CILS, AIL, PLIDA ou IT C1 (pour les étudiants optant pour le master en italien)."
+   ]
+  }
+ ],
+ "exitPoints": [
+  {
+   "name": "Diplôme de troisième cycle en Conception et Gestion de Projets de l'UE",
+   "ects": "60 ECTS",
+   "desc": "Qualification avancée en gestion de projets européens."
+  },
+  {
+   "name": "Certificat de troisième cycle en Conception et Gestion de Projets de l'UE",
+   "ects": "36 ECTS",
+   "desc": "Certification essentielle en gestion de projets de l'UE."
+  },
+  {
+   "name": "Award en L'Union Européenne et son Système Institutionnel",
+   "ects": "6 ECTS",
+   "desc": "Compréhension des institutions et cadres de l'UE."
+  },
+  {
+   "name": "Award en Introduction à la Gestion de Projets et au Cadre Logique",
+   "ects": "6 ECTS",
+   "desc": "Concepts fondamentaux de gestion de projets."
+  },
+  {
+   "name": "Award en Initiation, Planification, Mise en Œuvre et Clôture de Projets",
+   "ects": "12 ECTS",
+   "desc": "Gestion complète du cycle de vie du projet."
+  },
+  {
+   "name": "Award en Programmes de Financement Européens dans le Cadre Financier Pluriannuel 2021-2027",
+   "ects": "12 ECTS",
+   "desc": "Mécanismes et opportunités de financement de l'UE."
+  },
+  {
+   "name": "Award en Règles de Participation à l'Agenda 2021/2027",
+   "ects": "12 ECTS",
+   "desc": "Exigences de conformité et de participation."
+  },
+  {
+   "name": "Award en Rédaction de Thèse",
+   "ects": "6 ECTS",
+   "desc": "Compétences en recherche et rédaction académique."
+  }
+ ],
+ "mqfCap": "MQF Level 7",
+ "sidebar": {
+  "category": "Affaires",
+  "duration": "18 mois",
+  "modules": 7,
+  "ects": 90,
+  "qualification": "EQF/MQF 7",
+  "attendance": "Temps plein",
+  "delivery": "Apprentissage entièrement en ligne",
+  "language": "Anglais et italien",
+  "enrollOpen": "1er octobre 2025",
+  "classesStart": "7 janvier 2026",
+  "enrollStatus": "Fermé"
+ }
+}

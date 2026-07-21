@@ -33,7 +33,17 @@ const PORT = 4399;
 // URL final real siempre lleva barra — generar el snapshot ya desde esa
 // ruta evita que el <link rel="canonical"> capturado apunte a la URL que
 // redirige en vez de a la que responde 200 directamente.
-const BASE_ROUTES = ["/", "/privacidad/", "/aviso-legal/", "/cookies/", "/accesibilidad/"];
+const PROGRAM_SLUGS = JSON.parse(
+  await readFile(path.resolve(import.meta.dirname, "..", "src", "data", "programSlugs.json"), "utf8"),
+);
+const BASE_ROUTES = [
+  "/",
+  "/privacidad/",
+  "/aviso-legal/",
+  "/cookies/",
+  "/accesibilidad/",
+  ...PROGRAM_SLUGS.map((slug) => `/oferta/${slug}/`),
+];
 
 // Cada ruta pública se prerenderiza en los 4 idiomas: el español en la raíz
 // y el resto bajo su prefijo (/en, /fr, /it) — las mismas URLs que declaran

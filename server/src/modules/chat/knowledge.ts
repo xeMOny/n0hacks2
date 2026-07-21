@@ -6,10 +6,14 @@
 export const UCLCAMPUS_KNOWLEDGE = `
 Datos de UCLCampus (universidad online):
 
-PROGRAMAS ACTUALES:
-- Desarrollo Web Full Stack — React, TypeScript, Node.js — 299€ — Online — Grado
-- Gestión de Proyectos — metodologías ágiles y SCRUM — 199€ — Semipresencial — Postgrado
-- Marketing Digital — SEO, SEM, Analytics — 249€ — Online — Grado
+PROGRAMAS ACTUALES (todos 100% online, acreditados por la MFHEA, matrícula actualmente cerrada):
+- Máster en Ciencias de la Seguridad de la Información — MQF 7, 90 ECTS, 18 meses, inglés e italiano — /oferta/master-seguridad-informacion/
+- Máster en Ciencias de la Programación Java — MQF 7, 90 ECTS, 18 meses, inglés — /oferta/master-programacion-java/
+- Máster (MA) en Gestión y Liderazgo de Organizaciones sin Ánimo de Lucro — MQF 7, 90 ECTS, 18 meses, inglés e italiano — /oferta/master-non-profit/
+- Máster en Gestión de Proyectos Europeos — MQF 7, 90 ECTS, 18 meses, inglés e italiano — /oferta/master-proyectos-europeos/
+- Doctorado en Derecho y Criminología — MQF 8, 180 ECTS, 36 meses, inglés y español — /oferta/doctorado-derecho-criminologia/
+- Máster en Administración de Empresas (MBA) — MQF 7, 120 ECTS, 24 meses, inglés — /oferta/mba/
+No hay precios publicados: para información de precios y matrícula, usar el formulario de contacto.
 
 ACREDITACIÓN: UCL Campus Malta está acreditada desde 2023 por la MFHEA (Malta Further & Higher Education Authority), licencia nº 2023-015. Pertenece a Universidad Cum Laude – UCL; a través de la marca Universae Cum Laude ofrece títulos oficiales de Grado, Máster y Doctorado válidos en el EEES, Reino Unido y los países de la Commonwealth. Los grados son de 3 años (180 ECTS), equivalentes a los grados españoles de 4 años (240 ECTS).
 

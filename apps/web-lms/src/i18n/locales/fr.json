@@ -47,33 +47,6 @@
       }
     ]
   },
-  "courses": {
-    "section_title": "Offre académique",
-    "enroll": "S'inscrire",
-    "items": [
-      {
-        "title": "Développement Web Full Stack",
-        "desc": "React, TypeScript, Node.js",
-        "price": "299 €",
-        "mode": "En ligne",
-        "level": "Licence"
-      },
-      {
-        "title": "Gestion de Projet",
-        "desc": "Méthodologies agiles et SCRUM",
-        "price": "199 €",
-        "mode": "Semi-présentiel",
-        "level": "Master"
-      },
-      {
-        "title": "Marketing Digital",
-        "desc": "SEO, SEM, Analytics",
-        "price": "249 €",
-        "mode": "En ligne",
-        "level": "Licence"
-      }
-    ]
-  },
   "news": {
     "section_title": "Actualités",
     "items": [
@@ -317,5 +290,107 @@
     "sending": "Envoi…",
     "success": "Merci ! Nous avons bien reçu votre demande et vous répondrons rapidement.",
     "error": "L’envoi a échoué. Réessayez ou écrivez-nous à info@uclcampus.com."
+  },
+  "program_page": {
+    "back": "Retour à l'offre académique",
+    "description_title": "Description",
+    "careers_title": "Débouchés professionnels",
+    "modules_title": "Modules",
+    "admission_title": "Conditions d'admission",
+    "exit_title": "Qualifications de sortie",
+    "exit_points_title": "Points de sortie disponibles",
+    "accredited": "Accrédité par la MFHEA",
+    "mfhea_full": "Malta Further & Higher Education Authority",
+    "institution": "Institution éducative",
+    "institution_value": "eGO Education",
+    "license_number": "Numéro de licence",
+    "license_start": "Date de début de licence",
+    "license_start_value": "21 juin 2023",
+    "license_end": "Date d'expiration de licence",
+    "license_end_value": "21 juin 2028",
+    "license_category": "Catégorie de licence",
+    "license_category_value": "Institution d'enseignement supérieur",
+    "programs_up_to": "Programmes classés jusqu'à",
+    "info_title": "Informations sur le programme",
+    "office": "Adresse du bureau",
+    "training_sites": "Lieux de formation",
+    "training_sites_value": "La formation est dispensée exclusivement par des canaux numériques",
+    "director": "Directeur de l'institution",
+    "legal_rep": "Représentant légal",
+    "details_title": "Détails du cours",
+    "category": "Catégorie",
+    "duration": "Durée",
+    "modules_label": "Modules",
+    "ects": "Crédits ECTS",
+    "qualification_title": "Qualification",
+    "higher_ed": "Cours d'enseignement supérieur",
+    "study_title": "Informations d'étude",
+    "attendance": "Modalité de présence",
+    "delivery": "Modalité de diffusion",
+    "language": "Langue",
+    "dates_title": "Dates importantes",
+    "enroll_open": "Ouverture des inscriptions",
+    "classes_start": "Début des cours",
+    "enroll_status": "Statut des inscriptions",
+    "enroll_banner": "Vous souhaitez vous inscrire à ce programme ?",
+    "enroll_banner_cta": "Demander des informations",
+    "not_found": "Programme introuvable.",
+    "view_program": "Voir le programme",
+    "office_value": "40 Villa Fairholme, Sir Augustus Bartolo Street, Ta' Xbiex XBX 1095 Malta",
+    "director_value": "Dr Ernesto Pallotta",
+    "legal_rep_value": "Mr Damian Xuereb",
+    "license_number_value": "2023-015"
+  },
+  "offer": {
+    "items": [
+      {
+        "slug": "master-seguridad-informacion",
+        "title": "Master en Sciences de la Sécurité de l'Information",
+        "category": "Informatique",
+        "qualification": "EQF/MQF 7",
+        "duration": "18 mois",
+        "language": "Anglais et italien"
+      },
+      {
+        "slug": "master-programacion-java",
+        "title": "Master en Sciences de la Programmation Java",
+        "category": "Informatique",
+        "qualification": "EQF/MQF 7",
+        "duration": "18 mois",
+        "language": "Anglais"
+      },
+      {
+        "slug": "master-non-profit",
+        "title": "Master of Arts (MA) en Gestion et Leadership des Organisations à But Non Lucratif",
+        "category": "Affaires",
+        "qualification": "EQF/MQF 7",
+        "duration": "18 mois",
+        "language": "Anglais et italien"
+      },
+      {
+        "slug": "master-proyectos-europeos",
+        "title": "Master en Gestion de Projets Européens",
+        "category": "Affaires",
+        "qualification": "EQF/MQF 7",
+        "duration": "18 mois",
+        "language": "Anglais et italien"
+      },
+      {
+        "slug": "doctorado-derecho-criminologia",
+        "title": "Doctorat en Droit et Criminologie",
+        "category": "Droit",
+        "qualification": "EQF/MQF 8",
+        "duration": "36 mois",
+        "language": "Anglais et espagnol"
+      },
+      {
+        "slug": "mba",
+        "title": "Master en Administration des Affaires (MBA)",
+        "category": "Affaires et Économie",
+        "qualification": "EQF/MQF 7",
+        "duration": "24 mois",
+        "language": "Anglais"
+      }
+    ]
   }
 }

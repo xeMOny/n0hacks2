@@ -40,7 +40,7 @@ import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
 // Reino Unido/Commonwealth, grados de 3 años), en el orden de about.cards.
 const aboutCardIcons = [Target, BadgeCheck, Globe2, Hourglass];
 
-interface Course { title: string; desc: string; price: string; mode: string; level: string }
+interface OfferItem { slug: string; title: string; category: string; qualification: string; duration: string; language: string }
 interface NewsItem { date: string; title: string; excerpt: string }
 interface TitledItem { title: string; desc: string }
 interface AdmissionStep { title: string; desc: string }
@@ -65,7 +65,7 @@ export default function Home() {
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const courses = (t('courses.items', { returnObjects: true }) as Course[]).map((c, i) => ({ ...c, id: i }));
+  const offerItems = t('offer.items', { returnObjects: true }) as OfferItem[];
   const news = t('news.items', { returnObjects: true }) as NewsItem[];
   const aboutCards = t('about.cards', { returnObjects: true }) as TitledItem[];
   const essenceItems = t('about.essence_items', { returnObjects: true }) as TitledItem[];
@@ -244,43 +244,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cursos */}
+      {/* Oferta Académica: los programas reales acreditados por la MFHEA,
+          cada tarjeta enlaza a su página de detalle (/oferta/<slug>/). */}
       <section id="cursos" className="bg-brand-mist py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold text-brand-navy">{t('courses.section_title')}</h2>
+            <h2 className="text-4xl font-bold text-brand-navy">{t('nav.academic_offer')}</h2>
             <Globe2 className="text-brand-blue hidden md:block" size={32} />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {courses
-              .map((course, i) => (
-                <motion.div
-                  key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-brand-sky transition"
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {offerItems.map((item, i) => (
+              <motion.div
+                key={item.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: (i % 3) * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Link
+                  to={lp(`/oferta/${item.slug}`)}
+                  className="group flex flex-col h-full bg-white border border-slate-200 rounded-xl p-7 shadow-sm hover:shadow-md hover:border-brand-sky transition"
                 >
-                  <div className="flex gap-2 mb-4">
-                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{course.mode}</span>
-                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{course.level}</span>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{item.category}</span>
+                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{item.qualification}</span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 text-brand-navy">{course.title}</h3>
-                  <p className="text-slate-600 mb-6">{course.desc}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-3xl font-bold text-brand-blue">{course.price}</span>
-                    {/* No hay pasarela de matrícula/pago real todavía: lleva al
-                        formulario de contacto en vez de ser un botón sin acción. */}
-                    <a
-                      href="#contacto"
-                      className="bg-brand-blue hover:bg-brand-navy text-white px-6 py-2 rounded-lg font-semibold transition"
-                    >
-                      {t('courses.enroll')}
-                    </a>
+                  <h3 className="text-xl font-bold mb-4 text-brand-navy group-hover:text-brand-blue transition">{item.title}</h3>
+                  <div className="mt-auto flex items-center justify-between text-sm text-slate-500">
+                    <span>{item.duration} · {item.language}</span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-brand-blue">
+                      {t('program_page.view_program')} <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                    </span>
                   </div>
-                </motion.div>
-              ))}
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
