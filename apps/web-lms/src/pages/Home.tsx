@@ -1,7 +1,7 @@
 import { Suspense, lazy, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Search,
@@ -13,6 +13,8 @@ import {
   Newspaper,
   MapPin,
   Calendar,
+  Menu,
+  X,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
@@ -49,6 +51,7 @@ export default function Home() {
   useDocumentMeta(t('meta.home_title'), '/');
   const [modalidad, setModalidad] = useState('all');
   const [nivel, setNivel] = useState('all');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const stats = t('stats', { returnObjects: true }) as Record<string, StatEntry>;
   const features = t('features', { returnObjects: true }) as Feature[];
@@ -81,20 +84,56 @@ export default function Home() {
             <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
             <a href="#cursos" className="hover:text-brand-blue transition">{t('nav.programs')}</a>
             <a href="#sobre" className="hover:text-brand-blue transition">{t('nav.about')}</a>
             <a href="#novedades" className="hover:text-brand-blue transition">{t('nav.news')}</a>
             <a href="#contacto" className="hover:text-brand-blue transition">{t('nav.contact')}</a>
           </nav>
 
-          <div className="flex items-center gap-4 text-xs font-medium text-slate-500 whitespace-nowrap">
+          <div className="flex items-center gap-3 lg:gap-4 text-xs font-medium text-slate-500 whitespace-nowrap">
             <Link to="/mi-area" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.students_area')}</Link>
             <Link to="/login" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
             <span className="hidden lg:block w-px h-4 bg-slate-300" aria-hidden="true" />
             <LanguageSwitcher />
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              aria-label={menuOpen ? t('nav.close') : t('nav.menu')}
+              className="lg:hidden appearance-none bg-transparent p-1.5 -mr-1.5 text-brand-navy hover:text-brand-blue transition"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
+
+        {/* Menú móvil/tablet: mismo contenido que la barra de escritorio.
+            Por debajo de lg no cabe la barra completa (el francés es el
+            idioma más largo), así que colapsa todo aquí. */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.nav
+              id="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.18 }}
+              className="lg:hidden overflow-hidden border-t border-slate-200 bg-white"
+            >
+              <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col text-sm font-semibold text-brand-navy">
+                <a href="#cursos" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.programs')}</a>
+                <a href="#sobre" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.about')}</a>
+                <a href="#novedades" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.news')}</a>
+                <a href="#contacto" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.contact')}</a>
+                <span className="my-2 h-px bg-slate-200" aria-hidden="true" />
+                <Link to="/mi-area" onClick={() => setMenuOpen(false)} className="py-2.5 text-slate-500 hover:text-brand-blue transition">{t('nav.students_area')}</Link>
+                <Link to="/login" onClick={() => setMenuOpen(false)} className="py-2.5 text-slate-500 hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Hero */}
@@ -259,6 +298,9 @@ export default function Home() {
                   <img
                     src={testimonialPhotos[i]}
                     alt=""
+                    loading="lazy"
+                    width={44}
+                    height={44}
                     className="w-11 h-11 rounded-full object-cover"
                   />
                   <div>
@@ -367,9 +409,15 @@ export default function Home() {
         </div>
       </footer>
 
-      <Suspense fallback={null}>
-        <ChatWidget />
-      </Suspense>
+      {/* Sin backend accesible (GitHub Pages es estático), cada mensaje del
+          chat acabaría en error de cara al visitante. En dev el proxy de Vite
+          apunta al backend local; en producción solo se muestra cuando el
+          build define VITE_API_BASE (es decir, cuando el backend real exista). */}
+      {(import.meta.env.DEV || import.meta.env.VITE_API_BASE) && (
+        <Suspense fallback={null}>
+          <ChatWidget />
+        </Suspense>
+      )}
     </div>
   );
 }
