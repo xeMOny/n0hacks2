@@ -29,6 +29,10 @@ services:
       JWT_SECRET: ${JWT_SECRET:?Define JWT_SECRET en .env (mínimo 32 caracteres aleatorios)}
       CORS_ORIGIN: ${CORS_ORIGIN:?Define CORS_ORIGIN en .env, p.ej. https://uclcampus.com,https://crm.uclcampus.com,https://intranet.uclcampus.com}
       COOKIE_DOMAIN: ${COOKIE_DOMAIN:-}
+      # Chatbot de la landing: opcionales a propósito (sin clave, /api/chat
+      # responde 503 y el resto de la API funciona igual).
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      CHAT_MODEL: ${CHAT_MODEL:-claude-fable-5}
       NODE_ENV: production
     depends_on:
       postgres:
@@ -39,17 +43,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-
-  web-lms:
-    build: ../apps/web-lms
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   web-crm:
     build: ../apps/web-crm
@@ -87,8 +80,6 @@ services:
       - "443:443"
     depends_on:
       api:
-        condition: service_healthy
-      web-lms:
         condition: service_healthy
       web-crm:
         condition: service_healthy

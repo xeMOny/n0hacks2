@@ -8,10 +8,13 @@ Pasos exactos, en orden, para pasar de "código en el repo" a "sistema corriendo
 - Acceso SSH al VPS
 
 ## 1. Apuntar el DNS
-En el panel del registrador, crear registros A apuntando a la IP del VPS:
+IMPORTANTE: `uclcampus.com` y `www` NO se tocan — la landing pública vive en
+GitHub Pages (con el prerender multiidioma y su SEO) y ahí se queda. El VPS
+solo sirve la API, el CRM y la Intranet en subdominios.
+
+En Hostinger (hPanel → DNS de uclcampus.com, o vía API MCP), crear solo:
 ```
-uclcampus.com        A   <IP_VPS>
-www.uclcampus.com     A   <IP_VPS>
+api.uclcampus.com      A   <IP_VPS>
 crm.uclcampus.com      A   <IP_VPS>
 intranet.uclcampus.com A   <IP_VPS>
 ```
@@ -37,7 +40,7 @@ El servidor falla al arrancar si falta cualquiera de `POSTGRES_PASSWORD`, `JWT_S
 ## 4. Primer arranque (sin TLS todavía)
 El bloque HTTPS de nginx necesita certificados que aún no existen — por eso el primer `up` es solo para tener HTTP funcionando y poder pasar el reto ACME de certbot en el paso 6.
 ```bash
-docker compose --env-file .env up -d --build postgres api web-lms web-crm web-intranet
+docker compose --env-file .env up -d --build postgres api web-crm web-intranet
 docker compose ps   # todos deben acabar "healthy"
 ```
 Si algún servicio no llega a "healthy", revisar logs: `docker compose logs <servicio>`.
@@ -65,7 +68,7 @@ docker compose --env-file .env run -d --name nginx-bootstrap \
 
 # 6.2 Pedir el certificado (webroot, usa el volumen que nginx-bootstrap está sirviendo)
 docker compose run --rm certbot certonly --webroot -w /var/www/certbot \
-  -d uclcampus.com -d www.uclcampus.com -d crm.uclcampus.com -d intranet.uclcampus.com \
+  -d crm.uclcampus.com -d intranet.uclcampus.com -d api.uclcampus.com \
   --email <tu-email> --agree-tos --non-interactive
 
 # 6.3 Parar el bootstrap y levantar el nginx definitivo (ya con 443 + certs reales)
@@ -82,11 +85,26 @@ Let's Encrypt caduca a los 90 días. Programar en el VPS (fuera de Docker, en el
 ```
 
 ## 7. Verificación final
-- `curl -I https://uclcampus.com/` → `200`, con cabeceras `Strict-Transport-Security` y `Content-Security-Policy` presentes
-- `curl -X POST https://uclcampus.com/api/auth/login -d '{}' -H 'Content-Type: application/json'` → `400` con detalle de validación (confirma que la API responde a través del proxy)
-- Login en https://crm.uclcampus.com con el admin creado en el paso 5
+- `curl -I https://crm.uclcampus.com/` → `200`, con cabecera `Strict-Transport-Security` presente
+- `curl -X POST https://api.uclcampus.com/api/auth/login -d '{}' -H 'Content-Type: application/json'` → `400` con detalle de validación (confirma que la API responde a través del proxy)
+- Login en https://crm.uclcampus.com y https://intranet.uclcampus.com con el admin creado en el paso 5
 - Revisar que `docker compose logs -f` no muestre errores en bucle
 - (Nota: `/health` del backend es solo para el healthcheck interno de Docker, nginx no lo expone públicamente a propósito)
+
+## 8. Fase 2 — reconectar la landing (GitHub Pages) con la API del VPS
+La landing sigue en GitHub Pages; una vez la API esté en vivo:
+1. **Chatbot**: definir `VITE_API_BASE=https://api.uclcampus.com/api` en el build
+   de la landing (en `.github/workflows/deploy-landing.yml`, paso de build) y
+   poner `ANTHROPIC_API_KEY` (con saldo) en `infra/.env` del VPS. El widget de
+   chat solo se monta cuando `VITE_API_BASE` existe (ver `Home.tsx`), así que
+   con eso reaparece solo.
+2. **Formulario de contacto**: hoy envía por FormSubmit (formsubmit.co) a
+   info@uclcampus.com. Cuando la API esté en vivo, crear un endpoint
+   `POST /api/contact` (con rate limit, como /api/chat) que envíe el email
+   desde el propio dominio, y cambiar el fetch de
+   `apps/web-lms/src/components/ContactForm.tsx` (la constante ENDPOINT).
+3. `CORS_ORIGIN` de infra/.env ya incluye `https://uclcampus.com` — sin eso el
+   navegador bloquearía las llamadas de la landing a api.uclcampus.com.
 
 ## Pendiente conocido (no bloquea el despliegue, pero falta)
 - Pasarela de pago, SEO técnico/on-page, AEO, GDPR (alcance LMS original, no iniciado)
