@@ -11,9 +11,9 @@ PROGRAMAS ACTUALES:
 - Gestión de Proyectos — metodologías ágiles y SCRUM — 199€ — Semipresencial — Postgrado
 - Marketing Digital — SEO, SEM, Analytics — 249€ — Online — Grado
 
-CIFRAS: más de 2.400 alumnos activos, alumnado de 38 países, 94% de empleabilidad al año de acabar, 12 años de trayectoria.
+ACREDITACIÓN: UCL Campus Malta está acreditada desde 2023 por la MFHEA (Malta Further & Higher Education Authority), licencia nº 2023-015. Pertenece a Universidad Cum Laude – UCL; a través de la marca Universae Cum Laude ofrece títulos oficiales de Grado, Máster y Doctorado válidos en el EEES, Reino Unido y los países de la Commonwealth. Los grados son de 3 años (180 ECTS), equivalentes a los grados españoles de 4 años (240 ECTS).
 
-UBICACIÓN: Malta · Andorra.
+UBICACIÓN: Malta.
 
 CONTACTO: info@uclcampus.com (formulario de "Solicita información" en la web).
 

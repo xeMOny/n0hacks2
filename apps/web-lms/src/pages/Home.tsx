@@ -5,10 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Globe2,
-  Users,
-  Award,
-  BookOpen,
-  Quote,
   Newspaper,
   MapPin,
   Calendar,
@@ -18,6 +14,10 @@ import {
   ClipboardList,
   GraduationCap,
   MessageCircle,
+  Target,
+  BadgeCheck,
+  Hourglass,
+  CheckCircle2,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
@@ -25,6 +25,7 @@ import { useLocalizedPath } from '../hooks/useLocalizedPath';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import SocialBar from '../components/SocialBar';
 import HeroCarousel from '../components/HeroCarousel';
+import ContactForm from '../components/ContactForm';
 
 // Lazy: el widget de chat (con su propio framer-motion + cliente de API)
 // no hace falta para el primer pintado, es un botón flotante que la mayoría
@@ -34,21 +35,14 @@ const ChatWidget = lazy(() => import('../components/ChatWidget'));
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
 import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
-import testimonialMarta from '../assets/testimonials/marta.jpg';
-import testimonialJordi from '../assets/testimonials/jordi.jpg';
-import testimonialAina from '../assets/testimonials/aina.jpg';
 
-// Fotos de banco (Unsplash, licencia libre) a modo de placeholder mientras no
-// hay fotos reales de alumnos. Sustituir por fotos reales en cuanto el
-// cliente las facilite.
-const testimonialPhotos = [testimonialMarta, testimonialJordi, testimonialAina];
-
-const featureIcons = [BookOpen, Users, Award];
+// Iconos de los 4 cuadros de "Sobre nosotros" (misión, oficialidad,
+// Reino Unido/Commonwealth, grados de 3 años), en el orden de about.cards.
+const aboutCardIcons = [Target, BadgeCheck, Globe2, Hourglass];
 
 interface Course { title: string; desc: string; price: string; mode: string; level: string }
-interface Testimonial { initials: string; name: string; program: string; quote: string }
 interface NewsItem { date: string; title: string; excerpt: string }
-interface Feature { title: string; desc: string }
+interface TitledItem { title: string; desc: string }
 interface AdmissionStep { title: string; desc: string }
 
 // Las 6 pestañas de navegación pedidas por el cliente, en su orden.
@@ -71,10 +65,11 @@ export default function Home() {
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const features = t('features', { returnObjects: true }) as Feature[];
   const courses = (t('courses.items', { returnObjects: true }) as Course[]).map((c, i) => ({ ...c, id: i }));
-  const testimonials = t('testimonials.items', { returnObjects: true }) as Testimonial[];
   const news = t('news.items', { returnObjects: true }) as NewsItem[];
+  const aboutCards = t('about.cards', { returnObjects: true }) as TitledItem[];
+  const essenceItems = t('about.essence_items', { returnObjects: true }) as TitledItem[];
+  const talentItems = t('about.talent_items', { returnObjects: true }) as TitledItem[];
   const admissionSteps = t('admissions.steps', { returnObjects: true }) as AdmissionStep[];
   const transparencyLinks = [
     { to: '/aviso-legal', label: t('footer.legal_notice_link') },
@@ -167,27 +162,85 @@ export default function Home() {
         <HeroCarousel />
       </section>
 
-      {/* Features */}
-      <section id="sobre" className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-brand-navy text-center mb-12">{t('nav.about')}</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((f, i) => {
-            const Icon = featureIcons[i];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
-              >
-                <Icon className="w-12 h-12 mx-auto mb-4 text-brand-blue" />
-                <h3 className="text-xl font-bold mb-2 text-brand-navy">{f.title}</h3>
-                <p className="text-slate-600">{f.desc}</p>
-              </motion.div>
-            );
-          })}
+      {/* Sobre nosotros: contenido real del documento del cliente.
+          Punto 1 como texto introductorio, puntos 2-5 en 4 cuadros, y
+          puntos 6-8 en una banda oscura diferenciada (tienen sub-puntos y
+          más texto: en cuadros iguales quedarían apretados y todo al mismo
+          nivel; la banda los distingue como "nuestra filosofía"). */}
+      <section id="sobre" className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-brand-navy text-center mb-8">{t('nav.about')}</h2>
+          <div className="max-w-3xl mx-auto text-slate-600 leading-relaxed space-y-4 mb-14">
+            <p>{t('about.intro_p1')}</p>
+            <p>{t('about.intro_p2')}</p>
+          </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {aboutCards.map((card, i) => {
+              const Icon = aboutCardIcons[i];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white border border-slate-200 rounded-xl p-7 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
+                >
+                  <Icon className="w-11 h-11 mx-auto mb-4 text-brand-blue" />
+                  <h3 className="text-lg font-bold mb-2 text-brand-navy">{card.title}</h3>
+                  <p className="text-sm text-slate-600">{card.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Puntos 6-8: banda navy en dos columnas con listas de checks, y el
+          compromiso de calidad como cierre centrado. */}
+      <section className="bg-brand-navy py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-14">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <h3 className="text-2xl font-bold text-white mb-3">{t('about.essence_title')}</h3>
+              <p className="text-slate-300 mb-6">{t('about.essence_intro')}</p>
+              <ul className="space-y-4">
+                {essenceItems.map((item, i) => (
+                  <li key={i} className="flex gap-3">
+                    <CheckCircle2 size={20} className="shrink-0 mt-0.5 text-brand-sky" />
+                    <div>
+                      <span className="font-semibold text-white">{item.title}.</span>{' '}
+                      <span className="text-slate-300">{item.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} viewport={{ once: true }}>
+              <h3 className="text-2xl font-bold text-white mb-3">{t('about.talent_title')}</h3>
+              <p className="text-slate-300 mb-6">{t('about.talent_intro')}</p>
+              <ul className="space-y-4">
+                {talentItems.map((item, i) => (
+                  <li key={i} className="flex gap-3">
+                    <CheckCircle2 size={20} className="shrink-0 mt-0.5 text-brand-sky" />
+                    <div>
+                      <span className="font-semibold text-white">{item.title}.</span>{' '}
+                      <span className="text-slate-300">{item.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center border-t border-white/15 pt-10"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">{t('about.quality_title')}</h3>
+            <p className="text-slate-300 leading-relaxed">{t('about.quality_text')}</p>
+          </motion.div>
         </div>
       </section>
 
@@ -274,44 +327,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="bg-brand-mist py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center text-brand-navy">{t('testimonials.section_title')}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm"
-              >
-                <Quote className="text-brand-sky mb-4" size={28} />
-                <p className="text-slate-700 mb-6 italic">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src={testimonialPhotos[i]}
-                    alt=""
-                    loading="lazy"
-                    width={44}
-                    height={44}
-                    className="w-11 h-11 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-brand-navy">{item.name}</div>
-                    <div className="text-xs text-slate-500">{item.program}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Novedades */}
-      <section id="novedades" className="py-20">
+      <section id="novedades" className="bg-brand-mist py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-12">
             <Newspaper className="text-brand-blue" size={28} />
@@ -343,7 +360,7 @@ export default function Home() {
       {/* Transparencia y normativa: acceso a la documentación legal real del
           sitio. Cuando el cliente facilite normativa académica propia
           (reglamentos, calidad, etc.), añadirla aquí como más enlaces. */}
-      <section id="transparencia" className="bg-brand-mist py-20">
+      <section id="transparencia" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('transparency.section_title')}</h2>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('transparency.intro')}</p>
@@ -377,8 +394,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Contacto: formulario de solicitud de información (llega por email a
+          info@uclcampus.com vía FormSubmit — ver nota en ContactForm.tsx).
+          El id="contacto" vive aquí ahora (antes en el footer): todos los CTA
+          de la página aterrizan en el formulario. */}
+      <section id="contacto" className="bg-brand-mist py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('contact_form.section_title')}</h2>
+          <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('contact_form.intro')}</p>
+          <ContactForm />
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer id="contacto" className="bg-brand-navy border-t border-white/10 py-16">
+      <footer className="bg-brand-navy border-t border-white/10 py-16">
         <div className="max-w-6xl mx-auto px-4">
           {/* 3 columnas de enlaces, centradas, con cabecera en negrita */}
           <div className="grid sm:grid-cols-3 gap-10 mb-16 text-center">

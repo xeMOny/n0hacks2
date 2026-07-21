@@ -47,20 +47,6 @@
       }
     ]
   },
-  "features": [
-    {
-      "title": "Up-to-date programs",
-      "desc": "Content reviewed every semester with practicing industry professionals"
-    },
-    {
-      "title": "Global community",
-      "desc": "Network of alumni and tutors in more than 30 countries"
-    },
-    {
-      "title": "Recognized certification",
-      "desc": "Proprietary degrees recognized across the private sector"
-    }
-  ],
   "courses": {
     "section_title": "Academic Offer",
     "enroll": "Enroll",
@@ -85,29 +71,6 @@
         "price": "€249",
         "mode": "Online",
         "level": "Bachelor's"
-      }
-    ]
-  },
-  "testimonials": {
-    "section_title": "What our students say",
-    "items": [
-      {
-        "initials": "MC",
-        "name": "Marta C.",
-        "program": "Full Stack Web Development",
-        "quote": "The pace of the program let me keep working while I studied. The support from tutors made all the difference."
-      },
-      {
-        "initials": "JP",
-        "name": "Jordi P.",
-        "program": "Project Management",
-        "quote": "Very practical content, no empty theory. Three months after finishing I was already applying what I'd learned at work."
-      },
-      {
-        "initials": "AR",
-        "name": "Aina R.",
-        "program": "Digital Marketing",
-        "quote": "The student community was as valuable as the program itself. I'm still in touch with several classmates from my cohort."
       }
     ]
   },
@@ -289,5 +252,70 @@
   "transparency": {
     "section_title": "Transparency & Regulations",
     "intro": "Consult the legal documentation and regulations governing UCLCampus."
+  },
+  "about": {
+    "intro_p1": "UCL Campus Malta, accredited in 2023 by the MFHEA under licence number 2023-015, belongs to Universidad Cum Laude – UCL (an entity registered in the Principality of Andorra with company registry number 22937 and NRT L-718011-S), whose corporate purpose is the promotion, implementation, management and operation of higher-education studies and institutions, as well as the development of training and university-level education projects. A university-level institution teaching both on site and online, offering degree and postgraduate studies, both official and institution-specific.",
+    "intro_p2": "Through its commercial brand Universae Cum Laude it offers official Bachelor's, Master's and Doctoral degrees valid throughout the European Higher Education Area (EHEA), the United Kingdom and all Commonwealth countries.",
+    "cards": [
+      {
+        "title": "Our mission",
+        "desc": "To close the gap between academic training and the reality of the labour market. We do not just provide higher education: we prepare professionals ready to add value from their first day in the company."
+      },
+      {
+        "title": "Official status and legal backing",
+        "desc": "We operate with full recognition under the MFHEA framework (the Maltese counterpart of Spain's ANECA): all our qualifications are official and fully valid within the EHEA — the assurance of regulated, internationally recognised education."
+      },
+      {
+        "title": "Degrees recognised in the UK and the Commonwealth",
+        "desc": "In addition to being official qualifications valid in the EHEA, they are also valid in the United Kingdom and in all Commonwealth member countries (Canada, Australia, New Zealand, etc.)."
+      },
+      {
+        "title": "Three-year degrees",
+        "desc": "Our bachelor's degrees take three years (180 ECTS credits) and are equivalent to Spanish four-year, 240-ECTS degrees."
+      }
+    ],
+    "essence_title": "Our essence: practical, applied education",
+    "essence_intro": "What sets us apart is an educational model designed from the workplace into the classroom.",
+    "essence_items": [
+      {
+        "title": "Up-to-date content",
+        "desc": "Living, constantly evolving study plans that integrate the real needs companies demand at any given time."
+      },
+      {
+        "title": "Practical approach",
+        "desc": "We replace static theory with active methodologies where students learn to solve real problems."
+      },
+      {
+        "title": "Industry connection",
+        "desc": "Training based on projects, simulations and real cases that mirror the challenges professionals face every day."
+      }
+    ],
+    "talent_title": "The value of talent and employability",
+    "talent_intro": "We understand that an official qualification is, above all, a key to professional success. That is why our institution focuses on:",
+    "talent_items": [
+      {
+        "title": "Competence development",
+        "desc": "Beyond memorisation, we assess the ability to apply knowledge and contribute solutions."
+      },
+      {
+        "title": "Talent engine",
+        "desc": "A meeting point between young talent and company demand, both in the Maltese ecosystem and internationally."
+      }
+    ],
+    "quality_title": "Commitment to quality",
+    "quality_text": "At our institution, excellence is not a theoretical concept but the way we work. We guarantee a rigorous, transparent educational experience in which every program and every teacher is focused on strengthening our students' professional future and employability."
+  },
+  "contact_form": {
+    "section_title": "Contact",
+    "intro": "Questions, or want more information? Write to us and we will reply as soon as possible.",
+    "name": "First name",
+    "surname": "Last name",
+    "email": "Email address",
+    "country": "Country",
+    "message": "Your enquiry",
+    "submit": "Send enquiry",
+    "sending": "Sending…",
+    "success": "Thank you! We have received your enquiry and will reply soon.",
+    "error": "Your message could not be sent. Please try again or email us at info@uclcampus.com."
   }
 }

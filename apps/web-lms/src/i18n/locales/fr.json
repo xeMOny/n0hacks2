@@ -47,20 +47,6 @@
       }
     ]
   },
-  "features": [
-    {
-      "title": "Programmes actualisés",
-      "desc": "Contenu révisé chaque semestre avec des professionnels en activité"
-    },
-    {
-      "title": "Communauté mondiale",
-      "desc": "Réseau d'anciens élèves et de tuteurs dans plus de 30 pays"
-    },
-    {
-      "title": "Certification reconnue",
-      "desc": "Diplômes propres reconnus dans le secteur privé"
-    }
-  ],
   "courses": {
     "section_title": "Offre académique",
     "enroll": "S'inscrire",
@@ -85,29 +71,6 @@
         "price": "249 €",
         "mode": "En ligne",
         "level": "Licence"
-      }
-    ]
-  },
-  "testimonials": {
-    "section_title": "Ce que disent nos étudiants",
-    "items": [
-      {
-        "initials": "MC",
-        "name": "Marta C.",
-        "program": "Développement Web Full Stack",
-        "quote": "Le rythme du programme m'a permis de continuer à travailler tout en étudiant. L'accompagnement des tuteurs a fait toute la différence."
-      },
-      {
-        "initials": "JP",
-        "name": "Jordi P.",
-        "program": "Gestion de Projet",
-        "quote": "Contenu très pratique, aucune théorie inutile. Trois mois après avoir terminé, j'appliquais déjà ce que j'avais appris au travail."
-      },
-      {
-        "initials": "AR",
-        "name": "Aina R.",
-        "program": "Marketing Digital",
-        "quote": "La communauté d'étudiants a été aussi précieuse que le programme lui-même. Je suis toujours en contact avec plusieurs camarades de ma promotion."
       }
     ]
   },
@@ -289,5 +252,70 @@
   "transparency": {
     "section_title": "Transparence et réglementation",
     "intro": "Consultez la documentation juridique et la réglementation qui régissent UCLCampus."
+  },
+  "about": {
+    "intro_p1": "UCL Campus Malta, accréditée en 2023 par la MFHEA sous le numéro de licence 2023-015, appartient à Universidad Cum Laude – UCL (entité enregistrée en Principauté d'Andorre sous le numéro de registre des sociétés 22937 et NRT L-718011-S), dont l'objet social est la promotion, la mise en œuvre, la gestion et l'exploitation d'études et de centres d'enseignement supérieur, ainsi que le développement de projets de formation et d'enseignement universitaire. Centre d'enseignement universitaire en présentiel et en ligne, proposant des études de licence et de troisième cycle, tant officielles que propres à l'établissement.",
+    "intro_p2": "À travers sa marque commerciale Universae Cum Laude, elle propose des diplômes officiels de Licence, de Master et de Doctorat valables dans tout l'Espace européen de l'enseignement supérieur (EEES), au Royaume-Uni et dans tous les pays du Commonwealth.",
+    "cards": [
+      {
+        "title": "Notre mission",
+        "desc": "Réduire la distance entre la formation académique et la réalité du marché du travail. Nous n’offrons pas seulement un enseignement supérieur : nous préparons des professionnels prêts à apporter de la valeur dès leur premier jour en entreprise."
+      },
+      {
+        "title": "Caractère officiel et cadre légal",
+        "desc": "Nous opérons avec une pleine reconnaissance dans le cadre de la MFHEA (équivalent maltais de l’ANECA espagnole) : tous nos diplômes sont officiels et pleinement valables dans l’EEES — la garantie d’une formation réglementée et reconnue internationalement."
+      },
+      {
+        "title": "Diplômes reconnus au Royaume-Uni et dans le Commonwealth",
+        "desc": "En plus d’être des diplômes officiels valables dans l’EEES, ils sont également valables au Royaume-Uni et dans tous les pays membres du Commonwealth (Canada, Australie, Nouvelle-Zélande, etc.)."
+      },
+      {
+        "title": "Des licences en trois ans seulement",
+        "desc": "Nos licences durent trois ans (180 crédits ECTS) et sont équivalentes aux licences espagnoles de quatre ans et 240 crédits ECTS."
+      }
+    ],
+    "essence_title": "Notre essence : une éducation pratique et appliquée",
+    "essence_intro": "Ce qui nous distingue, c’est un modèle éducatif conçu de l’entreprise vers la salle de classe.",
+    "essence_items": [
+      {
+        "title": "Des contenus d’actualité",
+        "desc": "Des programmes d’études vivants et en constante évolution, intégrant les besoins réels que les entreprises expriment à chaque instant."
+      },
+      {
+        "title": "Approche pratique",
+        "desc": "Nous remplaçons la théorie statique par des méthodologies actives où l’étudiant apprend à résoudre des problèmes réels."
+      },
+      {
+        "title": "Connexion avec le secteur",
+        "desc": "Une formation basée sur des projets, des simulations et des cas réels qui reproduisent les défis du quotidien professionnel."
+      }
+    ],
+    "talent_title": "La valeur du talent et de l’employabilité",
+    "talent_intro": "Nous savons qu’un diplôme officiel est avant tout une clé vers la réussite professionnelle. C’est pourquoi notre centre se concentre sur :",
+    "talent_items": [
+      {
+        "title": "Développement des compétences",
+        "desc": "Au-delà de la mémorisation, nous évaluons la capacité à appliquer les connaissances et à apporter des solutions."
+      },
+      {
+        "title": "Moteur de talents",
+        "desc": "Un point de rencontre entre les jeunes talents et la demande des entreprises, dans l’écosystème maltais comme à l’international."
+      }
+    ],
+    "quality_title": "Engagement envers la qualité",
+    "quality_text": "Dans notre institution, l’excellence n’est pas un concept théorique mais notre façon de travailler. Nous garantissons une expérience éducative rigoureuse et transparente, où chaque programme et chaque enseignant visent à renforcer l’avenir professionnel et l’employabilité de nos étudiants."
+  },
+  "contact_form": {
+    "section_title": "Contact",
+    "intro": "Des questions ou besoin de plus d’informations ? Écrivez-nous et nous vous répondrons dès que possible.",
+    "name": "Prénom",
+    "surname": "Nom",
+    "email": "Adresse e-mail",
+    "country": "Pays",
+    "message": "Votre demande",
+    "submit": "Envoyer la demande",
+    "sending": "Envoi…",
+    "success": "Merci ! Nous avons bien reçu votre demande et vous répondrons rapidement.",
+    "error": "L’envoi a échoué. Réessayez ou écrivez-nous à info@uclcampus.com."
   }
 }

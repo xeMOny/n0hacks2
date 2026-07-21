@@ -47,20 +47,6 @@
       }
     ]
   },
-  "features": [
-    {
-      "title": "Programmi aggiornati",
-      "desc": "Contenuti rivisti ogni semestre con professionisti attivi del settore"
-    },
-    {
-      "title": "Comunità globale",
-      "desc": "Rete di ex studenti e tutor in oltre 30 paesi"
-    },
-    {
-      "title": "Certificazione riconosciuta",
-      "desc": "Titoli propri con riconoscimento nel settore privato"
-    }
-  ],
   "courses": {
     "section_title": "Offerta Formativa",
     "enroll": "Iscriviti",
@@ -85,29 +71,6 @@
         "price": "€249",
         "mode": "Online",
         "level": "Laurea"
-      }
-    ]
-  },
-  "testimonials": {
-    "section_title": "Cosa dicono i nostri studenti",
-    "items": [
-      {
-        "initials": "MC",
-        "name": "Marta C.",
-        "program": "Sviluppo Web Full Stack",
-        "quote": "Il ritmo del programma mi ha permesso di continuare a lavorare mentre studiavo. L'accompagnamento dei tutor ha fatto la differenza."
-      },
-      {
-        "initials": "JP",
-        "name": "Jordi P.",
-        "program": "Gestione dei Progetti",
-        "quote": "Contenuti molto pratici, niente teoria fine a se stessa. Dopo tre mesi dalla fine stavo già applicando quanto imparato al lavoro."
-      },
-      {
-        "initials": "AR",
-        "name": "Aina R.",
-        "program": "Marketing Digitale",
-        "quote": "La comunità di studenti è stata preziosa quanto il programma stesso. Sono ancora in contatto con diversi compagni del mio corso."
       }
     ]
   },
@@ -289,5 +252,70 @@
   "transparency": {
     "section_title": "Trasparenza e normativa",
     "intro": "Consulta la documentazione legale e la normativa che regolano UCLCampus."
+  },
+  "about": {
+    "intro_p1": "UCL Campus Malta, accreditata nel 2023 dalla MFHEA con numero di licenza 2023-015, appartiene a Universidad Cum Laude – UCL (entità registrata nel Principato di Andorra con numero di registro delle società 22937 e NRT L-718011-S), il cui oggetto sociale è la promozione, implementazione, gestione ed esercizio di studi e centri di istruzione superiore, nonché lo sviluppo di progetti di formazione e di insegnamento universitario. Centro di insegnamento universitario in presenza e online, che offre studi di laurea e post-laurea, sia ufficiali che a titolo proprio.",
+    "intro_p2": "Attraverso il suo marchio commerciale Universae Cum Laude offre titoli ufficiali di Laurea, Master e Dottorato validi in tutto lo Spazio europeo dell'istruzione superiore (SEIS), nel Regno Unito e in tutti i paesi del Commonwealth.",
+    "cards": [
+      {
+        "title": "La nostra missione",
+        "desc": "Ridurre la distanza tra la formazione accademica e la realtà del mercato del lavoro. Non offriamo solo istruzione superiore: prepariamo professionisti pronti a creare valore dal primo giorno in azienda."
+      },
+      {
+        "title": "Ufficialità e riconoscimento legale",
+        "desc": "Operiamo con pieno riconoscimento nel quadro della MFHEA (l’equivalente maltese dell’ANECA spagnola): tutti i nostri titoli sono ufficiali e pienamente validi nel SEIS — la garanzia di una formazione regolamentata e riconosciuta a livello internazionale."
+      },
+      {
+        "title": "Titoli riconosciuti nel Regno Unito e nel Commonwealth",
+        "desc": "Oltre a essere titoli ufficiali validi nel SEIS, sono validi anche nel Regno Unito e in tutti i paesi membri del Commonwealth (Canada, Australia, Nuova Zelanda, ecc.)."
+      },
+      {
+        "title": "Lauree di soli tre anni",
+        "desc": "Le nostre lauree durano tre anni (180 crediti ECTS) e sono equivalenti alle lauree spagnole di quattro anni e 240 crediti ECTS."
+      }
+    ],
+    "essence_title": "La nostra essenza: educazione pratica e applicata",
+    "essence_intro": "Ciò che ci distingue è un modello educativo progettato dall’impresa verso l’aula.",
+    "essence_items": [
+      {
+        "title": "Contenuti di attualità",
+        "desc": "Piani di studio vivi e in costante evoluzione, che integrano le esigenze reali che le imprese richiedono in ogni momento."
+      },
+      {
+        "title": "Approccio pratico",
+        "desc": "Sostituiamo la teoria statica con metodologie attive in cui lo studente impara a risolvere problemi reali."
+      },
+      {
+        "title": "Connessione con il settore",
+        "desc": "Formazione basata su progetti, simulazioni e casi reali che replicano le sfide del quotidiano professionale."
+      }
+    ],
+    "talent_title": "Il valore del talento e dell’occupabilità",
+    "talent_intro": "Sappiamo che un titolo ufficiale è, soprattutto, una chiave per il successo professionale. Per questo il nostro centro si concentra su:",
+    "talent_items": [
+      {
+        "title": "Sviluppo delle competenze",
+        "desc": "Oltre la memorizzazione, valutiamo la capacità di applicare le conoscenze e di proporre soluzioni."
+      },
+      {
+        "title": "Motore di talento",
+        "desc": "Un punto d’incontro tra il giovane talento e la domanda delle imprese, nell’ecosistema maltese e a livello internazionale."
+      }
+    ],
+    "quality_title": "Impegno per la qualità",
+    "quality_text": "Nella nostra istituzione l’eccellenza non è un concetto teorico, ma il nostro modo di lavorare. Garantiamo un’esperienza educativa rigorosa e trasparente, in cui ogni programma e ogni docente sono orientati a potenziare il futuro professionale e l’occupabilità dei nostri studenti."
+  },
+  "contact_form": {
+    "section_title": "Contatti",
+    "intro": "Hai domande o vuoi maggiori informazioni? Scrivici e ti risponderemo il prima possibile.",
+    "name": "Nome",
+    "surname": "Cognome",
+    "email": "Indirizzo e-mail",
+    "country": "Paese",
+    "message": "La tua richiesta",
+    "submit": "Invia richiesta",
+    "sending": "Invio…",
+    "success": "Grazie! Abbiamo ricevuto la tua richiesta e ti risponderemo presto.",
+    "error": "Invio non riuscito. Riprova o scrivici a info@uclcampus.com."
   }
 }
