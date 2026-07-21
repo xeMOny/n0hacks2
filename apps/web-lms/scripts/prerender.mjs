@@ -117,6 +117,20 @@ async function main() {
       await page.goto(`http://127.0.0.1:${PORT}${route}`, { waitUntil: "networkidle0", timeout: 30000 });
       // Deja que las transiciones de framer-motion terminen antes de capturar.
       await new Promise((r) => setTimeout(r, 800));
+      // Recorre la página entera antes de capturar: las secciones con
+      // whileInView (viewport once) quedan así ya animadas a su estado
+      // visible. Sin esto, el HTML estático guardaba todo lo de debajo del
+      // pliegue con opacity:0 — si el JS falla o tarda (caché desfasada tras
+      // un deploy, 503 puntual del CDN), el visitante veía la página
+      // "cortada": solo el hero, y el resto invisible.
+      await page.evaluate(async () => {
+        for (let y = 0; y <= document.body.scrollHeight; y += 350) {
+          window.scrollTo(0, y);
+          await new Promise((r) => setTimeout(r, 60));
+        }
+        window.scrollTo(0, 0);
+      });
+      await new Promise((r) => setTimeout(r, 600));
       const html = await page.evaluate((port) => {
         // Componentes con lazy() + Suspense (p.ej. ChatWidget) disparan su
         // import() nada más montar, aunque nadie interactúe con ellos — el
@@ -129,6 +143,13 @@ async function main() {
         // esto es solo la etiqueta de precarga, se puede quitar sin riesgo.
         const prefix = `http://127.0.0.1:${port}/`;
         document.querySelectorAll(`link[rel="modulepreload"][href^="${prefix}"]`).forEach((el) => el.remove());
+        // También los modulepreload RELATIVOS que el navegador inyecta al
+        // cargar chunks lazy durante el prerender: apuntan a archivos con
+        // hash del build actual, y quedan bakeados en un HTML que puede
+        // sobrevivir en caché (navegador/CDN) al siguiente deploy — entonces
+        // precargan rutas que ya no existen. Son solo hints de rendimiento:
+        // quitarlos no rompe nada, los import() reales usan su propio grafo.
+        document.querySelectorAll('link[rel="modulepreload"]').forEach((el) => el.remove());
         return "<!doctype html>\n" + document.documentElement.outerHTML;
       }, PORT);
       const gotLang = await page.evaluate(() => document.documentElement.lang);
