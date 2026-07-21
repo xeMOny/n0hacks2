@@ -11,7 +11,9 @@
     "programs": "Programmi",
     "about": "Chi siamo",
     "news": "Novità",
-    "contact": "Contatti"
+    "contact": "Contatti",
+    "menu": "Menu",
+    "close": "Chiudi menu"
   },
   "hero": {
     "title": "Formazione Online di Qualità",
@@ -27,39 +29,105 @@
     "search_cta": "Cerca programmi"
   },
   "stats": {
-    "students": { "value": "2.400+", "label": "Studenti attivi" },
-    "countries": { "value": "38", "label": "Paesi di provenienza" },
-    "employability": { "value": "94%", "label": "Occupabilità entro un anno" },
-    "years": { "value": "12", "label": "Anni di esperienza" }
+    "students": {
+      "value": "2.400+",
+      "label": "Studenti attivi"
+    },
+    "countries": {
+      "value": "38",
+      "label": "Paesi di provenienza"
+    },
+    "employability": {
+      "value": "94%",
+      "label": "Occupabilità entro un anno"
+    },
+    "years": {
+      "value": "12",
+      "label": "Anni di esperienza"
+    }
   },
   "features": [
-    { "title": "Programmi aggiornati", "desc": "Contenuti rivisti ogni semestre con professionisti attivi del settore" },
-    { "title": "Comunità globale", "desc": "Rete di ex studenti e tutor in oltre 30 paesi" },
-    { "title": "Certificazione riconosciuta", "desc": "Titoli propri con riconoscimento nel settore privato" }
+    {
+      "title": "Programmi aggiornati",
+      "desc": "Contenuti rivisti ogni semestre con professionisti attivi del settore"
+    },
+    {
+      "title": "Comunità globale",
+      "desc": "Rete di ex studenti e tutor in oltre 30 paesi"
+    },
+    {
+      "title": "Certificazione riconosciuta",
+      "desc": "Titoli propri con riconoscimento nel settore privato"
+    }
   ],
   "courses": {
     "section_title": "I Nostri Programmi",
     "enroll": "Iscriviti",
     "items": [
-      { "title": "Sviluppo Web Full Stack", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Laurea" },
-      { "title": "Gestione dei Progetti", "desc": "Metodologie agili e SCRUM", "price": "€199", "mode": "Semipresenziale", "level": "Master" },
-      { "title": "Marketing Digitale", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Laurea" }
+      {
+        "title": "Sviluppo Web Full Stack",
+        "desc": "React, TypeScript, Node.js",
+        "price": "€299",
+        "mode": "Online",
+        "level": "Laurea"
+      },
+      {
+        "title": "Gestione dei Progetti",
+        "desc": "Metodologie agili e SCRUM",
+        "price": "€199",
+        "mode": "Semipresenziale",
+        "level": "Master"
+      },
+      {
+        "title": "Marketing Digitale",
+        "desc": "SEO, SEM, Analytics",
+        "price": "€249",
+        "mode": "Online",
+        "level": "Laurea"
+      }
     ]
   },
   "testimonials": {
     "section_title": "Cosa dicono i nostri studenti",
     "items": [
-      { "initials": "MC", "name": "Marta C.", "program": "Sviluppo Web Full Stack", "quote": "Il ritmo del programma mi ha permesso di continuare a lavorare mentre studiavo. L'accompagnamento dei tutor ha fatto la differenza." },
-      { "initials": "JP", "name": "Jordi P.", "program": "Gestione dei Progetti", "quote": "Contenuti molto pratici, niente teoria fine a se stessa. Dopo tre mesi dalla fine stavo già applicando quanto imparato al lavoro." },
-      { "initials": "AR", "name": "Aina R.", "program": "Marketing Digitale", "quote": "La comunità di studenti è stata preziosa quanto il programma stesso. Sono ancora in contatto con diversi compagni del mio corso." }
+      {
+        "initials": "MC",
+        "name": "Marta C.",
+        "program": "Sviluppo Web Full Stack",
+        "quote": "Il ritmo del programma mi ha permesso di continuare a lavorare mentre studiavo. L'accompagnamento dei tutor ha fatto la differenza."
+      },
+      {
+        "initials": "JP",
+        "name": "Jordi P.",
+        "program": "Gestione dei Progetti",
+        "quote": "Contenuti molto pratici, niente teoria fine a se stessa. Dopo tre mesi dalla fine stavo già applicando quanto imparato al lavoro."
+      },
+      {
+        "initials": "AR",
+        "name": "Aina R.",
+        "program": "Marketing Digitale",
+        "quote": "La comunità di studenti è stata preziosa quanto il programma stesso. Sono ancora in contatto con diversi compagni del mio corso."
+      }
     ]
   },
   "news": {
     "section_title": "Novità",
     "items": [
-      { "date": "3 lug 2026", "title": "Nuova edizione del programma di Sviluppo Web", "excerpt": "Ampliamo i posti per il semestre autunnale con due nuovi percorsi specializzati." },
-      { "date": "18 giu 2026", "title": "Accordo di tirocinio con aziende del settore", "excerpt": "Gli studenti dell'ultimo anno potranno accedere a tirocini retribuiti in oltre 20 aziende partner." },
-      { "date": "2 giu 2026", "title": "Giornata di porte aperte online", "excerpt": "Sessione informativa per rispondere a dubbi su ammissioni, borse di studio e modalità di studio." }
+      {
+        "date": "3 lug 2026",
+        "title": "Nuova edizione del programma di Sviluppo Web",
+        "excerpt": "Ampliamo i posti per il semestre autunnale con due nuovi percorsi specializzati."
+      },
+      {
+        "date": "18 giu 2026",
+        "title": "Accordo di tirocinio con aziende del settore",
+        "excerpt": "Gli studenti dell'ultimo anno potranno accedere a tirocini retribuiti in oltre 20 aziende partner."
+      },
+      {
+        "date": "2 giu 2026",
+        "title": "Giornata di porte aperte online",
+        "excerpt": "Sessione informativa per rispondere a dubbi su ammissioni, borse di studio e modalità di studio."
+      }
     ]
   },
   "cta": {

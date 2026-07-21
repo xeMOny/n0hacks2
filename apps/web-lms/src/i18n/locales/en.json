@@ -11,7 +11,9 @@
     "programs": "Programs",
     "about": "About us",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close menu"
   },
   "hero": {
     "title": "Quality Online Education",
@@ -27,39 +29,105 @@
     "search_cta": "Search programs"
   },
   "stats": {
-    "students": { "value": "2,400+", "label": "Active students" },
-    "countries": { "value": "38", "label": "Countries of origin" },
-    "employability": { "value": "94%", "label": "Employability within a year" },
-    "years": { "value": "12", "label": "Years of experience" }
+    "students": {
+      "value": "2,400+",
+      "label": "Active students"
+    },
+    "countries": {
+      "value": "38",
+      "label": "Countries of origin"
+    },
+    "employability": {
+      "value": "94%",
+      "label": "Employability within a year"
+    },
+    "years": {
+      "value": "12",
+      "label": "Years of experience"
+    }
   },
   "features": [
-    { "title": "Up-to-date programs", "desc": "Content reviewed every semester with practicing industry professionals" },
-    { "title": "Global community", "desc": "Network of alumni and tutors in more than 30 countries" },
-    { "title": "Recognized certification", "desc": "Proprietary degrees recognized across the private sector" }
+    {
+      "title": "Up-to-date programs",
+      "desc": "Content reviewed every semester with practicing industry professionals"
+    },
+    {
+      "title": "Global community",
+      "desc": "Network of alumni and tutors in more than 30 countries"
+    },
+    {
+      "title": "Recognized certification",
+      "desc": "Proprietary degrees recognized across the private sector"
+    }
   ],
   "courses": {
     "section_title": "Our Programs",
     "enroll": "Enroll",
     "items": [
-      { "title": "Full Stack Web Development", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Bachelor's" },
-      { "title": "Project Management", "desc": "Agile methodologies and SCRUM", "price": "€199", "mode": "Hybrid", "level": "Postgraduate" },
-      { "title": "Digital Marketing", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Bachelor's" }
+      {
+        "title": "Full Stack Web Development",
+        "desc": "React, TypeScript, Node.js",
+        "price": "€299",
+        "mode": "Online",
+        "level": "Bachelor's"
+      },
+      {
+        "title": "Project Management",
+        "desc": "Agile methodologies and SCRUM",
+        "price": "€199",
+        "mode": "Hybrid",
+        "level": "Postgraduate"
+      },
+      {
+        "title": "Digital Marketing",
+        "desc": "SEO, SEM, Analytics",
+        "price": "€249",
+        "mode": "Online",
+        "level": "Bachelor's"
+      }
     ]
   },
   "testimonials": {
     "section_title": "What our students say",
     "items": [
-      { "initials": "MC", "name": "Marta C.", "program": "Full Stack Web Development", "quote": "The pace of the program let me keep working while I studied. The support from tutors made all the difference." },
-      { "initials": "JP", "name": "Jordi P.", "program": "Project Management", "quote": "Very practical content, no empty theory. Three months after finishing I was already applying what I'd learned at work." },
-      { "initials": "AR", "name": "Aina R.", "program": "Digital Marketing", "quote": "The student community was as valuable as the program itself. I'm still in touch with several classmates from my cohort." }
+      {
+        "initials": "MC",
+        "name": "Marta C.",
+        "program": "Full Stack Web Development",
+        "quote": "The pace of the program let me keep working while I studied. The support from tutors made all the difference."
+      },
+      {
+        "initials": "JP",
+        "name": "Jordi P.",
+        "program": "Project Management",
+        "quote": "Very practical content, no empty theory. Three months after finishing I was already applying what I'd learned at work."
+      },
+      {
+        "initials": "AR",
+        "name": "Aina R.",
+        "program": "Digital Marketing",
+        "quote": "The student community was as valuable as the program itself. I'm still in touch with several classmates from my cohort."
+      }
     ]
   },
   "news": {
     "section_title": "News",
     "items": [
-      { "date": "Jul 3, 2026", "title": "New intake for the Web Development program", "excerpt": "We're expanding places for the autumn semester with two new specialized tracks." },
-      { "date": "Jun 18, 2026", "title": "Internship agreement with industry companies", "excerpt": "Final-year students can now apply for paid internships at more than 20 partner companies." },
-      { "date": "Jun 2, 2026", "title": "Online open day", "excerpt": "Information session to answer questions about admissions, scholarships, and study modes." }
+      {
+        "date": "Jul 3, 2026",
+        "title": "New intake for the Web Development program",
+        "excerpt": "We're expanding places for the autumn semester with two new specialized tracks."
+      },
+      {
+        "date": "Jun 18, 2026",
+        "title": "Internship agreement with industry companies",
+        "excerpt": "Final-year students can now apply for paid internships at more than 20 partner companies."
+      },
+      {
+        "date": "Jun 2, 2026",
+        "title": "Online open day",
+        "excerpt": "Information session to answer questions about admissions, scholarships, and study modes."
+      }
     ]
   },
   "cta": {

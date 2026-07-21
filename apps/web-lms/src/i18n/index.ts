@@ -4,8 +4,9 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import es from "./locales/es.json";
 import en from "./locales/en.json";
 import it from "./locales/it.json";
+import fr from "./locales/fr.json";
 
-export const SUPPORTED_LANGUAGES = ["es", "en", "it"] as const;
+export const SUPPORTED_LANGUAGES = ["es", "en", "fr", "it"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 i18n
@@ -15,6 +16,7 @@ i18n
     resources: {
       es: { translation: es },
       en: { translation: en },
+      fr: { translation: fr },
       it: { translation: it },
     },
     fallbackLng: "es",
@@ -26,5 +28,13 @@ i18n
       lookupLocalStorage: "uclcampus_lang",
     },
   });
+
+// El lang del <html> viene bakeado en es del index.html estático: si el
+// visitante usa otro idioma, los lectores de pantalla pronunciarían la página
+// entera con fonética española. Se sincroniza aquí en cada cambio de idioma.
+document.documentElement.lang = i18n.resolvedLanguage || "es";
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.lang = lng;
+});
 
 export default i18n;

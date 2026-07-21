@@ -7,6 +7,7 @@ import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "../i18n";
 const LABELS: Record<SupportedLanguage, { short: string; full: string }> = {
   es: { short: "ES", full: "Español" },
   en: { short: "EN", full: "English" },
+  fr: { short: "FR", full: "Français" },
   it: { short: "IT", full: "Italiano" },
 };
 

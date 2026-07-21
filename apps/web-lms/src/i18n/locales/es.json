@@ -11,7 +11,9 @@
     "programs": "Programas",
     "about": "Sobre nosotros",
     "news": "Novedades",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "menu": "Menú",
+    "close": "Cerrar menú"
   },
   "hero": {
     "title": "Formación Online de Calidad",
@@ -27,39 +29,105 @@
     "search_cta": "Buscar programas"
   },
   "stats": {
-    "students": { "value": "2.400+", "label": "Alumnos activos" },
-    "countries": { "value": "38", "label": "Países de origen" },
-    "employability": { "value": "94%", "label": "Empleabilidad al año" },
-    "years": { "value": "12", "label": "Años de trayectoria" }
+    "students": {
+      "value": "2.400+",
+      "label": "Alumnos activos"
+    },
+    "countries": {
+      "value": "38",
+      "label": "Países de origen"
+    },
+    "employability": {
+      "value": "94%",
+      "label": "Empleabilidad al año"
+    },
+    "years": {
+      "value": "12",
+      "label": "Años de trayectoria"
+    }
   },
   "features": [
-    { "title": "Programas actualizados", "desc": "Contenido revisado cada semestre con profesionales en activo del sector" },
-    { "title": "Comunidad global", "desc": "Red de antiguos alumnos y tutores en más de 30 países" },
-    { "title": "Certificación reconocida", "desc": "Títulos propios con reconocimiento en el sector privado" }
+    {
+      "title": "Programas actualizados",
+      "desc": "Contenido revisado cada semestre con profesionales en activo del sector"
+    },
+    {
+      "title": "Comunidad global",
+      "desc": "Red de antiguos alumnos y tutores en más de 30 países"
+    },
+    {
+      "title": "Certificación reconocida",
+      "desc": "Títulos propios con reconocimiento en el sector privado"
+    }
   ],
   "courses": {
     "section_title": "Nuestros Programas",
     "enroll": "Matricularse",
     "items": [
-      { "title": "Desarrollo Web Full Stack", "desc": "React, TypeScript, Node.js", "price": "€299", "mode": "Online", "level": "Grado" },
-      { "title": "Gestión de Proyectos", "desc": "Metodologías ágiles y SCRUM", "price": "€199", "mode": "Semipresencial", "level": "Postgrado" },
-      { "title": "Marketing Digital", "desc": "SEO, SEM, Analytics", "price": "€249", "mode": "Online", "level": "Grado" }
+      {
+        "title": "Desarrollo Web Full Stack",
+        "desc": "React, TypeScript, Node.js",
+        "price": "€299",
+        "mode": "Online",
+        "level": "Grado"
+      },
+      {
+        "title": "Gestión de Proyectos",
+        "desc": "Metodologías ágiles y SCRUM",
+        "price": "€199",
+        "mode": "Semipresencial",
+        "level": "Postgrado"
+      },
+      {
+        "title": "Marketing Digital",
+        "desc": "SEO, SEM, Analytics",
+        "price": "€249",
+        "mode": "Online",
+        "level": "Grado"
+      }
     ]
   },
   "testimonials": {
     "section_title": "Lo que dicen nuestros alumnos",
     "items": [
-      { "initials": "MC", "name": "Marta C.", "program": "Desarrollo Web Full Stack", "quote": "El ritmo del programa me permitió seguir trabajando mientras estudiaba. El acompañamiento de los tutores marcó la diferencia." },
-      { "initials": "JP", "name": "Jordi P.", "program": "Gestión de Proyectos", "quote": "Contenido muy práctico, nada de teoría vacía. A los tres meses de acabar ya estaba aplicando lo aprendido en mi trabajo." },
-      { "initials": "AR", "name": "Aina R.", "program": "Marketing Digital", "quote": "La comunidad de alumnos fue tan valiosa como el propio programa. Sigo en contacto con varios compañeros de mi promoción." }
+      {
+        "initials": "MC",
+        "name": "Marta C.",
+        "program": "Desarrollo Web Full Stack",
+        "quote": "El ritmo del programa me permitió seguir trabajando mientras estudiaba. El acompañamiento de los tutores marcó la diferencia."
+      },
+      {
+        "initials": "JP",
+        "name": "Jordi P.",
+        "program": "Gestión de Proyectos",
+        "quote": "Contenido muy práctico, nada de teoría vacía. A los tres meses de acabar ya estaba aplicando lo aprendido en mi trabajo."
+      },
+      {
+        "initials": "AR",
+        "name": "Aina R.",
+        "program": "Marketing Digital",
+        "quote": "La comunidad de alumnos fue tan valiosa como el propio programa. Sigo en contacto con varios compañeros de mi promoción."
+      }
     ]
   },
   "news": {
     "section_title": "Novedades",
     "items": [
-      { "date": "3 jul 2026", "title": "Nueva edición del programa de Desarrollo Web", "excerpt": "Ampliamos plazas para el semestre de otoño con dos nuevos itinerarios especializados." },
-      { "date": "18 jun 2026", "title": "Acuerdo de prácticas con empresas del sector", "excerpt": "Alumnos del último curso podrán optar a prácticas remuneradas en más de 20 compañías colaboradoras." },
-      { "date": "2 jun 2026", "title": "Jornada de puertas abiertas online", "excerpt": "Sesión informativa para resolver dudas sobre admisiones, becas y modalidades de estudio." }
+      {
+        "date": "3 jul 2026",
+        "title": "Nueva edición del programa de Desarrollo Web",
+        "excerpt": "Ampliamos plazas para el semestre de otoño con dos nuevos itinerarios especializados."
+      },
+      {
+        "date": "18 jun 2026",
+        "title": "Acuerdo de prácticas con empresas del sector",
+        "excerpt": "Alumnos del último curso podrán optar a prácticas remuneradas en más de 20 compañías colaboradoras."
+      },
+      {
+        "date": "2 jun 2026",
+        "title": "Jornada de puertas abiertas online",
+        "excerpt": "Sesión informativa para resolver dudas sobre admisiones, becas y modalidades de estudio."
+      }
     ]
   },
   "cta": {
