@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Globe, Check } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { LANG_STORAGE_KEY, SUPPORTED_LANGUAGES, type SupportedLanguage } from "../i18n";
 import { isPublicPath, localizedPath, stripLangPrefix } from "../i18n/urlLang";
+import Flag from "./Flags";
 
 const LABELS: Record<SupportedLanguage, { short: string; full: string }> = {
   es: { short: "ES", full: "Español" },
@@ -57,10 +58,12 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="appearance-none bg-white border border-slate-300 rounded-full pl-2.5 pr-3 py-1 flex items-center gap-1.5 text-brand-navy hover:text-brand-blue hover:border-brand-blue/60 transition text-xs font-medium"
+        aria-label={LABELS[current].full}
+        className="appearance-none bg-white border border-slate-300 rounded-full pl-2 pr-2.5 py-1 flex items-center gap-1.5 text-brand-navy hover:text-brand-blue hover:border-brand-blue/60 transition text-xs font-medium"
       >
-        <Globe size={14} />
+        <Flag lang={current} />
         {LABELS[current].short}
+        <ChevronDown size={13} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -81,9 +84,9 @@ export default function LanguageSwitcher() {
                   onClick={() => choose(lang)}
                   className="appearance-none bg-transparent w-full flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-left text-brand-navy hover:bg-brand-mist hover:text-brand-blue transition"
                 >
-                  <span>
-                    <span className="font-semibold">{LABELS[lang].short}</span>
-                    <span className="text-slate-400 ml-2">{LABELS[lang].full}</span>
+                  <span className="flex items-center gap-2.5">
+                    <Flag lang={lang} />
+                    <span className="font-semibold">{LABELS[lang].full}</span>
                   </span>
                   {current === lang && <Check size={14} className="text-brand-blue" />}
                 </button>

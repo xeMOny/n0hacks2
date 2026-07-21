@@ -10,7 +10,6 @@ import {
   Calendar,
   Menu,
   X,
-  FileText,
   ClipboardList,
   GraduationCap,
   MessageCircle,
@@ -18,6 +17,10 @@ import {
   BadgeCheck,
   Hourglass,
   CheckCircle2,
+  Scale,
+  ShieldCheck,
+  Cookie,
+  Accessibility,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
@@ -72,10 +75,10 @@ export default function Home() {
   const talentItems = t('about.talent_items', { returnObjects: true }) as TitledItem[];
   const admissionSteps = t('admissions.steps', { returnObjects: true }) as AdmissionStep[];
   const transparencyLinks = [
-    { to: '/aviso-legal', label: t('footer.legal_notice_link') },
-    { to: '/privacidad', label: t('footer.privacy_policy_link') },
-    { to: '/cookies', label: t('footer.cookie_policy_link') },
-    { to: '/accesibilidad', label: t('footer.accessibility_link') },
+    { to: '/aviso-legal', label: t('footer.legal_notice_link'), icon: Scale },
+    { to: '/privacidad', label: t('footer.privacy_policy_link'), icon: ShieldCheck },
+    { to: '/cookies', label: t('footer.cookie_policy_link'), icon: Cookie },
+    { to: '/accesibilidad', label: t('footer.accessibility_link'), icon: Accessibility },
   ];
 
   return (
@@ -363,14 +366,16 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('transparency.section_title')}</h2>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('transparency.intro')}</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {transparencyLinks.map(({ to, label }) => (
+            {transparencyLinks.map(({ to, label, icon: Icon }) => (
               <Link
                 key={to}
                 to={lp(to)}
                 className="bg-white border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition group"
               >
-                <FileText className="w-8 h-8 mx-auto mb-3 text-brand-blue" />
-                <span className="font-semibold text-brand-navy group-hover:text-brand-blue transition">{label}</span>
+                <span className="inline-flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-full bg-brand-mist text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition">
+                  <Icon className="w-6 h-6" />
+                </span>
+                <span className="block font-semibold text-brand-navy group-hover:text-brand-blue transition">{label}</span>
               </Link>
             ))}
           </div>
