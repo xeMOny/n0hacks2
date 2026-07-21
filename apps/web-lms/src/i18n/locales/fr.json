@@ -1,6 +1,7 @@
 {
   "meta": {
-    "home_title": "UCLCampus · Formation en Ligne de Qualité"
+    "home_title": "UCLCampus · Formation en Ligne de Qualité",
+    "home_desc": "UCLCampus : université en ligne proposant des programmes de licence et de troisième cycle en développement web, gestion de projets et marketing digital, conçus avec des professionnels du secteur."
   },
   "common": {
     "back_to_home": "Retour à l'accueil"

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Globe, Check } from "lucide-react";
-import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "../i18n";
+import { LANG_STORAGE_KEY, SUPPORTED_LANGUAGES, type SupportedLanguage } from "../i18n";
+import { isPublicPath, localizedPath, stripLangPrefix } from "../i18n/urlLang";
 
 const LABELS: Record<SupportedLanguage, { short: string; full: string }> = {
   es: { short: "ES", full: "Español" },
@@ -13,6 +15,7 @@ const LABELS: Record<SupportedLanguage, { short: string; full: string }> = {
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -27,6 +30,22 @@ export default function LanguageSwitcher() {
   }, []);
 
   function choose(lang: SupportedLanguage) {
+    // En las páginas públicas cada idioma tiene URL propia (/en, /fr, /it) ya
+    // prerenderizada en ese idioma: cambiar de idioma es ir a esa URL con una
+    // carga completa, dejando antes la preferencia en localStorage (mismo
+    // mecanismo que usa el detector de i18next al arrancar). Nada de
+    // changeLanguage + navigate en la misma interacción: la carrera entre el
+    // evento de i18next, la transición del router y el des/remontaje de
+    // ForceLang podía dejar idioma y URL desincronizados.
+    const base = stripLangPrefix(location.pathname);
+    if (isPublicPath(base)) {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+      const target = localizedPath(base, lang);
+      if (target !== location.pathname) {
+        window.location.assign(target);
+        return;
+      }
+    }
     i18n.changeLanguage(lang);
     setOpen(false);
   }

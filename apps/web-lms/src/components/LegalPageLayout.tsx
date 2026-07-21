@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 
 interface LegalPageLayoutProps {
   icon: LucideIcon;
@@ -19,11 +20,12 @@ interface LegalPageLayoutProps {
 // en el resto del sitio).
 export default function LegalPageLayout({ icon: Icon, title, path, lastUpdated, children }: LegalPageLayoutProps) {
   const { t } = useTranslation();
+  const lp = useLocalizedPath();
   useDocumentMeta(`${title} · UCLCampus`, path);
   return (
     <div className="min-h-screen bg-white text-slate-700">
       <div className="max-w-3xl mx-auto px-4 py-16">
-        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-brand-blue hover:text-brand-navy transition mb-8">
+        <Link to={lp('/')} className="inline-flex items-center gap-1.5 text-sm text-brand-blue hover:text-brand-navy transition mb-8">
           <ArrowLeft size={16} /> {t('common.back_to_home')}
         </Link>
         <div className="flex items-center gap-3 mb-6">

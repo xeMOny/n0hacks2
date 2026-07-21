@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { useLocalizedPath } from '../hooks/useLocalizedPath';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import SocialBar from '../components/SocialBar';
 
@@ -48,7 +49,8 @@ interface StatEntry { value: string; label: string }
 
 export default function Home() {
   const { t } = useTranslation();
-  useDocumentMeta(t('meta.home_title'), '/');
+  const lp = useLocalizedPath();
+  useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [modalidad, setModalidad] = useState('all');
   const [nivel, setNivel] = useState('all');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -80,7 +82,7 @@ export default function Home() {
           de utilidades sobre la barra de navegación principal) */}
       <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
-          <Link to="/" className="shrink-0 flex items-center">
+          <Link to={lp('/')} className="shrink-0 flex items-center">
             <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
           </Link>
 
@@ -367,9 +369,9 @@ export default function Home() {
             <div>
               <h3 className="font-bold mb-4 text-white">{t('footer.legal_title')}</h3>
               <ul className="text-sm text-slate-300 space-y-3">
-                <li><Link to="/aviso-legal" className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</Link></li>
-                <li><Link to="/privacidad" className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</Link></li>
-                <li><Link to="/cookies" className="hover:text-brand-sky transition">{t('footer.cookie_policy_link')}</Link></li>
+                <li><Link to={lp('/aviso-legal')} className="hover:text-brand-sky transition">{t('footer.legal_notice_link')}</Link></li>
+                <li><Link to={lp('/privacidad')} className="hover:text-brand-sky transition">{t('footer.privacy_policy_link')}</Link></li>
+                <li><Link to={lp('/cookies')} className="hover:text-brand-sky transition">{t('footer.cookie_policy_link')}</Link></li>
               </ul>
             </div>
             <div>
@@ -377,7 +379,7 @@ export default function Home() {
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="#cursos" className="hover:text-brand-sky transition">{t('footer.programs_title')}</a></li>
                 <li><a href="#novedades" className="hover:text-brand-sky transition">{t('footer.news_link')}</a></li>
-                <li><Link to="/accesibilidad" className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</Link></li>
+                <li><Link to={lp('/accesibilidad')} className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</Link></li>
               </ul>
             </div>
             <div>

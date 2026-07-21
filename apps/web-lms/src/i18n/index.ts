@@ -7,6 +7,7 @@ import it from "./locales/it.json";
 import fr from "./locales/fr.json";
 
 export const SUPPORTED_LANGUAGES = ["es", "en", "fr", "it"] as const;
+export const LANG_STORAGE_KEY = "uclcampus_lang";
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 i18n
@@ -25,7 +26,7 @@ i18n
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
-      lookupLocalStorage: "uclcampus_lang",
+      lookupLocalStorage: LANG_STORAGE_KEY,
     },
   });
 

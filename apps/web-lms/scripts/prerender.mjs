@@ -33,7 +33,20 @@ const PORT = 4399;
 // URL final real siempre lleva barra — generar el snapshot ya desde esa
 // ruta evita que el <link rel="canonical"> capturado apunte a la URL que
 // redirige en vez de a la que responde 200 directamente.
-const ROUTES = ["/", "/privacidad/", "/aviso-legal/", "/cookies/", "/accesibilidad/"];
+const BASE_ROUTES = ["/", "/privacidad/", "/aviso-legal/", "/cookies/", "/accesibilidad/"];
+
+// Cada ruta pública se prerenderiza en los 4 idiomas: el español en la raíz
+// y el resto bajo su prefijo (/en, /fr, /it) — las mismas URLs que declaran
+// el hreflang y el sitemap. El idioma va fijado por ruta (ver `lang` abajo,
+// sembrado en localStorage antes de cargar): sin esto el detector de i18next
+// usa navigator.language del Chrome del CI (en-US) y la home española se
+// bakeaba — y se indexaba — en inglés.
+const ROUTES = ["es", "en", "fr", "it"].flatMap((lang) =>
+  BASE_ROUTES.map((base) => ({
+    lang,
+    route: lang === "es" ? base : `/${lang}${base === "/" ? "/" : base}`,
+  })),
+);
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -82,8 +95,15 @@ async function main() {
   });
 
   try {
-    for (const route of ROUTES) {
+    for (const { lang, route } of ROUTES) {
       const page = await browser.newPage();
+      // Antes de que cargue nada de la app: el localStorage persiste entre
+      // páginas del mismo origen dentro de este navegador, así que hay que
+      // fijar el idioma esperado en CADA ruta (si no, el idioma de la ruta
+      // anterior — o el navigator.language del CI — contaminaría el snapshot).
+      await page.evaluateOnNewDocument((expected) => {
+        localStorage.setItem("uclcampus_lang", expected);
+      }, lang);
       await page.goto(`http://127.0.0.1:${PORT}${route}`, { waitUntil: "networkidle0", timeout: 30000 });
       // Deja que las transiciones de framer-motion terminen antes de capturar.
       await new Promise((r) => setTimeout(r, 800));
@@ -101,6 +121,10 @@ async function main() {
         document.querySelectorAll(`link[rel="modulepreload"][href^="${prefix}"]`).forEach((el) => el.remove());
         return "<!doctype html>\n" + document.documentElement.outerHTML;
       }, PORT);
+      const gotLang = await page.evaluate(() => document.documentElement.lang);
+      if (gotLang !== lang) {
+        throw new Error(`prerender: ${route} esperaba lang="${lang}" pero renderizó lang="${gotLang}"`);
+      }
       await page.close();
 
       const outDir = route === "/" ? DIST : path.join(DIST, route);
