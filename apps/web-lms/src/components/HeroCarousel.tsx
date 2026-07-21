@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import bannerMatricula from '../assets/hero/banner-matricula.jpg';
+import bannerTitulos from '../assets/hero/banner-titulos.jpg';
+import bannerOnline from '../assets/hero/banner-online.jpg';
 
 interface Banner {
   tag: string;
@@ -10,6 +13,12 @@ interface Banner {
   cta: string;
   href: string;
 }
+
+// Fotos de banco (Unsplash, licencia libre, sin marcas de ninguna institución
+// real) en el mismo orden que hero.banners de los locales: matrícula,
+// títulos, campus virtual. Si se añade un 4º banner en los locales sin foto
+// aquí, el slide se renderiza sin imagen (solo texto) en vez de romperse.
+const bannerImages = [bannerMatricula, bannerTitulos, bannerOnline];
 
 const ROTATE_MS = 6000;
 
@@ -32,6 +41,7 @@ export default function HeroCarousel() {
 
   const go = (i: number) => setIndex(((i % banners.length) + banners.length) % banners.length);
   const banner = banners[index];
+  const image = bannerImages[index];
 
   return (
     <div
@@ -51,11 +61,11 @@ export default function HeroCarousel() {
         touchStartX.current = null;
         setPaused(false);
       }}
-      className="relative max-w-5xl mx-auto px-4 pt-16 pb-12 md:pt-24 md:pb-16 text-center"
+      className="relative max-w-6xl mx-auto px-4 pt-10 pb-10 md:pt-16 md:pb-14"
     >
       {/* Altura mínima fija: evita que el layout salte cuando un banner tiene
           un texto más largo que otro al rotar. */}
-      <div className="min-h-[16rem] md:min-h-[17rem] flex flex-col items-center justify-center">
+      <div className="min-h-[30rem] md:min-h-[24rem] flex items-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -63,22 +73,39 @@ export default function HeroCarousel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35 }}
+            className="w-full grid md:grid-cols-2 items-center gap-8 md:gap-12"
           >
-            <span className="inline-block bg-brand-blue/10 text-brand-blue text-xs md:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-5">
-              {banner.tag}
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bold mb-5 text-brand-navy tracking-tight">
-              {banner.title}
-            </h2>
-            <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-              {banner.text}
-            </p>
-            <a
-              href={banner.href}
-              className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-8 py-3 rounded-lg font-semibold transition"
-            >
-              {banner.cta} <ArrowRight size={18} />
-            </a>
+            {/* Imagen: arriba en móvil, a la derecha en escritorio.
+                Decorativa (alt vacío): el texto del banner ya lo dice todo. */}
+            <div className="order-1 md:order-2">
+              {image && (
+                <img
+                  src={image}
+                  alt=""
+                  width={900}
+                  height={600}
+                  className="w-full h-44 sm:h-56 md:h-80 object-cover rounded-2xl shadow-lg shadow-slate-300/40 border border-slate-200"
+                />
+              )}
+            </div>
+
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <span className="inline-block bg-brand-blue/10 text-brand-blue text-xs md:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-5">
+                {banner.tag}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold mb-5 text-brand-navy tracking-tight">
+                {banner.title}
+              </h2>
+              <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-xl mx-auto md:mx-0">
+                {banner.text}
+              </p>
+              <a
+                href={banner.href}
+                className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-8 py-3 rounded-lg font-semibold transition"
+              >
+                {banner.cta} <ArrowRight size={18} />
+              </a>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
