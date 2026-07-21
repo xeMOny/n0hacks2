@@ -165,7 +165,7 @@
     "retention_title": "How long we keep your data",
     "retention_body": "Student data is kept for the duration of the academic relationship and, after it ends, for the period required by applicable educational and tax regulations. Commercial contact data that does not convert to enrollment is kept for a maximum of 24 months from the last contact, unless you request earlier deletion.",
     "recipients_title": "Who we share your data with",
-    "recipients_body": "We do not sell or share your data with third parties for purposes unrelated to our service. We may share data with technology providers strictly necessary to operate the platform (hosting, transactional email) under confidentiality and data processing agreements.",
+    "recipients_body": "We do not sell or share your data with third parties for purposes unrelated to our service. We may share data with technology providers strictly necessary to operate the platform (hosting, transactional email) under confidentiality and data processing agreements. Specifically, the contact form is sent via FormSubmit (formsubmit.co), a form-forwarding service that delivers your enquiry (first name, last name, email, country and message) to our mailbox and does not use it for any other purpose.",
     "security_title": "How we protect your data",
     "security_body": "Passwords are stored encrypted (bcrypt), communications travel encrypted (HTTPS/TLS), access to data is restricted by role, and we apply technical measures to protect against unauthorized access.",
     "rights_title": "Your rights",

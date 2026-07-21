@@ -165,7 +165,7 @@
     "retention_title": "Cuánto tiempo conservamos tus datos",
     "retention_body": "Los datos de alumnos se conservan mientras dura la relación académica y, tras finalizar, durante el plazo exigido por la normativa educativa y fiscal aplicable. Los datos de contacto comercial sin conversión a matrícula se conservan un máximo de 24 meses desde el último contacto, salvo que solicites su eliminación antes.",
     "recipients_title": "Con quién compartimos tus datos",
-    "recipients_body": "No vendemos ni cedemos tus datos a terceros con fines comerciales ajenos a nuestro servicio. Podemos compartir datos con proveedores tecnológicos estrictamente necesarios para operar la plataforma (hosting, email transaccional) bajo acuerdo de confidencialidad y tratamiento de datos.",
+    "recipients_body": "No vendemos ni cedemos tus datos a terceros con fines comerciales ajenos a nuestro servicio. Podemos compartir datos con proveedores tecnológicos estrictamente necesarios para operar la plataforma (hosting, email transaccional) bajo acuerdo de confidencialidad y tratamiento de datos. En concreto, el formulario de contacto se envía a través de FormSubmit (formsubmit.co), un servicio de reenvío de formularios que entrega tu consulta (nombre, apellidos, email, país y mensaje) a nuestro buzón de correo y no la utiliza para otros fines.",
     "security_title": "Cómo protegemos tus datos",
     "security_body": "Las contraseñas se almacenan cifradas (bcrypt), las comunicaciones viajan cifradas (HTTPS/TLS), el acceso a los datos está restringido por roles, y aplicamos medidas técnicas de protección frente a accesos no autorizados.",
     "rights_title": "Tus derechos",
