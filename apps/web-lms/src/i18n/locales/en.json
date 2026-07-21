@@ -9,43 +9,43 @@
   "nav": {
     "students_area": "Student area",
     "staff_area": "Staff area",
-    "programs": "Programs",
     "about": "About us",
-    "news": "News",
     "contact": "Contact",
     "menu": "Menu",
-    "close": "Close menu"
+    "close": "Close menu",
+    "home": "Home",
+    "academic_offer": "Academic Offer",
+    "admissions": "Admissions",
+    "transparency": "Transparency & Regulations"
   },
   "hero": {
     "title": "Quality Online Education",
-    "subtitle": "Develop your skills with hands-on programs designed together with industry professionals.",
-    "modality_all": "All",
-    "modality_online": "Online",
-    "modality_hybrid": "Hybrid",
-    "modality_label": "Modality",
-    "level_all": "All",
-    "level_degree": "Bachelor's",
-    "level_postgrad": "Postgraduate",
-    "level_label": "Level",
-    "search_cta": "Search programs"
-  },
-  "stats": {
-    "students": {
-      "value": "2,400+",
-      "label": "Active students"
-    },
-    "countries": {
-      "value": "38",
-      "label": "Countries of origin"
-    },
-    "employability": {
-      "value": "94%",
-      "label": "Employability within a year"
-    },
-    "years": {
-      "value": "12",
-      "label": "Years of experience"
-    }
+    "prev": "Previous banner",
+    "next": "Next banner",
+    "goto": "Go to banner",
+    "banners": [
+      {
+        "tag": "Enrolment open",
+        "title": "Enrolment period now open",
+        "text": "You can now apply for a place for the upcoming academic year.",
+        "cta": "Learn more",
+        "href": "#admisiones"
+      },
+      {
+        "tag": "Academic offer",
+        "title": "Degrees and postgraduate programs, 100% online",
+        "text": "Practical programs designed together with industry professionals.",
+        "cta": "View academic offer",
+        "href": "#cursos"
+      },
+      {
+        "tag": "Virtual campus",
+        "title": "Study wherever and whenever you want",
+        "text": "Online methodology with personalised support from our faculty.",
+        "cta": "About us",
+        "href": "#sobre"
+      }
+    ]
   },
   "features": [
     {
@@ -62,7 +62,7 @@
     }
   ],
   "courses": {
-    "section_title": "Our Programs",
+    "section_title": "Academic Offer",
     "enroll": "Enroll",
     "items": [
       {
@@ -146,7 +146,7 @@
     "news_link": "News",
     "student_access": "Student access",
     "contact_title": "Contact",
-    "location": "Malta · Andorra",
+    "location": "Malta",
     "copyright": "© 2026 UCLCampus. All rights reserved.",
     "cookie_policy_link": "Cookie Policy",
     "privacy_policy_link": "Privacy Policy",
@@ -266,5 +266,28 @@
     "status_body": "This site is under active development. Some areas do not yet meet all accessibility criteria (for example, a full review of keyboard navigation and screen reader support in the student area). We will keep addressing these points progressively.",
     "contact_title": "Contact",
     "contact_body": "If you encounter an accessibility barrier while using this site, please write to us and we will look into it:"
+  },
+  "admissions": {
+    "section_title": "Admissions",
+    "intro": "The admission process is simple and fully online.",
+    "steps": [
+      {
+        "title": "Request information",
+        "desc": "Tell us which program interests you and we will answer your questions."
+      },
+      {
+        "title": "Submit your application",
+        "desc": "Complete the admission form with your documentation."
+      },
+      {
+        "title": "Complete your enrolment",
+        "desc": "Confirm your place and access the virtual campus."
+      }
+    ],
+    "cta": "Start now"
+  },
+  "transparency": {
+    "section_title": "Transparency & Regulations",
+    "intro": "Consult the legal documentation and regulations governing UCLCampus."
   }
 }

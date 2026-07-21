@@ -9,43 +9,43 @@
   "nav": {
     "students_area": "Espace étudiants",
     "staff_area": "Espace personnel",
-    "programs": "Programmes",
     "about": "À propos",
-    "news": "Actualités",
     "contact": "Contact",
     "menu": "Menu",
-    "close": "Fermer le menu"
+    "close": "Fermer le menu",
+    "home": "Accueil",
+    "academic_offer": "Offre académique",
+    "admissions": "Admissions",
+    "transparency": "Transparence et réglementation"
   },
   "hero": {
     "title": "Formation en Ligne de Qualité",
-    "subtitle": "Développez vos compétences avec des programmes pratiques conçus avec des professionnels du secteur.",
-    "modality_all": "Toutes",
-    "modality_online": "En ligne",
-    "modality_hybrid": "Semi-présentiel",
-    "modality_label": "Modalité",
-    "level_all": "Tous",
-    "level_degree": "Licence",
-    "level_postgrad": "Master",
-    "level_label": "Niveau",
-    "search_cta": "Rechercher des programmes"
-  },
-  "stats": {
-    "students": {
-      "value": "2 400+",
-      "label": "Étudiants actifs"
-    },
-    "countries": {
-      "value": "38",
-      "label": "Pays d'origine"
-    },
-    "employability": {
-      "value": "94%",
-      "label": "Employabilité en un an"
-    },
-    "years": {
-      "value": "12",
-      "label": "Années d'expérience"
-    }
+    "prev": "Bannière précédente",
+    "next": "Bannière suivante",
+    "goto": "Aller à la bannière",
+    "banners": [
+      {
+        "tag": "Inscriptions ouvertes",
+        "title": "Période d’inscription ouverte",
+        "text": "Vous pouvez dès maintenant demander votre place pour la prochaine année académique.",
+        "cta": "En savoir plus",
+        "href": "#admisiones"
+      },
+      {
+        "tag": "Offre académique",
+        "title": "Licences et masters 100 % en ligne",
+        "text": "Des programmes pratiques conçus avec des professionnels du secteur.",
+        "cta": "Voir l’offre académique",
+        "href": "#cursos"
+      },
+      {
+        "tag": "Campus virtuel",
+        "title": "Étudiez où et quand vous voulez",
+        "text": "Méthodologie en ligne avec un accompagnement personnalisé de nos enseignants.",
+        "cta": "Découvrez-nous",
+        "href": "#sobre"
+      }
+    ]
   },
   "features": [
     {
@@ -62,7 +62,7 @@
     }
   ],
   "courses": {
-    "section_title": "Nos Programmes",
+    "section_title": "Offre académique",
     "enroll": "S'inscrire",
     "items": [
       {
@@ -146,7 +146,7 @@
     "news_link": "Actualités",
     "student_access": "Accès étudiants",
     "contact_title": "Contact",
-    "location": "Malte · Andorre",
+    "location": "Malte",
     "copyright": "© 2026 UCLCampus. Tous droits réservés.",
     "cookie_policy_link": "Politique de Cookies",
     "privacy_policy_link": "Politique de Confidentialité",
@@ -266,5 +266,28 @@
     "status_body": "Ce site est en développement actif. Certaines zones ne répondent pas encore à tous les critères d'accessibilité (par exemple, la revue complète de la navigation au clavier et du support des lecteurs d'écran dans l'espace étudiant). Nous continuerons à corriger ces points progressivement.",
     "contact_title": "Contact",
     "contact_body": "Si vous rencontrez un obstacle d'accessibilité en utilisant ce site, écrivez-nous et nous l'examinerons :"
+  },
+  "admissions": {
+    "section_title": "Admissions",
+    "intro": "Le processus d’admission est simple et entièrement en ligne.",
+    "steps": [
+      {
+        "title": "Demandez des informations",
+        "desc": "Dites-nous quel programme vous intéresse et nous répondrons à vos questions."
+      },
+      {
+        "title": "Envoyez votre candidature",
+        "desc": "Complétez le formulaire d’admission avec vos documents."
+      },
+      {
+        "title": "Finalisez votre inscription",
+        "desc": "Confirmez votre place et accédez au campus virtuel."
+      }
+    ],
+    "cta": "Commencer maintenant"
+  },
+  "transparency": {
+    "section_title": "Transparence et réglementation",
+    "intro": "Consultez la documentation juridique et la réglementation qui régissent UCLCampus."
   }
 }

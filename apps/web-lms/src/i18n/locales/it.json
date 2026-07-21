@@ -9,43 +9,43 @@
   "nav": {
     "students_area": "Area studenti",
     "staff_area": "Area personale",
-    "programs": "Programmi",
     "about": "Chi siamo",
-    "news": "Novità",
     "contact": "Contatti",
     "menu": "Menu",
-    "close": "Chiudi menu"
+    "close": "Chiudi menu",
+    "home": "Home",
+    "academic_offer": "Offerta Formativa",
+    "admissions": "Ammissioni",
+    "transparency": "Trasparenza e normativa"
   },
   "hero": {
     "title": "Formazione Online di Qualità",
-    "subtitle": "Sviluppa le tue competenze con programmi pratici progettati insieme a professionisti del settore.",
-    "modality_all": "Tutte",
-    "modality_online": "Online",
-    "modality_hybrid": "Semipresenziale",
-    "modality_label": "Modalità",
-    "level_all": "Tutti",
-    "level_degree": "Laurea",
-    "level_postgrad": "Master",
-    "level_label": "Livello",
-    "search_cta": "Cerca programmi"
-  },
-  "stats": {
-    "students": {
-      "value": "2.400+",
-      "label": "Studenti attivi"
-    },
-    "countries": {
-      "value": "38",
-      "label": "Paesi di provenienza"
-    },
-    "employability": {
-      "value": "94%",
-      "label": "Occupabilità entro un anno"
-    },
-    "years": {
-      "value": "12",
-      "label": "Anni di esperienza"
-    }
+    "prev": "Banner precedente",
+    "next": "Banner successivo",
+    "goto": "Vai al banner",
+    "banners": [
+      {
+        "tag": "Iscrizioni aperte",
+        "title": "Periodo di iscrizione aperto",
+        "text": "Puoi già richiedere il tuo posto per il prossimo anno accademico.",
+        "cta": "Maggiori informazioni",
+        "href": "#admisiones"
+      },
+      {
+        "tag": "Offerta formativa",
+        "title": "Lauree e post-laurea 100% online",
+        "text": "Programmi pratici progettati insieme a professionisti del settore.",
+        "cta": "Vedi l’offerta formativa",
+        "href": "#cursos"
+      },
+      {
+        "tag": "Campus virtuale",
+        "title": "Studia dove e quando vuoi",
+        "text": "Metodologia online con supporto personalizzato dei docenti.",
+        "cta": "Scopri di più",
+        "href": "#sobre"
+      }
+    ]
   },
   "features": [
     {
@@ -62,7 +62,7 @@
     }
   ],
   "courses": {
-    "section_title": "I Nostri Programmi",
+    "section_title": "Offerta Formativa",
     "enroll": "Iscriviti",
     "items": [
       {
@@ -146,7 +146,7 @@
     "news_link": "Novità",
     "student_access": "Accesso studenti",
     "contact_title": "Contatti",
-    "location": "Malta · Andorra",
+    "location": "Malta",
     "copyright": "© 2026 UCLCampus. Tutti i diritti riservati.",
     "cookie_policy_link": "Informativa sui Cookie",
     "privacy_policy_link": "Informativa sulla Privacy",
@@ -266,5 +266,28 @@
     "status_body": "Questo sito è in fase di sviluppo attivo. Alcune aree non soddisfano ancora tutti i criteri di accessibilità (ad esempio, revisione completa della navigazione da tastiera e degli screen reader nell'area studenti). Continueremo a correggere questi punti progressivamente.",
     "contact_title": "Contatti",
     "contact_body": "Se riscontri una barriera di accessibilità utilizzando questo sito, scrivici e la esamineremo:"
+  },
+  "admissions": {
+    "section_title": "Ammissioni",
+    "intro": "Il processo di ammissione è semplice e completamente online.",
+    "steps": [
+      {
+        "title": "Richiedi informazioni",
+        "desc": "Dicci quale programma ti interessa e risponderemo alle tue domande."
+      },
+      {
+        "title": "Invia la tua candidatura",
+        "desc": "Completa il modulo di ammissione con la tua documentazione."
+      },
+      {
+        "title": "Perfeziona l’iscrizione",
+        "desc": "Conferma il tuo posto e accedi al campus virtuale."
+      }
+    ],
+    "cta": "Inizia ora"
+  },
+  "transparency": {
+    "section_title": "Trasparenza e normativa",
+    "intro": "Consulta la documentazione legale e la normativa che regolano UCLCampus."
   }
 }

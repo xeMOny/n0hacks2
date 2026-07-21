@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
-  Search,
   Globe2,
   Users,
   Award,
@@ -15,12 +14,17 @@ import {
   Calendar,
   Menu,
   X,
+  FileText,
+  ClipboardList,
+  GraduationCap,
+  MessageCircle,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import SocialBar from '../components/SocialBar';
+import HeroCarousel from '../components/HeroCarousel';
 
 // Lazy: el widget de chat (con su propio framer-motion + cliente de API)
 // no hace falta para el primer pintado, es un botón flotante que la mayoría
@@ -45,30 +49,39 @@ interface Course { title: string; desc: string; price: string; mode: string; lev
 interface Testimonial { initials: string; name: string; program: string; quote: string }
 interface NewsItem { date: string; title: string; excerpt: string }
 interface Feature { title: string; desc: string }
-interface StatEntry { value: string; label: string }
+interface AdmissionStep { title: string; desc: string }
+
+// Las 6 pestañas de navegación pedidas por el cliente, en su orden.
+// Anclas de la propia home: las secciones de Admisiones y Transparencia
+// existen más abajo en esta misma página.
+const NAV_ITEMS = [
+  { key: 'nav.home', href: '#inicio' },
+  { key: 'nav.about', href: '#sobre' },
+  { key: 'nav.academic_offer', href: '#cursos' },
+  { key: 'nav.admissions', href: '#admisiones' },
+  { key: 'nav.transparency', href: '#transparencia' },
+  { key: 'nav.contact', href: '#contacto' },
+] as const;
+
+const admissionIcons = [MessageCircle, ClipboardList, GraduationCap];
 
 export default function Home() {
   const { t } = useTranslation();
   const lp = useLocalizedPath();
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
-  const [modalidad, setModalidad] = useState('all');
-  const [nivel, setNivel] = useState('all');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const stats = t('stats', { returnObjects: true }) as Record<string, StatEntry>;
   const features = t('features', { returnObjects: true }) as Feature[];
   const courses = (t('courses.items', { returnObjects: true }) as Course[]).map((c, i) => ({ ...c, id: i }));
   const testimonials = t('testimonials.items', { returnObjects: true }) as Testimonial[];
   const news = t('news.items', { returnObjects: true }) as NewsItem[];
-
-  const modeMatch = (mode: string) => {
-    if (modalidad === 'all') return true;
-    return modalidad === 'online' ? mode === t('hero.modality_online') : mode === t('hero.modality_hybrid');
-  };
-  const levelMatch = (level: string) => {
-    if (nivel === 'all') return true;
-    return nivel === 'degree' ? level === t('hero.level_degree') : level === t('hero.level_postgrad');
-  };
+  const admissionSteps = t('admissions.steps', { returnObjects: true }) as AdmissionStep[];
+  const transparencyLinks = [
+    { to: '/aviso-legal', label: t('footer.legal_notice_link') },
+    { to: '/privacidad', label: t('footer.privacy_policy_link') },
+    { to: '/cookies', label: t('footer.cookie_policy_link') },
+    { to: '/accesibilidad', label: t('footer.accessibility_link') },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -81,22 +94,23 @@ export default function Home() {
           (a propósito más arriba que en IE University, que separa una barra
           de utilidades sobre la barra de navegación principal) */}
       <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4 2xl:gap-6">
           <Link to={lp('/')} className="shrink-0 flex items-center">
             <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
-            <a href="#cursos" className="hover:text-brand-blue transition">{t('nav.programs')}</a>
-            <a href="#sobre" className="hover:text-brand-blue transition">{t('nav.about')}</a>
-            <a href="#novedades" className="hover:text-brand-blue transition">{t('nav.news')}</a>
-            <a href="#contacto" className="hover:text-brand-blue transition">{t('nav.contact')}</a>
+          {/* 6 pestañas: no caben junto a los enlaces de acceso hasta xl,
+              así que estos últimos colapsan al menú hamburguesa antes. */}
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-7 text-sm font-semibold text-brand-navy whitespace-nowrap bg-transparent">
+            {NAV_ITEMS.map(({ key, href }) => (
+              <a key={key} href={href} className="hover:text-brand-blue transition">{t(key)}</a>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-3 lg:gap-4 text-xs font-medium text-slate-500 whitespace-nowrap">
-            <Link to="/mi-area" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.students_area')}</Link>
-            <Link to="/login" className="hidden lg:inline hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
-            <span className="hidden lg:block w-px h-4 bg-slate-300" aria-hidden="true" />
+          <div className="flex items-center gap-3 text-xs font-medium text-slate-500 whitespace-nowrap">
+            <Link to="/mi-area" className="hidden xl:inline hover:text-brand-blue transition">{t('nav.students_area')}</Link>
+            <Link to="/login" className="hidden xl:inline hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
+            <span className="hidden xl:block w-px h-4 bg-slate-300" aria-hidden="true" />
             <LanguageSwitcher />
             <button
               type="button"
@@ -104,7 +118,7 @@ export default function Home() {
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               aria-label={menuOpen ? t('nav.close') : t('nav.menu')}
-              className="lg:hidden appearance-none bg-transparent p-1.5 -mr-1.5 text-brand-navy hover:text-brand-blue transition"
+              className="xl:hidden appearance-none bg-transparent p-1.5 -mr-1.5 text-brand-navy hover:text-brand-blue transition"
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -112,8 +126,8 @@ export default function Home() {
         </div>
 
         {/* Menú móvil/tablet: mismo contenido que la barra de escritorio.
-            Por debajo de lg no cabe la barra completa (el francés es el
-            idioma más largo), así que colapsa todo aquí. */}
+            Por debajo de xl no cabe la barra completa (6 pestañas más los
+            accesos; el francés es el idioma más largo), así que colapsa aquí. */}
         <AnimatePresence>
           {menuOpen && (
             <motion.nav
@@ -122,13 +136,12 @@ export default function Home() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.18 }}
-              className="lg:hidden overflow-hidden border-t border-slate-200 bg-white"
+              className="xl:hidden overflow-hidden border-t border-slate-200 bg-white"
             >
               <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col text-sm font-semibold text-brand-navy">
-                <a href="#cursos" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.programs')}</a>
-                <a href="#sobre" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.about')}</a>
-                <a href="#novedades" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.news')}</a>
-                <a href="#contacto" onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t('nav.contact')}</a>
+                {NAV_ITEMS.map(({ key, href }) => (
+                  <a key={key} href={href} onClick={() => setMenuOpen(false)} className="py-2.5 hover:text-brand-blue transition">{t(key)}</a>
+                ))}
                 <span className="my-2 h-px bg-slate-200" aria-hidden="true" />
                 <Link to="/mi-area" onClick={() => setMenuOpen(false)} className="py-2.5 text-slate-500 hover:text-brand-blue transition">{t('nav.students_area')}</Link>
                 <Link to="/login" onClick={() => setMenuOpen(false)} className="py-2.5 text-slate-500 hover:text-brand-blue transition">{t('nav.staff_area')}</Link>
@@ -138,79 +151,20 @@ export default function Home() {
         </AnimatePresence>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-mist to-white">
+      {/* Hero: carrusel de banners con la información destacada del momento
+          (plazos de matrícula, títulos, etc.). Sustituye al banner estático
+          con buscador que había antes, por petición del cliente. El h1 es
+          solo para lectores de pantalla/buscadores: los títulos visibles de
+          los banners rotan, y un h1 cambiante sería mala jerarquía. */}
+      <section id="inicio" className="relative overflow-hidden bg-gradient-to-b from-brand-mist to-white">
         <img
           src={logoIcon}
           alt=""
           aria-hidden="true"
           className="pointer-events-none select-none absolute -right-20 -top-14 w-80 md:w-[28rem] opacity-[0.05]"
         />
-        <div className="relative max-w-5xl mx-auto px-4 pt-20 pb-14 md:pt-28 md:pb-20 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-brand-navy tracking-tight"
-          >
-            {t('hero.title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto"
-          >
-            {t('hero.subtitle')}
-          </motion.p>
-
-          {/* Buscador de programas */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="max-w-3xl mx-auto bg-white shadow-lg shadow-slate-300/30 border border-slate-200 rounded-xl p-4 flex flex-col md:flex-row gap-3"
-          >
-            <select
-              value={modalidad}
-              onChange={(e) => setModalidad(e.target.value)}
-              aria-label={t('hero.modality_label')}
-              className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
-            >
-              <option value="all">{t('hero.modality_all')}</option>
-              <option value="online">{t('hero.modality_online')}</option>
-              <option value="hybrid">{t('hero.modality_hybrid')}</option>
-            </select>
-            <select
-              value={nivel}
-              onChange={(e) => setNivel(e.target.value)}
-              aria-label={t('hero.level_label')}
-              className="bg-white border border-slate-300 rounded-lg px-4 py-2 text-sm text-brand-navy"
-            >
-              <option value="all">{t('hero.level_all')}</option>
-              <option value="degree">{t('hero.level_degree')}</option>
-              <option value="postgrad">{t('hero.level_postgrad')}</option>
-            </select>
-            <a
-              href="#cursos"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-6 py-2 rounded-lg font-semibold transition"
-            >
-              <Search size={18} /> {t('hero.search_cta')}
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Estadísticas */}
-      <section className="bg-brand-navy">
-        <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {Object.values(stats).map((s, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}>
-              <div className="text-3xl md:text-4xl font-bold text-brand-sky">{s.value}</div>
-              <div className="text-sm text-slate-300 mt-1">{s.label}</div>
-            </motion.div>
-          ))}
-        </div>
+        <h1 className="sr-only">{t('meta.home_title')}</h1>
+        <HeroCarousel />
       </section>
 
       {/* Features */}
@@ -246,8 +200,6 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {courses
-              .filter((c) => modeMatch(c.mode))
-              .filter((c) => levelMatch(c.level))
               .map((course, i) => (
                 <motion.div
                   key={course.id}
@@ -280,8 +232,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Admisiones: proceso en 3 pasos + CTA. Contenido genérico de partida,
+          a la espera de que el cliente concrete requisitos/plazos reales. */}
+      <section id="admisiones" className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('admissions.section_title')}</h2>
+          <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('admissions.intro')}</p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {admissionSteps.map((step, i) => {
+              const Icon = admissionIcons[i];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-4 left-4 w-7 h-7 rounded-full bg-brand-mist text-brand-blue text-sm font-bold flex items-center justify-center"
+                  >
+                    {i + 1}
+                  </span>
+                  <Icon className="w-12 h-12 mx-auto mb-4 text-brand-blue" />
+                  <h3 className="text-xl font-bold mb-2 text-brand-navy">{step.title}</h3>
+                  <p className="text-slate-600">{step.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+          <div className="text-center">
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-8 py-3 rounded-lg font-semibold transition"
+            >
+              {t('admissions.cta')} <ArrowRight size={18} />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonios */}
-      <section className="py-20">
+      <section className="bg-brand-mist py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center text-brand-navy">{t('testimonials.section_title')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -292,7 +286,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-brand-mist border border-slate-200 rounded-xl p-8"
+                className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm"
               >
                 <Quote className="text-brand-sky mb-4" size={28} />
                 <p className="text-slate-700 mb-6 italic">&ldquo;{item.quote}&rdquo;</p>
@@ -317,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* Novedades */}
-      <section id="novedades" className="bg-brand-mist py-20">
+      <section id="novedades" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-12">
             <Newspaper className="text-brand-blue" size={28} />
@@ -341,6 +335,28 @@ export default function Home() {
                 <h3 className="font-bold mb-2 text-brand-navy">{n.title}</h3>
                 <p className="text-sm text-slate-600">{n.excerpt}</p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transparencia y normativa: acceso a la documentación legal real del
+          sitio. Cuando el cliente facilite normativa académica propia
+          (reglamentos, calidad, etc.), añadirla aquí como más enlaces. */}
+      <section id="transparencia" className="bg-brand-mist py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('transparency.section_title')}</h2>
+          <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('transparency.intro')}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {transparencyLinks.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={lp(to)}
+                className="bg-white border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition group"
+              >
+                <FileText className="w-8 h-8 mx-auto mb-3 text-brand-blue" />
+                <span className="font-semibold text-brand-navy group-hover:text-brand-blue transition">{label}</span>
+              </Link>
             ))}
           </div>
         </div>
