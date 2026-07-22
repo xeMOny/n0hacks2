@@ -36,7 +36,14 @@
 
     <!-- SEO -->
     <meta name="description" content="UCLCampus: universidad online en Malta acreditada por la MFHEA. Másteres, MBA y doctorado oficiales, 100% online, válidos en el EEES, Reino Unido y la Commonwealth.">
-    <meta name="robots" content="index, follow">
+    <!--
+      OBRAS: mientras la web no sea pública (cambio de nombre MFHEA pendiente)
+      va en noindex para que Google no la muestre. Producción (uclcampus.com)
+      sirve una página de "en construcción"; la web completa vive en el
+      entorno de preview (preview.uclcampus.com), también noindex y sin
+      enlazar. Al salir a producción: devolver a "index, follow".
+    -->
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph / redes sociales -->
     <meta property="og:type" content="website">
