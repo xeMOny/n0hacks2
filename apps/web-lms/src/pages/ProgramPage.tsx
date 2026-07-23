@@ -11,6 +11,7 @@ import {
   Info,
   CalendarDays,
   GraduationCap,
+  Download,
   Users,
   Dumbbell,
   Apple,
@@ -32,6 +33,7 @@ import PROGRAM_SLUGS from '../data/programSlugs.json';
 import DEPARTMENTS from '../data/departments.json';
 import VideoEmbed from '../components/VideoEmbed';
 import videos from '../data/videos.json';
+import dossiers from '../data/dossiers.json';
 
 // Títulos nuevos aún sin ficha completa (p. ej. grados de Ciencias de la Salud,
 // varios en proceso de acreditación). Se muestran como "ficha en preparación"
@@ -114,6 +116,7 @@ export default function ProgramPage() {
   const stubInfo = slug ? STUBS[slug] : undefined;
   const BannerIcon = PROGRAM_ICONS[slug || ''] || GraduationCap;
   const programVideo = (videos as Record<string, string>)[slug || ''] || '';
+  const programDossier = (dossiers as Record<string, string>)[slug || ''] || '';
 
   useEffect(() => {
     setProgram(null);
@@ -187,6 +190,16 @@ export default function ProgramPage() {
             </div>
           )}
           <p className="text-slate-600 leading-relaxed mb-8">{t('offer.stub_body')}</p>
+          {programDossier && (
+            <a
+              href={programDossier}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-navy text-white font-bold text-sm px-6 py-3 rounded-lg transition mb-8"
+            >
+              <Download size={17} /> {t('program_page.download_dossier')}
+            </a>
+          )}
           <div className="bg-brand-navy rounded-xl p-8 text-center">
             <p className="text-xl font-bold text-white mb-4">{t('program_page.enroll_banner')}</p>
             <Link
@@ -405,6 +418,18 @@ export default function ProgramPage() {
             cualificación, información de estudio y fechas. Sticky en
             escritorio; en móvil baja al final del contenido. */}
         <aside className="lg:sticky lg:top-24 self-start bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          {/* Dossier del programa (PDF). Hueco preparado: aparece solo cuando
+              dossiers.json tiene un PDF para este título. */}
+          {programDossier && (
+            <a
+              href={programDossier}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-brand-blue hover:bg-brand-navy text-white font-bold text-sm px-5 py-3 rounded-lg transition mb-5"
+            >
+              <Download size={17} /> {t('program_page.download_dossier')}
+            </a>
+          )}
           <SidebarBlock
             title={t('program_page.details_title')}
             icon={Info}

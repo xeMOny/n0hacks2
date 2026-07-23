@@ -345,7 +345,8 @@
     "tab_admission": "Conditions d'accès",
     "tab_certifications": "Certifications",
     "tab_careers": "Débouchés",
-    "faculty_pending": "Les informations sur le corps enseignant de ce programme seront publiées prochainement."
+    "faculty_pending": "Les informations sur le corps enseignant de ce programme seront publiées prochainement.",
+    "download_dossier": "Télécharger le dossier"
   },
   "offer": {
     "items": [

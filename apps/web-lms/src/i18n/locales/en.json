@@ -345,7 +345,8 @@
     "tab_admission": "Admission requirements",
     "tab_certifications": "Certifications",
     "tab_careers": "Career paths",
-    "faculty_pending": "Faculty information for this programme will be published soon."
+    "faculty_pending": "Faculty information for this programme will be published soon.",
+    "download_dossier": "Download brochure"
   },
   "offer": {
     "items": [

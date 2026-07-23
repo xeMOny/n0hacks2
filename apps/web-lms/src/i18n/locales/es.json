@@ -345,7 +345,8 @@
     "tab_admission": "Requisitos de acceso",
     "tab_certifications": "Certificaciones obtenidas",
     "tab_careers": "Salidas laborales",
-    "faculty_pending": "Publicaremos próximamente la información del profesorado de este programa."
+    "faculty_pending": "Publicaremos próximamente la información del profesorado de este programa.",
+    "download_dossier": "Descargar dossier"
   },
   "offer": {
     "items": [

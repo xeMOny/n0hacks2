@@ -1,0 +1,14 @@
+{
+  "_comment": "Dossier (PDF) por título. Vacío = no aparece botón. Los PDF van en public/dossiers/. DEMO: 4 títulos apuntan a ejemplo.pdf para enseñar la función; ANTES DEL LANZAMIENTO sustituir por los dossieres reales del cliente (uno por título).",
+  "grado-ciencias-deporte": "/dossiers/ejemplo.pdf",
+  "grado-nutricion-dietetica": "",
+  "grado-medicina": "",
+  "grado-biomedicina": "",
+  "master-psicologia-sanitaria": "",
+  "master-seguridad-informacion": "/dossiers/ejemplo.pdf",
+  "master-programacion-java": "",
+  "mba": "/dossiers/ejemplo.pdf",
+  "master-proyectos-europeos": "",
+  "master-non-profit": "",
+  "doctorado-derecho-criminologia": "/dossiers/ejemplo.pdf"
+}
