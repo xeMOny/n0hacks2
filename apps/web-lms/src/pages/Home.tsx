@@ -96,7 +96,7 @@ export default function Home() {
       <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4 2xl:gap-6">
           <Link to={lp('/')} className="shrink-0 flex items-center">
-            <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
+            <img src={logoHorizontal} alt="UCL Campus Malta" className="h-8 md:h-9 w-auto" />
           </Link>
 
           {/* 6 pestañas: no caben junto a los enlaces de acceso hasta xl,
@@ -444,7 +444,7 @@ export default function Home() {
 
           {/* Marca centrada */}
           <div className="flex flex-col items-center gap-2 mb-10">
-            <img src={logoVerticalWhite} alt="UCLCampus" className="h-24 w-auto" />
+            <img src={logoVerticalWhite} alt="UCL Campus Malta" className="h-24 w-auto" />
             <p className="text-slate-400 text-xs flex items-center gap-1">
               <MapPin size={12} /> {t('footer.location')}
             </p>

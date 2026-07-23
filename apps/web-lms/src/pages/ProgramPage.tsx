@@ -150,7 +150,7 @@ export default function ProgramPage() {
         <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
           <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
             <Link to={lp('/')} className="shrink-0 flex items-center">
-              <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
+              <img src={logoHorizontal} alt="UCL Campus Malta" className="h-8 md:h-9 w-auto" />
             </Link>
             <div className="flex items-center gap-4">
               <Link to={lp('/') + '#cursos'} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy hover:text-brand-blue transition">
@@ -230,7 +230,7 @@ export default function ProgramPage() {
       <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
           <Link to={lp('/')} className="shrink-0 flex items-center">
-            <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
+            <img src={logoHorizontal} alt="UCL Campus Malta" className="h-8 md:h-9 w-auto" />
           </Link>
           <div className="flex items-center gap-4">
             <Link to={lp('/') + '#cursos'} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy hover:text-brand-blue transition">
