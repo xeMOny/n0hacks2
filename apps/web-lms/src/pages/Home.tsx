@@ -67,8 +67,12 @@ const NAV_ITEMS = [
 const admissionIcons = [MessageCircle, ClipboardList, GraduationCap];
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lp = useLocalizedPath();
+  // La tarjeta de "grados de tres años" es un argumento solo relevante en
+  // España (allí los grados son de 4 años), así que solo se muestra en la
+  // versión española. En el resto de idiomas se oculta.
+  const isEsLang = (i18n.resolvedLanguage || 'es').slice(0, 2) === 'es';
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -176,9 +180,8 @@ export default function Home() {
                 aquí: irá en esa página de destino cuando exista. */}
             <p>
               {t('about.intro_p1_pre')}
-              <a href="/cum-laude.html" target="_blank" rel="noopener noreferrer" className="text-brand-blue font-semibold underline underline-offset-2 hover:text-brand-navy transition">{t('about.ucl_link')}</a>.
+              <a href="/cum-laude.html" target="_blank" rel="noopener noreferrer" className="text-brand-blue font-semibold underline underline-offset-2 hover:text-brand-navy transition">{t('about.ucl_link')}</a>{t('about.intro_p1_post')}
             </p>
-            <p>{t('about.intro_p2')}</p>
           </div>
           {/* Vídeo de presentación de la entidad. Hueco preparado: se muestra
               solo cuando videos.entity tiene una URL (YouTube/Vimeo). */}
@@ -188,8 +191,8 @@ export default function Home() {
               <VideoEmbed url={videos.entity} title={t('about.video_title')} />
             </div>
           )}
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {aboutCards.map((card, i) => {
+          <div className={`grid gap-6 ${isEsLang ? 'md:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-3'}`}>
+            {(isEsLang ? aboutCards : aboutCards.slice(0, 3)).map((card, i) => {
               const Icon = aboutCardIcons[i];
               return (
                 <motion.div

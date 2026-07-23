@@ -226,7 +226,7 @@
   "about": {
     "intro_p1_pre": "UCL Campus Malta, accreditata nel 2023 dalla MFHEA con numero di licenza 2023-015, appartiene a ",
     "ucl_link": "Universidad Cum Laude",
-    "intro_p2": "Attraverso il suo marchio commerciale Universae Cum Laude offre titoli ufficiali di Laurea, Master e Dottorato validi in tutto lo Spazio europeo dell'istruzione superiore (SEIS), nel Regno Unito e in tutti i paesi del Commonwealth.",
+    "intro_p1_post": "- UCL e offre titoli ufficiali di Laurea, Master e Dottorato validi in tutto lo Spazio europeo dell'istruzione superiore (SEIS), nel Regno Unito e in tutti i paesi del Commonwealth.",
     "cards": [
       {
         "title": "La nostra missione",
@@ -234,7 +234,7 @@
       },
       {
         "title": "Ufficialità e riconoscimento legale",
-        "desc": "Operiamo con pieno riconoscimento nel quadro della MFHEA (l’equivalente maltese dell’ANECA spagnola): tutti i nostri titoli sono ufficiali e pienamente validi nel SEIS, la garanzia di una formazione regolamentata e riconosciuta a livello internazionale."
+        "desc": "Operiamo con pieno riconoscimento nel quadro della MFHEA (l’equivalente maltese dell’ANVUR italiana): tutti i nostri titoli sono ufficiali e pienamente validi nel SEIS, la garanzia di una formazione regolamentata e riconosciuta a livello internazionale."
       },
       {
         "title": "Titoli riconosciuti nel Regno Unito e nel Commonwealth",
