@@ -274,7 +274,8 @@
       }
     ],
     "quality_title": "Engagement envers la qualité",
-    "quality_text": "Dans notre institution, l’excellence n’est pas un concept théorique mais notre façon de travailler. Nous garantissons une expérience éducative rigoureuse et transparente, où chaque programme et chaque enseignant visent à renforcer l’avenir professionnel et l’employabilité de nos étudiants."
+    "quality_text": "Dans notre institution, l’excellence n’est pas un concept théorique mais notre façon de travailler. Nous garantissons une expérience éducative rigoureuse et transparente, où chaque programme et chaque enseignant visent à renforcer l’avenir professionnel et l’employabilité de nos étudiants.",
+    "video_title": "Vidéo de présentation"
   },
   "contact_form": {
     "section_title": "Contact",
@@ -420,5 +421,9 @@
     "accreditation_notice": "Nous vous informons que ce programme est en cours d'accréditation par l'Autorité maltaise de l'enseignement supérieur et postsecondaire (MFHEA). Si vous souhaitez manifester votre intérêt pour l'inscription à ce programme éducatif, veuillez nous contacter à info@uclcampus.com. Le contrat d'étudiant, qui inclut le paiement des frais de scolarité et d'inscription, ne sera signé qu'une fois que la MFHEA aura approuvé l'accréditation de ce programme éducatif.",
     "stub_body": "Nous préparons les informations détaillées de ce programme. Vous trouverez bientôt ici le plan d'études, les conditions d'accès et les débouchés professionnels.",
     "stub_cta": "Demander des informations"
+  },
+  "video": {
+    "watch": "Lire la vidéo",
+    "title": "Vidéo"
   }
 }

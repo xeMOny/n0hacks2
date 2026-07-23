@@ -30,6 +30,8 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import PROGRAM_SLUGS from '../data/programSlugs.json';
 import DEPARTMENTS from '../data/departments.json';
+import VideoEmbed from '../components/VideoEmbed';
+import videos from '../data/videos.json';
 
 // Títulos nuevos aún sin ficha completa (p. ej. grados de Ciencias de la Salud,
 // varios en proceso de acreditación). Se muestran como "ficha en preparación"
@@ -111,6 +113,7 @@ export default function ProgramPage() {
   const [tab, setTab] = useState('descripcion');
   const stubInfo = slug ? STUBS[slug] : undefined;
   const BannerIcon = PROGRAM_ICONS[slug || ''] || GraduationCap;
+  const programVideo = (videos as Record<string, string>)[slug || ''] || '';
 
   useEffect(() => {
     setProgram(null);
@@ -172,6 +175,11 @@ export default function ProgramPage() {
         </section>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
+          {programVideo && (
+            <div className="mb-8">
+              <VideoEmbed url={programVideo} title={stubTitle} />
+            </div>
+          )}
           {stubInfo.inAccreditation && (
             <div className="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-5 mb-8">
               <Info size={20} className="text-amber-600 shrink-0 mt-0.5" />
@@ -277,6 +285,11 @@ export default function ProgramPage() {
 
           {/* Descripción */}
           <div role="tabpanel" hidden={tab !== 'descripcion'}>
+            {programVideo && (
+              <div className="mb-8">
+                <VideoEmbed url={programVideo} title={program.title} />
+              </div>
+            )}
             <p className="text-slate-600 leading-relaxed">{program.description}</p>
           </div>
 

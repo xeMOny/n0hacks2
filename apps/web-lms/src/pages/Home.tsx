@@ -28,6 +28,8 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import SocialBar from '../components/SocialBar';
 import HeroCarousel from '../components/HeroCarousel';
 import ContactForm from '../components/ContactForm';
+import VideoEmbed from '../components/VideoEmbed';
+import videos from '../data/videos.json';
 
 // Lazy: el widget de chat (con su propio framer-motion + cliente de API)
 // no hace falta para el primer pintado, es un botón flotante que la mayoría
@@ -185,6 +187,14 @@ export default function Home() {
             </p>
             <p>{t('about.intro_p2')}</p>
           </div>
+          {/* Vídeo de presentación de la entidad. Hueco preparado: se muestra
+              solo cuando videos.entity tiene una URL (YouTube/Vimeo). */}
+          {videos.entity && (
+            <div className="max-w-3xl mx-auto mb-14">
+              <h3 className="text-lg font-bold text-brand-navy text-center mb-4">{t('about.video_title')}</h3>
+              <VideoEmbed url={videos.entity} title={t('about.video_title')} />
+            </div>
+          )}
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {aboutCards.map((card, i) => {
               const Icon = aboutCardIcons[i];

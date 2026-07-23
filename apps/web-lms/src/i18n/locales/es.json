@@ -274,7 +274,8 @@
       }
     ],
     "quality_title": "Compromiso con la calidad",
-    "quality_text": "En nuestra institución la excelencia no es un concepto teórico, sino nuestra forma de trabajar. Garantizamos una experiencia educativa rigurosa y transparente, donde cada programa y cada docente están orientados a potenciar el futuro profesional y la empleabilidad de nuestros estudiantes."
+    "quality_text": "En nuestra institución la excelencia no es un concepto teórico, sino nuestra forma de trabajar. Garantizamos una experiencia educativa rigurosa y transparente, donde cada programa y cada docente están orientados a potenciar el futuro profesional y la empleabilidad de nuestros estudiantes.",
+    "video_title": "Vídeo de presentación"
   },
   "contact_form": {
     "section_title": "Contacto",
@@ -420,5 +421,9 @@
     "accreditation_notice": "Le informamos de que este programa se encuentra en proceso de acreditación por parte de la Autoridad de Educación Superior y de Postsecundaria de Malta (MFHEA). Si desea manifestar su interés en matricularse en este programa educativo, le rogamos que se ponga en contacto con nosotros en info@uclcampus.com. El acuerdo de estudiante, que incluye el pago de las tasas de matrícula y de inscripción, solo se firmará una vez que la MFHEA apruebe la acreditación de este programa educativo.",
     "stub_body": "Estamos preparando la información detallada de este programa. Muy pronto encontrarás aquí el plan de estudios, los requisitos de acceso y las salidas profesionales.",
     "stub_cta": "Solicitar información"
+  },
+  "video": {
+    "watch": "Reproducir vídeo",
+    "title": "Vídeo"
   }
 }

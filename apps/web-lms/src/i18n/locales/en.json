@@ -274,7 +274,8 @@
       }
     ],
     "quality_title": "Commitment to quality",
-    "quality_text": "At our institution, excellence is not a theoretical concept but the way we work. We guarantee a rigorous, transparent educational experience in which every program and every teacher is focused on strengthening our students' professional future and employability."
+    "quality_text": "At our institution, excellence is not a theoretical concept but the way we work. We guarantee a rigorous, transparent educational experience in which every program and every teacher is focused on strengthening our students' professional future and employability.",
+    "video_title": "Presentation video"
   },
   "contact_form": {
     "section_title": "Contact",
@@ -420,5 +421,9 @@
     "accreditation_notice": "Please note that this programme is currently in the process of accreditation by the Malta Further and Higher Education Authority (MFHEA). If you wish to express your interest in enrolling in this educational programme, please contact us at info@uclcampus.com. The student agreement, which includes the payment of tuition and enrolment fees, will only be signed once the MFHEA approves the accreditation of this educational programme.",
     "stub_body": "We are preparing the detailed information for this programme. You will soon find the syllabus, admission requirements and career paths here.",
     "stub_cta": "Request information"
+  },
+  "video": {
+    "watch": "Play video",
+    "title": "Video"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "_comment": "Enlaces de vídeo (YouTube o Vimeo). Vacío = no se muestra vídeo. Rellenar cuando el cliente los suba. 'entity' = vídeo general (Sobre nosotros); el resto por slug de título (landing de cada programa).",
+  "entity": "",
+  "grado-ciencias-deporte": "",
+  "grado-nutricion-dietetica": "",
+  "grado-medicina": "",
+  "grado-biomedicina": "",
+  "master-psicologia-sanitaria": "",
+  "master-seguridad-informacion": "",
+  "master-programacion-java": "",
+  "mba": "",
+  "master-proyectos-europeos": "",
+  "master-non-profit": "",
+  "doctorado-derecho-criminologia": ""
+}
