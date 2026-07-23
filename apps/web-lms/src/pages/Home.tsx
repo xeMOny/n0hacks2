@@ -5,9 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Globe2,
-  Newspaper,
   MapPin,
-  Calendar,
   Menu,
   X,
   ClipboardList,
@@ -50,7 +48,6 @@ const DEPARTMENTS_TYPED = DEPARTMENTS as { id: string; programs: { slug: string;
 // Reino Unido/Commonwealth, grados de 3 años), en el orden de about.cards.
 const aboutCardIcons = [Target, BadgeCheck, Globe2, Hourglass];
 
-interface NewsItem { date: string; title: string; excerpt: string }
 interface TitledItem { title: string; desc: string }
 interface AdmissionStep { title: string; desc: string }
 
@@ -74,7 +71,6 @@ export default function Home() {
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const news = t('news.items', { returnObjects: true }) as NewsItem[];
   const aboutCards = t('about.cards', { returnObjects: true }) as TitledItem[];
   const essenceItems = t('about.essence_items', { returnObjects: true }) as TitledItem[];
   const talentItems = t('about.talent_items', { returnObjects: true }) as TitledItem[];
@@ -358,36 +354,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Novedades */}
-      <section id="novedades" className="bg-brand-mist py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-12">
-            <Newspaper className="text-brand-blue" size={28} />
-            <h2 className="text-4xl font-bold text-brand-navy">{t('news.section_title')}</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Sin sistema de artículos/blog todavía: son tarjetas informativas,
-                no enlaces (antes tenían href="#" y no llevaban a ningún sitio). */}
-            {news.map((n, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm"
-              >
-                <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
-                  <Calendar size={14} /> {n.date}
-                </div>
-                <h3 className="font-bold mb-2 text-brand-navy">{n.title}</h3>
-                <p className="text-sm text-slate-600">{n.excerpt}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Transparencia y normativa: acceso a la documentación legal real del
           sitio. Cuando el cliente facilite normativa académica propia
           (reglamentos, calidad, etc.), añadirla aquí como más enlaces. */}
@@ -456,7 +422,6 @@ export default function Home() {
               <h3 className="font-bold mb-4 text-white">{t('footer.website_title')}</h3>
               <ul className="text-sm text-slate-300 space-y-3">
                 <li><a href="#cursos" className="hover:text-brand-sky transition">{t('footer.programs_title')}</a></li>
-                <li><a href="#novedades" className="hover:text-brand-sky transition">{t('footer.news_link')}</a></li>
                 <li><Link to={lp('/accesibilidad')} className="hover:text-brand-sky transition">{t('footer.accessibility_link')}</Link></li>
               </ul>
             </div>
