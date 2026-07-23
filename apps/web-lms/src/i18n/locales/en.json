@@ -388,6 +388,29 @@
         "duration": "24 months",
         "language": "English"
       }
-    ]
+    ],
+    "section_intro": "Our degrees, organised by department. Expand each one to see its programmes.",
+    "dept_names": {
+      "salud": "Department of Health Sciences",
+      "tecnologia": "Department of Technology and Digital Sciences",
+      "social-juridica": "Department of Social and Legal Sciences"
+    },
+    "titles": {
+      "grado-ciencias-deporte": "Bachelor's Degree in Sport and Physical Activity Sciences",
+      "grado-nutricion-dietetica": "Bachelor's Degree in Human Nutrition and Dietetics",
+      "grado-medicina": "Bachelor's Degree in Medicine",
+      "grado-biomedicina": "Bachelor's Degree in Biomedicine",
+      "master-psicologia-sanitaria": "Master's Degree in General Health Psychology (MPGS)",
+      "master-seguridad-informacion": "Master of Science in Information Security",
+      "master-programacion-java": "Master of Science in Java Programming",
+      "mba": "Master of Business Administration (MBA)",
+      "master-proyectos-europeos": "Master in European Project Management",
+      "master-non-profit": "Master of Arts (MA) in Management and Leadership of Non-Profit Organisations",
+      "doctorado-derecho-criminologia": "PhD in Law and Criminology"
+    },
+    "in_accreditation": "Accreditation in progress",
+    "accreditation_notice": "Please note that this programme is currently in the process of accreditation by the Malta Further and Higher Education Authority (MFHEA). If you wish to express your interest in enrolling in this educational programme, please contact us at info@uclcampus.com. The student agreement, which includes the payment of tuition and enrolment fees, will only be signed once the MFHEA approves the accreditation of this educational programme.",
+    "stub_body": "We are preparing the detailed information for this programme. You will soon find the syllabus, admission requirements and career paths here.",
+    "stub_cta": "Request information"
   }
 }

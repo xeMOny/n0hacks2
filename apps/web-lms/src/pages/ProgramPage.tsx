@@ -19,6 +19,18 @@ import { useLocalizedPath } from '../hooks/useLocalizedPath';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import PROGRAM_SLUGS from '../data/programSlugs.json';
+import DEPARTMENTS from '../data/departments.json';
+
+// Títulos nuevos aún sin ficha completa (p. ej. grados de Ciencias de la Salud,
+// varios en proceso de acreditación). Se muestran como "ficha en preparación"
+// con el aviso de acreditación cuando corresponde. El contenido definitivo
+// (plan de estudios, etc.) sustituirá este modo cuando el cliente lo envíe.
+const STUBS: Record<string, { inAccreditation: boolean; deptId: string }> = {};
+for (const d of DEPARTMENTS as { id: string; programs: { slug: string; stub?: boolean; inAccreditation?: boolean }[] }[]) {
+  for (const p of d.programs) {
+    if (p.stub) STUBS[p.slug] = { inAccreditation: !!p.inAccreditation, deptId: d.id };
+  }
+}
 
 interface Module { name: string; ects: number; desc: string }
 interface AdmissionBlock { heading: string | null; items: string[] }
@@ -68,10 +80,17 @@ export default function ProgramPage() {
   const lang = (i18n.resolvedLanguage || 'es').slice(0, 2);
   const [program, setProgram] = useState<Program | null>(null);
   const [missing, setMissing] = useState(false);
+  const [stub, setStub] = useState(false);
+  const stubInfo = slug ? STUBS[slug] : undefined;
 
   useEffect(() => {
     setProgram(null);
     setMissing(false);
+    setStub(false);
+    if (slug && STUBS[slug]) {
+      setStub(true);
+      return;
+    }
     const key = `../data/programs/${lang}/${slug}.json`;
     const loader = programData[key];
     if (!slug || !(PROGRAM_SLUGS as string[]).includes(slug) || !loader) {
@@ -85,11 +104,69 @@ export default function ProgramPage() {
     return () => { cancelled = true; };
   }, [slug, lang]);
 
+  const stubTitle = stubInfo ? (t(`offer.titles.${slug}`) as string) : '';
   useDocumentMeta(
-    program ? `${program.title} · UCLCampus` : 'UCLCampus',
+    program ? `${program.title} · UCLCampus` : (stubInfo ? `${stubTitle} · UCLCampus` : 'UCLCampus'),
     `/oferta/${slug}/`,
-    program?.description,
+    program?.description || (stubInfo ? (t('offer.stub_body') as string) : undefined),
   );
+
+  if (stub && stubInfo) {
+    const deptName = t(`offer.dept_names.${stubInfo.deptId}`) as string;
+    return (
+      <div className="min-h-screen bg-white text-slate-700">
+        <header className="sticky top-0 bg-white/95 backdrop-blur z-50 border-b border-slate-200">
+          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+            <Link to={lp('/')} className="shrink-0 flex items-center">
+              <img src={logoHorizontal} alt="UCLCampus" className="h-8 md:h-9 w-auto" />
+            </Link>
+            <div className="flex items-center gap-4">
+              <Link to={lp('/') + '#cursos'} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy hover:text-brand-blue transition">
+                <ArrowLeft size={15} /> {t('program_page.back')}
+              </Link>
+              <LanguageSwitcher />
+            </div>
+          </div>
+        </header>
+
+        <section className="bg-gradient-to-b from-brand-mist to-white border-b border-slate-100">
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand-blue mb-3">{deptName}</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-brand-navy tracking-tight">{stubTitle}</h1>
+            {stubInfo.inAccreditation && (
+              <span className="inline-block mt-5 text-xs font-semibold uppercase tracking-wide text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-3 py-1.5">
+                {t('offer.in_accreditation')}
+              </span>
+            )}
+          </div>
+        </section>
+
+        <div className="max-w-4xl mx-auto px-4 py-12">
+          {stubInfo.inAccreditation && (
+            <div className="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-5 mb-8">
+              <Info size={20} className="text-amber-600 shrink-0 mt-0.5" />
+              <p className="text-sm text-amber-900 leading-relaxed">{t('offer.accreditation_notice')}</p>
+            </div>
+          )}
+          <p className="text-slate-600 leading-relaxed mb-8">{t('offer.stub_body')}</p>
+          <div className="bg-brand-navy rounded-xl p-8 text-center">
+            <p className="text-xl font-bold text-white mb-4">{t('program_page.enroll_banner')}</p>
+            <Link
+              to={lp('/') + '#contacto'}
+              className="inline-flex items-center gap-2 bg-white hover:bg-brand-mist text-brand-navy px-8 py-3 rounded-lg font-bold transition"
+            >
+              {t('offer.stub_cta')} <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="mt-10">
+            <Link to={lp('/') + '#cursos'} className="inline-flex items-center gap-1.5 text-brand-blue hover:text-brand-navy font-semibold transition">
+              <ArrowLeft size={16} /> {t('program_page.back')}
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (missing) {
     return (

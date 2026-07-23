@@ -388,6 +388,29 @@
         "duration": "24 meses",
         "language": "Inglés"
       }
-    ]
+    ],
+    "section_intro": "Nuestros títulos, organizados por departamentos. Despliega cada uno para ver los programas.",
+    "dept_names": {
+      "salud": "Departamento de Ciencias de la Salud",
+      "tecnologia": "Departamento de Tecnología y Ciencias Digitales",
+      "social-juridica": "Departamento de Ciencias Sociales y Jurídicas"
+    },
+    "titles": {
+      "grado-ciencias-deporte": "Grado en Ciencias del Deporte y de la Actividad Física",
+      "grado-nutricion-dietetica": "Grado en Nutrición Humana y Dietética",
+      "grado-medicina": "Grado en Medicina",
+      "grado-biomedicina": "Grado en Biomedicina",
+      "master-psicologia-sanitaria": "Máster en Psicología General Sanitaria (MPGS)",
+      "master-seguridad-informacion": "Máster en Ciencias de la Seguridad de la Información",
+      "master-programacion-java": "Máster en Ciencias de la Programación Java",
+      "mba": "Máster en Administración de Empresas (MBA)",
+      "master-proyectos-europeos": "Máster en Gestión de Proyectos Europeos",
+      "master-non-profit": "Máster en Artes (MA) en Gestión y Liderazgo de Organizaciones sin Ánimo de Lucro",
+      "doctorado-derecho-criminologia": "Doctorado en Derecho y Criminología"
+    },
+    "in_accreditation": "En proceso de acreditación",
+    "accreditation_notice": "Le informamos de que este programa se encuentra en proceso de acreditación por parte de la Autoridad de Educación Superior y de Postsecundaria de Malta (MFHEA). Si desea manifestar su interés en matricularse en este programa educativo, le rogamos que se ponga en contacto con nosotros en info@uclcampus.com. El acuerdo de estudiante, que incluye el pago de las tasas de matrícula y de inscripción, solo se firmará una vez que la MFHEA apruebe la acreditación de este programa educativo.",
+    "stub_body": "Estamos preparando la información detallada de este programa. Muy pronto encontrarás aquí el plan de estudios, los requisitos de acceso y las salidas profesionales.",
+    "stub_cta": "Solicitar información"
   }
 }

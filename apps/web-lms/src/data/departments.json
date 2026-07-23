@@ -1,0 +1,28 @@
+[
+  {
+    "id": "salud",
+    "programs": [
+      { "slug": "grado-ciencias-deporte", "stub": true },
+      { "slug": "grado-nutricion-dietetica", "stub": true, "inAccreditation": true },
+      { "slug": "grado-medicina", "stub": true, "inAccreditation": true },
+      { "slug": "grado-biomedicina", "stub": true, "inAccreditation": true },
+      { "slug": "master-psicologia-sanitaria", "stub": true, "inAccreditation": true }
+    ]
+  },
+  {
+    "id": "tecnologia",
+    "programs": [
+      { "slug": "master-seguridad-informacion" },
+      { "slug": "master-programacion-java" }
+    ]
+  },
+  {
+    "id": "social-juridica",
+    "programs": [
+      { "slug": "mba" },
+      { "slug": "master-proyectos-europeos" },
+      { "slug": "master-non-profit" },
+      { "slug": "doctorado-derecho-criminologia" }
+    ]
+  }
+]

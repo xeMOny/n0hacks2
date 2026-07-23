@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Cookie,
   Accessibility,
+  ChevronDown,
 } from 'lucide-react';
 import { openCookieSettings } from '../lib/cookieConsent';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
@@ -38,12 +39,17 @@ const ChatWidget = lazy(() => import('../components/ChatWidget'));
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
 import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
+import DEPARTMENTS from '../data/departments.json';
+
+// Oferta académica organizada por departamentos (desplegables). Los nombres
+// de departamento y los títulos se traducen vía i18n (offer.dept_names /
+// offer.titles); aquí solo va la estructura y el orden.
+const DEPARTMENTS_TYPED = DEPARTMENTS as { id: string; programs: { slug: string; inAccreditation?: boolean }[] }[];
 
 // Iconos de los 4 cuadros de "Sobre nosotros" (misión, oficialidad,
 // Reino Unido/Commonwealth, grados de 3 años), en el orden de about.cards.
 const aboutCardIcons = [Target, BadgeCheck, Globe2, Hourglass];
 
-interface OfferItem { slug: string; title: string; category: string; qualification: string; duration: string; language: string }
 interface NewsItem { date: string; title: string; excerpt: string }
 interface TitledItem { title: string; desc: string }
 interface AdmissionStep { title: string; desc: string }
@@ -68,7 +74,6 @@ export default function Home() {
   useDocumentMeta(t('meta.home_title'), '/', t('meta.home_desc'));
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const offerItems = t('offer.items', { returnObjects: true }) as OfferItem[];
   const news = t('news.items', { returnObjects: true }) as NewsItem[];
   const aboutCards = t('about.cards', { returnObjects: true }) as TitledItem[];
   const essenceItems = t('about.essence_items', { returnObjects: true }) as TitledItem[];
@@ -247,42 +252,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Oferta Académica: los programas reales acreditados por la MFHEA,
-          cada tarjeta enlaza a su página de detalle (/oferta/<slug>/). */}
+      {/* Oferta Académica: títulos organizados por departamentos en
+          desplegables (<details> nativo: accesible y presente en el HTML
+          aunque el JS no cargue). Cada título enlaza a su página
+          (/oferta/<slug>/); los que aún no tienen ficha completa se muestran
+          como "ficha en preparación". */}
       <section id="cursos" className="bg-brand-mist py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-12">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="text-4xl font-bold text-brand-navy">{t('nav.academic_offer')}</h2>
             <Globe2 className="text-brand-blue hidden md:block" size={32} />
           </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {offerItems.map((item, i) => (
-              <motion.div
-                key={item.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: (i % 3) * 0.1 }}
-                viewport={{ once: true }}
+          <p className="text-slate-600 mb-10 max-w-2xl">{t('offer.section_intro')}</p>
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            {DEPARTMENTS_TYPED.map((dept, di) => (
+              <details
+                key={dept.id}
+                open={di === 0}
+                className="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm"
               >
-                <Link
-                  to={lp(`/oferta/${item.slug}`)}
-                  className="group flex flex-col h-full bg-white border border-slate-200 rounded-xl p-7 shadow-sm hover:shadow-md hover:border-brand-sky transition"
-                >
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{item.category}</span>
-                    <span className="text-xs bg-brand-mist text-brand-blue px-2 py-1 rounded font-medium">{item.qualification}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-brand-navy group-hover:text-brand-blue transition">{item.title}</h3>
-                  <div className="mt-auto flex items-center justify-between text-sm text-slate-500">
-                    <span>{item.duration} · {item.language}</span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-brand-blue">
-                      {t('program_page.view_program')} <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
+                <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer select-none list-none marker:hidden [&::-webkit-details-marker]:hidden hover:bg-brand-mist/50 transition">
+                  <span className="text-lg md:text-xl font-bold text-brand-navy">{t(`offer.dept_names.${dept.id}`)}</span>
+                  <span className="shrink-0 flex items-center gap-3">
+                    <span className="text-xs font-semibold text-brand-blue bg-brand-mist rounded-full px-2.5 py-1">{dept.programs.length}</span>
+                    <ChevronDown size={20} className="text-brand-blue transition-transform duration-300 group-open:rotate-180" />
+                  </span>
+                </summary>
+                <ul className="border-t border-slate-100 divide-y divide-slate-100">
+                  {dept.programs.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        to={lp(`/oferta/${p.slug}`)}
+                        className="group/item flex items-center justify-between gap-3 px-6 py-4 hover:bg-brand-mist/60 transition"
+                      >
+                        <span className="min-w-0">
+                          <span className="font-medium text-brand-navy group-hover/item:text-brand-blue transition">{t(`offer.titles.${p.slug}`)}</span>
+                          {p.inAccreditation && (
+                            <span className="ml-2 align-middle inline-block text-[10px] font-semibold uppercase tracking-wide text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5">
+                              {t('offer.in_accreditation')}
+                            </span>
+                          )}
+                        </span>
+                        <ArrowRight size={16} className="shrink-0 text-brand-blue opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

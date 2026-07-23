@@ -388,6 +388,29 @@
         "duration": "24 mesi",
         "language": "Inglese"
       }
-    ]
+    ],
+    "section_intro": "I nostri titoli, organizzati per dipartimento. Espandi ciascuno per vedere i programmi.",
+    "dept_names": {
+      "salud": "Dipartimento di Scienze della Salute",
+      "tecnologia": "Dipartimento di Tecnologia e Scienze Digitali",
+      "social-juridica": "Dipartimento di Scienze Sociali e Giuridiche"
+    },
+    "titles": {
+      "grado-ciencias-deporte": "Laurea in Scienze dello Sport e dell'Attività Fisica",
+      "grado-nutricion-dietetica": "Laurea in Nutrizione Umana e Dietetica",
+      "grado-medicina": "Laurea in Medicina",
+      "grado-biomedicina": "Laurea in Biomedicina",
+      "master-psicologia-sanitaria": "Master in Psicologia Generale della Salute (MPGS)",
+      "master-seguridad-informacion": "Master of Science in Sicurezza delle Informazioni",
+      "master-programacion-java": "Master of Science in Programmazione Java",
+      "mba": "Master in Business Administration (MBA)",
+      "master-proyectos-europeos": "Master in Gestione di Progetti Europei",
+      "master-non-profit": "Master of Arts (MA) in Gestione e Leadership delle Organizzazioni Non Profit",
+      "doctorado-derecho-criminologia": "Dottorato in Diritto e Criminologia"
+    },
+    "in_accreditation": "In fase di accreditamento",
+    "accreditation_notice": "La informiamo che questo programma è attualmente in fase di accreditamento da parte dell'Autorità per l'Istruzione Superiore e Post-secondaria di Malta (MFHEA). Se desidera manifestare il suo interesse a iscriversi a questo programma educativo, la preghiamo di contattarci all'indirizzo info@uclcampus.com. L'accordo studente, che include il pagamento delle tasse di iscrizione e di immatricolazione, sarà firmato solo dopo che la MFHEA avrà approvato l'accreditamento di questo programma educativo.",
+    "stub_body": "Stiamo preparando le informazioni dettagliate di questo programma. Presto troverai qui il piano di studi, i requisiti di accesso e gli sbocchi professionali.",
+    "stub_cta": "Richiedi informazioni"
   }
 }
