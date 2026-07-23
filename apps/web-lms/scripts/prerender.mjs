@@ -163,6 +163,30 @@ async function main() {
       await writeFile(path.join(outDir, "index.html"), html);
       console.log(`prerender: ${route} -> ${path.relative(DIST, path.join(outDir, "index.html"))}`);
     }
+
+    // Sitemap generado desde las MISMAS rutas que se prerenderizan (antes era
+    // un sitemap.xml estático en public/ que se quedaba obsoleto al añadir
+    // programas: se le habían quedado fuera los títulos nuevos). Fuente única:
+    // programSlugs.json -> ROUTES -> este sitemap. Siempre apunta al dominio
+    // de producción (uclcampus.com), aunque el build sea del preview.
+    const sm = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ];
+    for (const { route } of ROUTES) {
+      const isRoot = /^\/(en|fr|it)?\/?$/.test(route);
+      const isOffer = route.includes("/oferta/");
+      sm.push(
+        "  <url>",
+        `    <loc>https://uclcampus.com${route}</loc>`,
+        `    <changefreq>${isRoot ? "weekly" : "monthly"}</changefreq>`,
+        `    <priority>${isRoot ? "1.0" : isOffer ? "0.8" : "0.5"}</priority>`,
+        "  </url>",
+      );
+    }
+    sm.push("</urlset>", "");
+    await writeFile(path.join(DIST, "sitemap.xml"), sm.join("\n"));
+    console.log(`sitemap: ${ROUTES.length} URLs -> sitemap.xml`);
   } finally {
     await browser.close();
     server.close();
