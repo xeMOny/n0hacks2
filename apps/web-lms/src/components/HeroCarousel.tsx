@@ -15,17 +15,19 @@ interface Banner {
 }
 
 // Fotos de banco (Unsplash, licencia libre, sin marcas de ninguna institución
-// real) en el mismo orden que hero.banners de los locales: matrícula,
-// títulos, campus virtual. Si se añade un 4º banner en los locales sin foto
-// aquí, el slide se renderiza sin imagen (solo texto) en vez de romperse.
+// real, 1920px para verse nítidas a pantalla completa) en el mismo orden que
+// hero.banners de los locales: matrícula, títulos, campus virtual. Si se añade
+// un 4º banner en los locales sin foto aquí, el slide se muestra sobre el
+// fondo navy (solo texto) en vez de romperse.
 const bannerImages = [bannerMatricula, bannerTitulos, bannerOnline];
 
 const ROTATE_MS = 6000;
 
-// Carrusel de banners del hero: aquí va la información destacada del momento
-// (plazos de matrícula, títulos nuevos, etc.). El cliente pidió 3-4 como
-// máximo para que el visitante llegue a verlos todos; los textos viven en
-// hero.banners de cada locale, así que añadir/quitar uno es tocar solo JSON.
+// Hero a pantalla completa: la imagen ocupa todo el ancho y alto, y el texto
+// (destacado del momento: plazos de matrícula, títulos, etc.) va superpuesto
+// encima, con un degradado de marca para que se lea bien sobre cualquier foto.
+// El cliente pidió 3-4 banners como máximo; los textos viven en hero.banners
+// de cada locale, así que añadir/quitar uno es tocar solo JSON.
 export default function HeroCarousel() {
   const { t } = useTranslation();
   const banners = t('hero.banners', { returnObjects: true }) as Banner[];
@@ -61,87 +63,95 @@ export default function HeroCarousel() {
         touchStartX.current = null;
         setPaused(false);
       }}
-      className="relative max-w-6xl mx-auto px-4 pt-10 pb-10 md:pt-16 md:pb-14"
+      className="relative w-full h-[82vh] min-h-[520px] max-h-[880px] overflow-hidden bg-brand-navy select-none"
     >
-      {/* Altura mínima fija: evita que el layout salte cuando un banner tiene
-          un texto más largo que otro al rotar. */}
-      <div className="min-h-[30rem] md:min-h-[24rem] flex items-center">
+      {/* Imagen a sangre con crossfade entre banners */}
+      <AnimatePresence>
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0"
+        >
+          {image && (
+            <img
+              src={image}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+          {/* Degradado para legibilidad: fuerte a la izquierda (donde va el
+              texto) y ligero abajo, para que el texto blanco se lea sobre
+              cualquier foto, clara u oscura. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/70 to-brand-navy/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Texto superpuesto */}
+      <div className="relative z-10 h-full max-w-6xl mx-auto px-5 md:px-8 flex flex-col justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-            className="w-full grid md:grid-cols-2 items-center gap-8 md:gap-12"
+            transition={{ duration: 0.4 }}
+            className="max-w-2xl"
           >
-            {/* Imagen: arriba en móvil, a la derecha en escritorio.
-                Decorativa (alt vacío): el texto del banner ya lo dice todo. */}
-            <div className="order-1 md:order-2">
-              {image && (
-                <img
-                  src={image}
-                  alt=""
-                  width={900}
-                  height={600}
-                  className="w-full h-44 sm:h-56 md:h-80 object-cover rounded-2xl shadow-lg shadow-slate-300/40 border border-slate-200"
-                />
-              )}
-            </div>
-
-            <div className="order-2 md:order-1 text-center md:text-left">
-              <span className="inline-block bg-brand-blue/10 text-brand-blue text-xs md:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-5">
-                {banner.tag}
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold mb-5 text-brand-navy tracking-tight">
-                {banner.title}
-              </h2>
-              <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-xl mx-auto md:mx-0">
-                {banner.text}
-              </p>
-              <a
-                href={banner.href}
-                className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-navy text-white px-8 py-3 rounded-lg font-semibold transition"
-              >
-                {banner.cta} <ArrowRight size={18} />
-              </a>
-            </div>
+            <span className="inline-block bg-white/15 backdrop-blur-sm text-white text-xs md:text-sm font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-5 border border-white/25">
+              {banner.tag}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[1.08] mb-5 drop-shadow-sm">
+              {banner.title}
+            </h2>
+            <p className="text-lg md:text-2xl text-white/85 mb-8 max-w-xl leading-relaxed">
+              {banner.text}
+            </p>
+            <a
+              href={banner.href}
+              className="inline-flex items-center gap-2 bg-white text-brand-navy hover:bg-brand-sky px-8 py-3.5 rounded-lg font-bold text-base transition shadow-lg"
+            >
+              {banner.cta} <ArrowRight size={18} />
+            </a>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Controles */}
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          onClick={() => go(index - 1)}
-          aria-label={t('hero.prev')}
-          className="appearance-none bg-white border border-slate-300 rounded-full p-1.5 text-brand-navy hover:text-brand-blue hover:border-brand-blue/60 transition"
-        >
-          <ChevronLeft size={16} />
-        </button>
-        <div className="flex items-center gap-2.5">
-          {banners.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => go(i)}
-              aria-label={`${t('hero.goto')} ${i + 1}`}
-              aria-current={i === index}
-              className={`appearance-none rounded-full transition-all duration-300 ${
-                i === index ? 'w-6 h-2.5 bg-brand-blue' : 'w-2.5 h-2.5 bg-slate-300 hover:bg-brand-sky'
-              }`}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          onClick={() => go(index + 1)}
-          aria-label={t('hero.next')}
-          className="appearance-none bg-white border border-slate-300 rounded-full p-1.5 text-brand-navy hover:text-brand-blue hover:border-brand-blue/60 transition"
-        >
-          <ChevronRight size={16} />
-        </button>
+      {/* Flechas */}
+      <button
+        type="button"
+        onClick={() => go(index - 1)}
+        aria-label={t('hero.prev')}
+        className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 bg-white/15 hover:bg-white/30 backdrop-blur-sm text-white rounded-full p-2 md:p-2.5 border border-white/25 transition"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        onClick={() => go(index + 1)}
+        aria-label={t('hero.next')}
+        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 bg-white/15 hover:bg-white/30 backdrop-blur-sm text-white rounded-full p-2 md:p-2.5 border border-white/25 transition"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      {/* Puntos */}
+      <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-center gap-2.5">
+        {banners.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => go(i)}
+            aria-label={`${t('hero.goto')} ${i + 1}`}
+            aria-current={i === index}
+            className={`appearance-none rounded-full transition-all duration-300 ${
+              i === index ? 'w-7 h-2.5 bg-white' : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/70'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

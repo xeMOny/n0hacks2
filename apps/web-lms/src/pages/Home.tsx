@@ -38,7 +38,6 @@ import videos from '../data/videos.json';
 const ChatWidget = lazy(() => import('../components/ChatWidget'));
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
 import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
-import logoIcon from '../assets/logo/logo-icon-uclcampus.svg';
 import DEPARTMENTS from '../data/departments.json';
 
 // Oferta académica organizada por departamentos (desplegables). Los nombres
@@ -157,13 +156,7 @@ export default function Home() {
           con buscador que había antes, por petición del cliente. El h1 es
           solo para lectores de pantalla/buscadores: los títulos visibles de
           los banners rotan, y un h1 cambiante sería mala jerarquía. */}
-      <section id="inicio" className="relative overflow-hidden bg-gradient-to-b from-brand-mist to-white">
-        <img
-          src={logoIcon}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none select-none absolute -right-20 -top-14 w-80 md:w-[28rem] opacity-[0.05]"
-        />
+      <section id="inicio" className="relative">
         <h1 className="sr-only">{t('meta.home_title')}</h1>
         <HeroCarousel />
       </section>
