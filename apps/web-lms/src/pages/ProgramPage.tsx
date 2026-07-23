@@ -257,7 +257,7 @@ export default function ProgramPage() {
           {/* Pestañas (pedidas por el cliente). Todos los paneles se
               renderizan y solo se oculta el inactivo (hidden): así el HTML
               prerenderizado contiene todo el contenido aunque el JS falle. */}
-          <div role="tablist" aria-label={program.title} className="flex flex-wrap gap-1 border-b border-slate-200 mb-8 overflow-x-auto">
+          <div role="tablist" aria-label={program.title} className="flex flex-nowrap border-b border-slate-200 mb-8 overflow-x-auto">
             {([
               ['descripcion', t('program_page.tab_description')],
               ['plan', t('program_page.tab_plan')],
@@ -272,7 +272,7 @@ export default function ProgramPage() {
                 role="tab"
                 aria-selected={tab === id}
                 onClick={() => setTab(id)}
-                className={`whitespace-nowrap px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 -mb-px transition ${
+                className={`whitespace-nowrap px-2 py-2.5 text-[13px] font-semibold rounded-t-lg border-b-2 -mb-px transition ${
                   tab === id
                     ? 'border-brand-blue text-brand-blue'
                     : 'border-transparent text-slate-500 hover:text-brand-navy'

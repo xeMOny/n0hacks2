@@ -267,11 +267,10 @@ export default function Home() {
           como "ficha en preparación". */}
       <section id="cursos" className="bg-brand-mist py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-10">
             <h2 className="text-4xl font-bold text-brand-navy">{t('nav.academic_offer')}</h2>
             <Globe2 className="text-brand-blue hidden md:block" size={32} />
           </div>
-          <p className="text-slate-600 mb-10 max-w-2xl">{t('offer.section_intro')}</p>
           <motion.div
             className="space-y-4"
             initial={{ opacity: 0, y: 20 }}
