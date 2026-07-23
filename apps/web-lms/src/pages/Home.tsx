@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Globe2,
-  MapPin,
   Menu,
   X,
   ClipboardList,
@@ -37,7 +36,7 @@ import videos from '../data/videos.json';
 // de la home.
 const ChatWidget = lazy(() => import('../components/ChatWidget'));
 import logoHorizontal from '../assets/logo/logo-horizontal-uclcampus.svg';
-import logoVerticalWhite from '../assets/logo/logo-vertical-uclcampus-white.svg';
+import logoHorizontalWhite from '../assets/logo/logo-horizontal-uclcampus-white.svg';
 import DEPARTMENTS from '../data/departments.json';
 
 // Oferta académica organizada por departamentos (desplegables). Los nombres
@@ -446,11 +445,8 @@ export default function Home() {
           </div>
 
           {/* Marca centrada */}
-          <div className="flex flex-col items-center gap-2 mb-10">
-            <img src={logoVerticalWhite} alt="UCL Campus Malta" className="h-24 w-auto" />
-            <p className="text-slate-400 text-xs flex items-center gap-1">
-              <MapPin size={12} /> {t('footer.location')}
-            </p>
+          <div className="flex flex-col items-center mb-10">
+            <img src={logoHorizontalWhite} alt="UCL Campus Malta" className="h-12 w-auto" />
           </div>
 
           {/* Copyright */}
