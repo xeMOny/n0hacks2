@@ -336,7 +336,14 @@
     "office_value": "40 Villa Fairholme, Sir Augustus Bartolo Street, Ta' Xbiex XBX 1095 Malta",
     "director_value": "Dr Ernesto Pallotta",
     "legal_rep_value": "Mr Damian Xuereb",
-    "license_number_value": "2023-015"
+    "license_number_value": "2023-015",
+    "tab_description": "Descrizione",
+    "tab_plan": "Piano di studi",
+    "tab_faculty": "Docenti",
+    "tab_admission": "Requisiti di accesso",
+    "tab_certifications": "Certificazioni",
+    "tab_careers": "Sbocchi professionali",
+    "faculty_pending": "Le informazioni sul corpo docente di questo programma saranno pubblicate a breve."
   },
   "offer": {
     "items": [

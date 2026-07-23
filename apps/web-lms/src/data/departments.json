@@ -10,19 +10,19 @@
     ]
   },
   {
+    "id": "social-juridica",
+    "programs": [
+      { "slug": "doctorado-derecho-criminologia" },
+      { "slug": "mba" },
+      { "slug": "master-proyectos-europeos" },
+      { "slug": "master-non-profit" }
+    ]
+  },
+  {
     "id": "tecnologia",
     "programs": [
       { "slug": "master-seguridad-informacion" },
       { "slug": "master-programacion-java" }
-    ]
-  },
-  {
-    "id": "social-juridica",
-    "programs": [
-      { "slug": "mba" },
-      { "slug": "master-proyectos-europeos" },
-      { "slug": "master-non-profit" },
-      { "slug": "doctorado-derecho-criminologia" }
     ]
   }
 ]

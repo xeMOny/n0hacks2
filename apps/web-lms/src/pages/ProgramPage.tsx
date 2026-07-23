@@ -6,13 +6,23 @@ import {
   ArrowRight,
   Briefcase,
   BookOpen,
-  ClipboardCheck,
-  Award,
   Building2,
   BadgeCheck,
   Info,
   CalendarDays,
   GraduationCap,
+  Users,
+  Activity,
+  Apple,
+  Stethoscope,
+  Dna,
+  Brain,
+  ShieldCheck,
+  Coffee,
+  Landmark,
+  HeartHandshake,
+  Scale,
+  type LucideIcon,
 } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useLocalizedPath } from '../hooks/useLocalizedPath';
@@ -31,6 +41,23 @@ for (const d of DEPARTMENTS as { id: string; programs: { slug: string; stub?: bo
     if (p.stub) STUBS[p.slug] = { inAccreditation: !!p.inAccreditation, deptId: d.id };
   }
 }
+
+// Imagen temática del banner de cada título: un icono acorde a la disciplina
+// (autocontenido, sin fotos externas), como marca de agua sobre el degradado
+// de marca. Si el cliente envía fotos reales, se sustituye por <img>.
+const PROGRAM_ICONS: Record<string, LucideIcon> = {
+  'grado-ciencias-deporte': Activity,
+  'grado-nutricion-dietetica': Apple,
+  'grado-medicina': Stethoscope,
+  'grado-biomedicina': Dna,
+  'master-psicologia-sanitaria': Brain,
+  'master-seguridad-informacion': ShieldCheck,
+  'master-programacion-java': Coffee,
+  'mba': Briefcase,
+  'master-proyectos-europeos': Landmark,
+  'master-non-profit': HeartHandshake,
+  'doctorado-derecho-criminologia': Scale,
+};
 
 interface Module { name: string; ects: number; desc: string }
 interface AdmissionBlock { heading: string | null; items: string[] }
@@ -81,7 +108,9 @@ export default function ProgramPage() {
   const [program, setProgram] = useState<Program | null>(null);
   const [missing, setMissing] = useState(false);
   const [stub, setStub] = useState(false);
+  const [tab, setTab] = useState('descripcion');
   const stubInfo = slug ? STUBS[slug] : undefined;
+  const BannerIcon = PROGRAM_ICONS[slug || ''] || GraduationCap;
 
   useEffect(() => {
     setProgram(null);
@@ -129,12 +158,13 @@ export default function ProgramPage() {
           </div>
         </header>
 
-        <section className="bg-gradient-to-b from-brand-mist to-white border-b border-slate-100">
-          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand-blue mb-3">{deptName}</p>
-            <h1 className="text-3xl md:text-5xl font-bold text-brand-navy tracking-tight">{stubTitle}</h1>
+        <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-sky text-white">
+          <BannerIcon aria-hidden="true" className="absolute -right-8 -bottom-10 text-white/10 pointer-events-none" size={240} strokeWidth={1.25} />
+          <div className="relative max-w-4xl mx-auto px-4 py-14 md:py-20">
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand-sky mb-3">{deptName}</p>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight">{stubTitle}</h1>
             {stubInfo.inAccreditation && (
-              <span className="inline-block mt-5 text-xs font-semibold uppercase tracking-wide text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-3 py-1.5">
+              <span className="inline-block mt-5 text-xs font-semibold uppercase tracking-wide text-white bg-white/15 border border-white/30 rounded-full px-3 py-1.5">
                 {t('offer.in_accreditation')}
               </span>
             )}
@@ -203,88 +233,93 @@ export default function ProgramPage() {
         </div>
       </header>
 
-      {/* Título */}
-      <section className="bg-gradient-to-b from-brand-mist to-white border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand-blue mb-3">{program.category} · {s.qualification}</p>
-          <h1 className="text-3xl md:text-5xl font-bold text-brand-navy tracking-tight max-w-4xl">{program.title}</h1>
+      {/* Banner del título con imagen temática (icono de la disciplina como
+          marca de agua sobre el degradado de marca). */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-sky text-white">
+        <BannerIcon aria-hidden="true" className="absolute -right-8 -bottom-10 text-white/10 pointer-events-none" size={260} strokeWidth={1.25} />
+        <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-20">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-sky mb-3">{program.category} · {s.qualification}</p>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl">{program.title}</h1>
         </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-4 py-12 grid lg:grid-cols-[1fr_20rem] gap-12">
         {/* Contenido principal */}
         <div className="min-w-0">
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-brand-navy mb-4">{t('program_page.description_title')}</h2>
+          {/* Pestañas (pedidas por el cliente). Todos los paneles se
+              renderizan y solo se oculta el inactivo (hidden): así el HTML
+              prerenderizado contiene todo el contenido aunque el JS falle. */}
+          <div role="tablist" aria-label={program.title} className="flex flex-wrap gap-1 border-b border-slate-200 mb-8 overflow-x-auto">
+            {([
+              ['descripcion', t('program_page.tab_description')],
+              ['plan', t('program_page.tab_plan')],
+              ['profesores', t('program_page.tab_faculty')],
+              ['requisitos', t('program_page.tab_admission')],
+              ['certificaciones', t('program_page.tab_certifications')],
+              ['salidas', t('program_page.tab_careers')],
+            ] as const).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={tab === id}
+                onClick={() => setTab(id)}
+                className={`whitespace-nowrap px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 -mb-px transition ${
+                  tab === id
+                    ? 'border-brand-blue text-brand-blue'
+                    : 'border-transparent text-slate-500 hover:text-brand-navy'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Descripción */}
+          <div role="tabpanel" hidden={tab !== 'descripcion'}>
             <p className="text-slate-600 leading-relaxed">{program.description}</p>
-          </section>
+          </div>
 
-          <section className="mb-12">
-            <h2 className="flex items-center gap-2 text-2xl font-bold text-brand-navy mb-4">
-              <Briefcase size={22} className="text-brand-blue" /> {t('program_page.careers_title')}
-            </h2>
-            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-              {program.careers.map((c) => (
-                <li key={c} className="flex gap-2 text-slate-600">
-                  <span aria-hidden="true" className="text-brand-sky mt-1">•</span> {c}
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="mb-12">
-            <h2 className="flex items-center gap-2 text-2xl font-bold text-brand-navy mb-6">
-              <BookOpen size={22} className="text-brand-blue" /> {t('program_page.modules_title')}
-            </h2>
-            <div className="space-y-4">
-              {program.modules.map((m) => (
-                <div key={m.name} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-                    <h3 className="font-bold text-brand-navy">{m.name}</h3>
-                    <span className="text-xs font-semibold bg-brand-mist text-brand-blue px-2 py-1 rounded whitespace-nowrap">{m.ects} ECTS</span>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{m.desc}</p>
+          {/* Plan de estudios */}
+          <div role="tabpanel" hidden={tab !== 'plan'} className="space-y-4">
+            {program.modules.map((m) => (
+              <div key={m.name} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <h3 className="font-bold text-brand-navy">{m.name}</h3>
+                  <span className="text-xs font-semibold bg-brand-mist text-brand-blue px-2 py-1 rounded whitespace-nowrap">{m.ects} ECTS</span>
                 </div>
-              ))}
+                <p className="text-sm text-slate-600 leading-relaxed">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Profesores (pendiente de contenido del cliente) */}
+          <div role="tabpanel" hidden={tab !== 'profesores'}>
+            <div className="flex gap-3 bg-brand-mist border border-slate-200 rounded-xl p-6">
+              <Users size={20} className="text-brand-blue shrink-0 mt-0.5" />
+              <p className="text-slate-600 leading-relaxed">{t('program_page.faculty_pending')}</p>
             </div>
-          </section>
+          </div>
 
-          {/* Banner de matrícula (pedido por el cliente): mientras no exista
-              una hoja de matrícula real, lleva al formulario de contacto. */}
-          <section className="mb-12 bg-brand-navy rounded-xl p-8 text-center">
-            <p className="text-xl font-bold text-white mb-4">{t('program_page.enroll_banner')}</p>
-            <Link
-              to={lp('/') + '#contacto'}
-              className="inline-flex items-center gap-2 bg-white hover:bg-brand-mist text-brand-navy px-8 py-3 rounded-lg font-bold transition"
-            >
-              {t('program_page.enroll_banner_cta')} <ArrowRight size={18} />
-            </Link>
-          </section>
+          {/* Requisitos de acceso */}
+          <div role="tabpanel" hidden={tab !== 'requisitos'} className="space-y-5">
+            {program.admission.map((block, i) => (
+              <div key={i}>
+                {block.heading && <h3 className="font-semibold text-brand-navy mb-2">{block.heading}</h3>}
+                <ul className="space-y-1.5">
+                  {block.items.map((item) => (
+                    <li key={item} className="flex gap-2 text-slate-600">
+                      <span aria-hidden="true" className="text-brand-sky mt-1">•</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
-          <section className="mb-12">
-            <h2 className="flex items-center gap-2 text-2xl font-bold text-brand-navy mb-4">
-              <ClipboardCheck size={22} className="text-brand-blue" /> {t('program_page.admission_title')}
-            </h2>
-            <div className="space-y-5">
-              {program.admission.map((block, i) => (
-                <div key={i}>
-                  {block.heading && <h3 className="font-semibold text-brand-navy mb-2">{block.heading}</h3>}
-                  <ul className="space-y-1.5">
-                    {block.items.map((item) => (
-                      <li key={item} className="flex gap-2 text-slate-600">
-                        <span aria-hidden="true" className="text-brand-sky mt-1">•</span> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mb-12">
-            <h2 className="flex items-center gap-2 text-2xl font-bold text-brand-navy mb-6">
-              <Award size={22} className="text-brand-blue" /> {t('program_page.exit_title')}
-            </h2>
+          {/* Certificaciones obtenidas: acreditación MFHEA + salidas
+              intermedias + información de la institución licenciada. */}
+          <div role="tabpanel" hidden={tab !== 'certificaciones'}>
             <div className="bg-brand-mist border border-slate-200 rounded-xl p-6 mb-6">
               <div className="flex items-center gap-2 mb-4">
                 <BadgeCheck size={20} className="text-brand-blue" />
@@ -316,18 +351,40 @@ export default function ProgramPage() {
                 </div>
               </>
             )}
-          </section>
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <h3 className="flex items-center gap-2 font-bold text-brand-navy mb-4">
+                <Building2 size={18} className="text-brand-blue" /> {t('program_page.info_title')}
+              </h3>
+              <dl className="space-y-2 text-sm">
+                <div><dt className="text-slate-500 inline">{t('program_page.office')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.office_value')}</dd></div>
+                <div><dt className="text-slate-500 inline">{t('program_page.training_sites')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.training_sites_value')}</dd></div>
+                <div><dt className="text-slate-500 inline">{t('program_page.director')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.director_value')}</dd></div>
+                <div><dt className="text-slate-500 inline">{t('program_page.legal_rep')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.legal_rep_value')}</dd></div>
+              </dl>
+            </div>
+          </div>
 
-          <section>
-            <h2 className="flex items-center gap-2 text-2xl font-bold text-brand-navy mb-4">
-              <Building2 size={22} className="text-brand-blue" /> {t('program_page.info_title')}
-            </h2>
-            <dl className="space-y-2 text-sm">
-              <div><dt className="text-slate-500 inline">{t('program_page.office')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.office_value')}</dd></div>
-              <div><dt className="text-slate-500 inline">{t('program_page.training_sites')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.training_sites_value')}</dd></div>
-              <div><dt className="text-slate-500 inline">{t('program_page.director')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.director_value')}</dd></div>
-              <div><dt className="text-slate-500 inline">{t('program_page.legal_rep')}: </dt><dd className="inline font-semibold text-brand-navy">{t('program_page.legal_rep_value')}</dd></div>
-            </dl>
+          {/* Salidas laborales */}
+          <div role="tabpanel" hidden={tab !== 'salidas'}>
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+              {program.careers.map((c) => (
+                <li key={c} className="flex gap-2 text-slate-600">
+                  <span aria-hidden="true" className="text-brand-sky mt-1">•</span> {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Banner de matrícula (persistente bajo las pestañas): mientras no
+              exista una hoja de matrícula real, lleva al formulario de contacto. */}
+          <section className="mt-10 bg-brand-navy rounded-xl p-8 text-center">
+            <p className="text-xl font-bold text-white mb-4">{t('program_page.enroll_banner')}</p>
+            <Link
+              to={lp('/') + '#contacto'}
+              className="inline-flex items-center gap-2 bg-white hover:bg-brand-mist text-brand-navy px-8 py-3 rounded-lg font-bold transition"
+            >
+              {t('program_page.enroll_banner_cta')} <ArrowRight size={18} />
+            </Link>
           </section>
         </div>
 
