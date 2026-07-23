@@ -224,7 +224,8 @@
     "intro": "Consultez la documentation juridique et la réglementation qui régissent UCLCampus."
   },
   "about": {
-    "intro_p1": "UCL Campus Malta, accréditée en 2023 par la MFHEA sous le numéro de licence 2023-015, appartient à Universidad Cum Laude (UCL) (entité enregistrée en Principauté d'Andorre sous le numéro de registre des sociétés 22937 et NRT L-718011-S), dont l'objet social est la promotion, la mise en œuvre, la gestion et l'exploitation d'études et de centres d'enseignement supérieur, ainsi que le développement de projets de formation et d'enseignement universitaire. Centre d'enseignement universitaire en présentiel et en ligne, proposant des études de licence et de troisième cycle, tant officielles que propres à l'établissement.",
+    "intro_p1_pre": "UCL Campus Malta, accréditée en 2023 par la MFHEA sous le numéro de licence 2023-015, appartient à ",
+    "ucl_link": "Universidad Cum Laude",
     "intro_p2": "À travers sa marque commerciale Universae Cum Laude, elle propose des diplômes officiels de Licence, de Master et de Doctorat valables dans tout l'Espace européen de l'enseignement supérieur (EEES), au Royaume-Uni et dans tous les pays du Commonwealth.",
     "cards": [
       {

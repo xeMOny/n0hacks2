@@ -179,7 +179,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-8">{t('nav.about')}</h2>
           <div className="max-w-3xl mx-auto text-slate-600 leading-relaxed space-y-4 mb-14">
-            <p>{t('about.intro_p1')}</p>
+            {/* "Universidad Cum Laude" enlaza a su web (URL pendiente del
+                cliente); de momento a una página en blanco (/cum-laude.html).
+                El detalle legal (registro de Andorra, objeto social) va oculto
+                aquí: irá en esa página de destino cuando exista. */}
+            <p>
+              {t('about.intro_p1_pre')}
+              <a href="/cum-laude.html" target="_blank" rel="noopener noreferrer" className="text-brand-blue font-semibold underline underline-offset-2 hover:text-brand-navy transition">{t('about.ucl_link')}</a>.
+            </p>
             <p>{t('about.intro_p2')}</p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
