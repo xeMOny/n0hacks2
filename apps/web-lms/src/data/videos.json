@@ -1,15 +1,15 @@
 {
-  "_comment": "Enlaces de vídeo (YouTube o Vimeo). Vacío = no se muestra vídeo. Rellenar cuando el cliente los suba. 'entity' = vídeo general (Sobre nosotros); el resto por slug de título (landing de cada programa).",
-  "entity": "",
-  "grado-ciencias-deporte": "",
+  "_comment": "DEMO TEMPORAL: 'entity' y varios titulos llevan un video de muestra (Yale) para poder ensenar la web. ANTES DEL LANZAMIENTO: vaciar o sustituir por los videos reales del cliente. Vacio = no se muestra video.",
+  "entity": "https://www.youtube.com/watch?v=1FSyC0OapkY",
+  "grado-ciencias-deporte": "https://www.youtube.com/watch?v=1FSyC0OapkY",
   "grado-nutricion-dietetica": "",
   "grado-medicina": "",
   "grado-biomedicina": "",
   "master-psicologia-sanitaria": "",
-  "master-seguridad-informacion": "",
+  "master-seguridad-informacion": "https://www.youtube.com/watch?v=1FSyC0OapkY",
   "master-programacion-java": "",
-  "mba": "",
+  "mba": "https://www.youtube.com/watch?v=1FSyC0OapkY",
   "master-proyectos-europeos": "",
   "master-non-profit": "",
-  "doctorado-derecho-criminologia": ""
+  "doctorado-derecho-criminologia": "https://www.youtube.com/watch?v=1FSyC0OapkY"
 }
