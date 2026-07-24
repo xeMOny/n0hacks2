@@ -171,7 +171,8 @@ export default function Home() {
           nivel; la banda los distingue como "nuestra filosofía"). */}
       <section id="sobre" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-brand-navy text-center mb-8">{t('nav.about')}</h2>
+          <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('nav.about')}</h2>
+          <div aria-hidden="true" className="mx-auto mb-9 h-1 w-14 rounded-full bg-brand-sky"></div>
           <div className="max-w-3xl mx-auto text-slate-600 leading-relaxed space-y-4 mb-14">
             {/* "Universidad Cum Laude" enlaza a su web (URL pendiente del
                 cliente); de momento a una página en blanco (/cum-laude.html).
@@ -200,9 +201,11 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white border border-slate-200 rounded-xl p-7 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
+                  className="bg-white border border-slate-200 rounded-2xl p-7 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-sky/60 transition-all duration-300"
                 >
-                  <Icon className="w-11 h-11 mx-auto mb-4 text-brand-blue" />
+                  <span className="inline-flex items-center justify-center w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-brand-mist to-white ring-1 ring-brand-blue/10 shadow-sm text-brand-blue">
+                    <Icon className="w-7 h-7" strokeWidth={1.75} />
+                  </span>
                   <h3 className="text-lg font-bold mb-2 text-brand-navy">{card.title}</h3>
                   <p className="text-sm text-slate-600">{card.desc}</p>
                 </motion.div>
@@ -321,6 +324,7 @@ export default function Home() {
       <section id="admisiones" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('admissions.section_title')}</h2>
+          <div aria-hidden="true" className="mx-auto mb-6 h-1 w-14 rounded-full bg-brand-sky"></div>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('admissions.intro')}</p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {admissionSteps.map((step, i) => {
@@ -332,15 +336,17 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition"
+                  className="relative bg-white border border-slate-200 rounded-2xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-sky/60 transition-all duration-300"
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute top-4 left-4 w-7 h-7 rounded-full bg-brand-mist text-brand-blue text-sm font-bold flex items-center justify-center"
+                    className="absolute top-4 left-4 w-7 h-7 rounded-full bg-brand-blue text-white text-sm font-bold flex items-center justify-center shadow-sm"
                   >
                     {i + 1}
                   </span>
-                  <Icon className="w-12 h-12 mx-auto mb-4 text-brand-blue" />
+                  <span className="inline-flex items-center justify-center w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-brand-mist to-white ring-1 ring-brand-blue/10 shadow-sm text-brand-blue">
+                    <Icon className="w-7 h-7" strokeWidth={1.75} />
+                  </span>
                   <h3 className="text-xl font-bold mb-2 text-brand-navy">{step.title}</h3>
                   <p className="text-slate-600">{step.desc}</p>
                 </motion.div>
@@ -364,16 +370,17 @@ export default function Home() {
       <section id="transparencia" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('transparency.section_title')}</h2>
+          <div aria-hidden="true" className="mx-auto mb-6 h-1 w-14 rounded-full bg-brand-sky"></div>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('transparency.intro')}</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {transparencyLinks.map(({ to, label, icon: Icon }) => (
               <Link
                 key={to}
                 to={lp(to)}
-                className="bg-white border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md hover:border-brand-sky transition group"
+                className="bg-white border border-slate-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-sky/60 transition-all duration-300 group"
               >
-                <span className="inline-flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-full bg-brand-mist text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition">
-                  <Icon className="w-6 h-6" />
+                <span className="inline-flex items-center justify-center w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-brand-mist to-white ring-1 ring-brand-blue/10 shadow-sm text-brand-blue group-hover:from-brand-blue group-hover:to-brand-blue group-hover:text-white group-hover:ring-brand-blue transition-all duration-300">
+                  <Icon className="w-6 h-6" strokeWidth={1.75} />
                 </span>
                 <span className="block font-semibold text-brand-navy group-hover:text-brand-blue transition">{label}</span>
               </Link>
@@ -404,6 +411,7 @@ export default function Home() {
       <section id="contacto" className="bg-brand-mist py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-brand-navy text-center mb-4">{t('contact_form.section_title')}</h2>
+          <div aria-hidden="true" className="mx-auto mb-6 h-1 w-14 rounded-full bg-brand-sky"></div>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">{t('contact_form.intro')}</p>
           <ContactForm />
         </div>

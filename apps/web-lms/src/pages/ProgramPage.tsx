@@ -165,7 +165,10 @@ export default function ProgramPage() {
         </header>
 
         <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-sky text-white">
-          <BannerIcon aria-hidden="true" className="absolute -right-8 -bottom-10 text-white/10 pointer-events-none" size={240} strokeWidth={1.25} />
+          <div aria-hidden="true" className="absolute inset-0 opacity-[0.12] pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,.7) 1px, transparent 1px)', backgroundSize: '22px 22px' }}></div>
+          <div aria-hidden="true" className="absolute -right-12 top-1/2 -translate-y-1/2 hidden sm:flex items-center justify-center w-56 h-56 rounded-full bg-white/[0.06] ring-1 ring-white/10 pointer-events-none">
+            <BannerIcon className="text-white/25" size={104} strokeWidth={1.25} />
+          </div>
           <div className="relative max-w-4xl mx-auto px-4 py-14 md:py-20">
             <p className="text-sm font-semibold uppercase tracking-wider text-brand-sky mb-3">{deptName}</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight">{stubTitle}</h1>
@@ -257,7 +260,10 @@ export default function ProgramPage() {
       {/* Banner del título con imagen temática (icono de la disciplina como
           marca de agua sobre el degradado de marca). */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-blue to-brand-sky text-white">
-        <BannerIcon aria-hidden="true" className="absolute -right-8 -bottom-10 text-white/10 pointer-events-none" size={260} strokeWidth={1.25} />
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.12] pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,.7) 1px, transparent 1px)', backgroundSize: '22px 22px' }}></div>
+        <div aria-hidden="true" className="absolute -right-12 top-1/2 -translate-y-1/2 hidden sm:flex items-center justify-center w-64 h-64 rounded-full bg-white/[0.06] ring-1 ring-white/10 pointer-events-none">
+          <BannerIcon className="text-white/25" size={120} strokeWidth={1.25} />
+        </div>
         <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-20">
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-sky mb-3">{program.category} · {s.qualification}</p>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight max-w-4xl">{program.title}</h1>
